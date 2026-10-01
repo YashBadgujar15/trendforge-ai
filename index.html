@@ -716,5 +716,239 @@ if (document.readyState === 'loading') {
   updateCreditUI();
 }
 </script>
+
+<!-- ============================================================
+     ASTRA AI COPILOT FLOATING HUD (v4.2)
+     ============================================================ -->
+<div class="astra-widget-container" id="astra-widget">
+  <!-- Flyout HUD Card -->
+  <div class="astra-hud-card" id="astra-hud">
+    <div class="astra-hud-header">
+      <div class="astra-hud-title">
+        <div class="astra-orb-icon" style="width:20px;height:20px;font-size:10px">✨</div>
+        <span>ASTRA COPILOT</span>
+        <div class="astra-audio-bars" title="Autonomous Agent Mesh Active">
+          <div class="astra-bar"></div>
+          <div class="astra-bar"></div>
+          <div class="astra-bar"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button onclick="toggleAstraSound()" id="astra-sound-btn" class="btn btn-ghost btn-sm btn-icon" style="padding:4px;font-size:12px;color:var(--text-muted)" title="Sound FX Toggle">🔊</button>
+        <button onclick="toggleAstraHUD(false)" class="btn btn-ghost btn-sm btn-icon" style="padding:4px;font-size:13px;color:var(--text-muted)" title="Close HUD">✕</button>
+      </div>
+    </div>
+
+    <div class="astra-hud-body">
+      <div style="font-size:11.5px;color:var(--text-secondary);margin-bottom:10px;line-height:1.4">
+        Select a high-conversion viral brief or ask Astra to brainstorm your multi-modal campaign:
+      </div>
+
+      <!-- Quick Brief Chips -->
+      <div class="astra-chip-list">
+        <button class="astra-chip-btn" onclick="selectAstraPreset(0)">
+          <span>💎 <strong>Surat Diamond Bourse</strong> Smart Ring</span>
+          <span style="font-size:10px;color:#a855f7">D2C Luxury ➔</span>
+        </button>
+        <button class="astra-chip-btn" onclick="selectAstraPreset(1)">
+          <span>⚡ <strong>10x Dev Pro</strong> Split Keyboard</span>
+          <span style="font-size:10px;color:#38bdf8">Hardware ➔</span>
+        </button>
+        <button class="astra-chip-btn" onclick="selectAstraPreset(2)">
+          <span>🌿 <strong>Himalayan Cold-Brew</strong> Matcha</span>
+          <span style="font-size:10px;color:#10b981">Wellness ➔</span>
+        </button>
+      </div>
+
+      <!-- AI Response Box -->
+      <div class="astra-response-box" id="astra-response-area">
+        <div class="astra-response-tag">⚡ ASTRA LIVE AGENT STRATEGY</div>
+        <div id="astra-response-text" style="color:#e2e8f0;font-size:12px;line-height:1.5">
+          "Tap any brief above or enter your brand idea below to generate a multi-modal campaign strategy across LinkedIn, Reels, and Carousels."
+        </div>
+        <div id="astra-action-row" style="margin-top:10px;display:none;align-items:center;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-sm btn-ghost" id="astra-speak-btn" onclick="speakCurrentAstraHook()" style="font-size:11px;padding:5px 9px;border:1px solid rgba(255,255,255,0.12)">
+            ▶ Play Voice Hook
+          </button>
+          <button class="btn btn-sm btn-primary" id="astra-launch-btn" onclick="launchAstraInStudio()" style="font-size:11.5px;font-weight:700;padding:6px 12px;background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+            🚀 Open in Studio &amp; Generate ➔
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Footer -->
+    <div class="astra-hud-footer">
+      <input type="text" class="astra-input" id="astra-custom-input" placeholder="Type an idea e.g. EV Scooter Launch..." onkeydown="if(event.key==='Enter') submitAstraCustom()">
+      <button class="astra-send-btn" onclick="submitAstraCustom()">
+        <span>Spark</span> ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating Trigger Button -->
+  <button class="astra-trigger-btn" id="astra-trigger-btn" onclick="toggleAstraHUD()">
+    <div class="astra-orb-icon">✨</div>
+    <div style="text-align:left">
+      <div style="font-size:12px;font-weight:800;letter-spacing:0.02em">Astra Copilot</div>
+      <div style="font-size:9.5px;color:rgba(255,255,255,0.6);line-height:1">Multi-Modal AI</div>
+    </div>
+    <div class="astra-live-badge">
+      <span class="astra-live-dot"></span>
+      <span>Live</span>
+    </div>
+  </button>
+</div>
+
+<script>
+// ============================================================
+// ASTRA AI COPILOT LOGIC (100% Offline & Pure Vanilla JS)
+// ============================================================
+var astraSoundEnabled = true;
+var astraCurrentBrief = '';
+var astraCurrentHook = '';
+
+var astraPresets = [
+  {
+    title: "Surat Diamond Bourse Smart Ring",
+    brief: "Surat Diamond Bourse Smart Ring: Crafted with lab-grown diamond NFC tech for contactless luxury payments and biometric tracking.",
+    hook: "What if the diamond on your finger could unlock your Tesla and monitor your heart rate in real-time? Welcome to the Surat Diamond Bourse Smart Ring.",
+    strategy: "Visual Angle: 60 FPS macro zoom on titanium ring casing. Tone: Bold Luxury. Platform: LinkedIn Thought Leadership + Instagram Carousel + Voiceover Reel."
+  },
+  {
+    title: "10x Dev Pro Split Keyboard",
+    brief: "DevChair Pro Split Ergonomic Mechanical Keyboard with hot-swappable tactile switches and programmable OLED thumb clusters.",
+    hook: "Stop killing your wrists with flat laptop keyboards. This split mechanical keyboard was engineered for 10x engineers.",
+    strategy: "Visual Angle: High-contrast blueprint render. Tone: Technical & Punchy. Platform: X Thread 5-post teardown + Carousel."
+  },
+  {
+    title: "Himalayan Cold-Brew Matcha",
+    brief: "Pure ceremonial grade Himalayan cold-pressed organic matcha elixir with L-Theanine for 8 hours of clean laser focus.",
+    hook: "No caffeine crash, no jitters. Just 8 hours of pure Buddhist monk level mental clarity.",
+    strategy: "Visual Angle: Ultra-clean minimalist aesthetic. Tone: Educational & Inspiring. Platform: Reel with voiceover + LinkedIn founder breakdown."
+  }
+];
+
+function playSciFiChime(type) {
+  if (!astraSoundEnabled) return;
+  try {
+    var AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    var ctx = new AudioCtx();
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    if (type === 'open') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(520, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.15);
+    } else if (type === 'select') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(660, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.12);
+    }
+  } catch (e) {}
+}
+
+function toggleAstraSound() {
+  astraSoundEnabled = !astraSoundEnabled;
+  var btn = document.getElementById('astra-sound-btn');
+  if (btn) btn.textContent = astraSoundEnabled ? '🔊' : '🔇';
+  showToast(astraSoundEnabled ? 'Copilot Audio Effects: ON' : 'Copilot Audio Effects: OFF', 'default');
+}
+
+function toggleAstraHUD(forceState) {
+  var hud = document.getElementById('astra-hud');
+  if (!hud) return;
+  var isOpen = hud.classList.contains('open');
+  var target = (typeof forceState === 'boolean') ? forceState : !isOpen;
+  
+  if (target) {
+    hud.classList.add('open');
+    playSciFiChime('open');
+    var input = document.getElementById('astra-custom-input');
+    if (input) setTimeout(function(){ input.focus(); }, 100);
+  } else {
+    hud.classList.remove('open');
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  }
+}
+
+function selectAstraPreset(index) {
+  var item = astraPresets[index];
+  if (!item) return;
+  playSciFiChime('select');
+  
+  astraCurrentBrief = item.brief;
+  astraCurrentHook = item.hook;
+  
+  var respArea = document.getElementById('astra-response-text');
+  var actionRow = document.getElementById('astra-action-row');
+  
+  if (respArea) {
+    respArea.innerHTML = 
+      '<div style="font-weight:700;color:#fff;margin-bottom:4px">' + item.title + '</div>' +
+      '<div style="color:#c4b5fd;font-style:italic;margin-bottom:6px">“' + item.hook + '”</div>' +
+      '<div style="font-size:11px;color:var(--text-muted)">' + item.strategy + '</div>';
+  }
+  if (actionRow) actionRow.style.display = 'flex';
+}
+
+function submitAstraCustom() {
+  var input = document.getElementById('astra-custom-input');
+  if (!input || !input.value.trim()) return;
+  var text = input.value.trim();
+  playSciFiChime('select');
+  
+  astraCurrentBrief = text;
+  astraCurrentHook = "Stop scrolling. Here is why " + text + " is changing everything right now.";
+  
+  var respArea = document.getElementById('astra-response-text');
+  var actionRow = document.getElementById('astra-action-row');
+  
+  if (respArea) {
+    respArea.innerHTML = 
+      '<div style="font-weight:700;color:#fff;margin-bottom:4px">Custom Campaign Angle</div>' +
+      '<div style="color:#c4b5fd;font-style:italic;margin-bottom:6px">“' + astraCurrentHook + '”</div>' +
+      '<div style="font-size:11px;color:var(--text-muted)">Autonomous Multi-Modal Engine: Tailoring LinkedIn copy, Reel scene breakdown, and Instagram carousel.</div>';
+  }
+  if (actionRow) actionRow.style.display = 'flex';
+  input.value = '';
+}
+
+function speakCurrentAstraHook() {
+  if (!astraCurrentHook) return;
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(astraCurrentHook);
+    utter.rate = 1.05;
+    utter.pitch = 1.05;
+    window.speechSynthesis.speak(utter);
+    showToast('Speaking AI Hook aloud...', 'default');
+  } else {
+    showToast('Speech synthesis not supported in this browser', 'error');
+  }
+}
+
+function launchAstraInStudio() {
+  if (!astraCurrentBrief) return;
+  playSciFiChime('open');
+  localStorage.setItem('tf_pending_brief', astraCurrentBrief);
+  showToast('Brief transferred! Launching Studio...', 'success');
+  setTimeout(function() {
+    window.location.href = 'studio.html';
+  }, 400);
+}
+</script>
 </body>
 </html>

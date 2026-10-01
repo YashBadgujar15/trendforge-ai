@@ -2983,5 +2983,33 @@ window.addEventListener('DOMContentLoaded', function() {
 
 </style>
 
+<script>
+// Auto-populate brief from Astra Copilot if redirected
+function checkPendingAstraBrief() {
+  var pendingBrief = localStorage.getItem('tf_pending_brief');
+  if (pendingBrief) {
+    var ta = document.getElementById('campaign-brief');
+    if (ta) {
+      ta.value = pendingBrief;
+      ta.style.borderColor = '#10b981';
+      ta.style.boxShadow = '0 0 16px rgba(16, 185, 129, 0.4)';
+      setTimeout(function() {
+        ta.style.borderColor = '';
+        ta.style.boxShadow = '';
+      }, 2500);
+      if (typeof showToast === 'function') {
+        showToast('Astra Copilot brief imported successfully! 🚀', 'success');
+      }
+    }
+    localStorage.removeItem('tf_pending_brief');
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', checkPendingAstraBrief);
+} else {
+  checkPendingAstraBrief();
+}
+</script>
+
 </body>
 </html>
