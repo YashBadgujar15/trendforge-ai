@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+backend/venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.pytest_cache/
+
+# Environment Variables & Secrets
+.env
+backend/.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp

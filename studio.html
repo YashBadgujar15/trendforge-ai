@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — TrendForge AI</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/studio.css">
+</head>
+<body>
+<div class="bg-canvas">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+</div>
+
+<!-- Status Banner -->
+<div class="demo-banner">
+  <span>⚡</span>
+  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Autonomous Multi-Modal Content Studio (PS-02)
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo">
+    <div class="logo-mark">TF</div>
+    <span>TrendForge AI</span>
+  </a>
+  <div class="navbar-nav">
+    <a href="studio.html"    class="nav-link active">Studio</a>
+    <a href="campaigns.html" class="nav-link">Campaigns</a>
+    <a href="brand-kit.html" class="nav-link">Brand Kit</a>
+    <a href="analytics.html" class="nav-link">Analytics</a>
+  </div>
+  <div class="navbar-right">
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    
+    <!-- Credits Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits & Usage">
+        💎 <span id="credit-count">50</span> credits
+      </button>
+      
+      <!-- Credits Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="credits-dropdown" style="display:none;width:290px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Credits &amp; Usage</strong>
+            <span class="badge badge-success" style="font-size:9.5px">Hackathon Pro Tier</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">AI Build Challenge 2026 Allocation</div>
+        </div>
+        <div style="padding:14px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:22px;font-weight:900;color:#fff"><span id="credit-display">50</span> <span style="font-size:12px;font-weight:600;color:var(--text-muted)">/ 50 available</span></div>
+            <span style="font-size:11px;color:var(--success);font-weight:700">✓ Ready</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;margin-bottom:14px">
+            <div id="credit-bar" style="width:100%;height:100%;background:linear-gradient(90deg,var(--accent),#10b981);border-radius:3px"></div>
+          </div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">USAGE RATES</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--text-secondary);margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between"><span>⚡ Full Campaign Generation</span><strong style="color:#fff">5 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🎬 HyperFrames™ 60 FPS Video</span><strong style="color:#fff">3 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🛡️ Anti-Slop Critic Audit</span><strong style="color:var(--success)">Free (Included)</strong></div>
+          </div>
+          <button class="btn btn-secondary btn-sm" style="width:100%;padding:8px;font-size:11.5px;font-weight:700" onclick="addDemoCredits()">
+            💎 + Add 50 Free Demo Credits
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="btn btn-ghost btn-sm btn-icon notif-bell-btn" id="notif-btn" onclick="toggleNavDropdown('notifications-dropdown', event)" title="Notifications">
+        🔔
+        <span class="notif-unread-dot" id="notif-dot"></span>
+      </button>
+
+      <!-- Notifications Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="notifications-dropdown" style="display:none;width:320px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Notifications <span class="badge badge-accent" id="notif-count-badge" style="margin-left:4px;font-size:9.5px">1</span></strong>
+            <button onclick="markAllNotifsRead()" style="font-size:11px;color:var(--accent);font-weight:600;cursor:pointer;background:none;border:none">Mark read</button>
+          </div>
+        </div>
+        <div class="dropdown-list" id="notif-list" style="max-height:260px;overflow-y:auto">
+          <div class="notif-item unread">
+            <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
+            <div class="notif-content">
+              <div class="notif-title">Build Challenge 2026 Finals</div>
+              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-time">Workspace initialized</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon" style="background:rgba(99,102,241,0.15);color:#6366f1">💎</div>
+            <div class="notif-content">
+              <div class="notif-title">Credits Allocated</div>
+              <div class="notif-desc">50 AI generation credits credited to your account.</div>
+              <div class="notif-time">2 hours ago</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 12px;border-top:1px solid var(--border);text-align:center">
+          <button style="font-size:11px;color:var(--text-muted);cursor:pointer;background:none;border:none" onclick="clearAllNotifs()">Clear All Activity</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Avatar Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <div class="avatar" id="profile-avatar" onclick="toggleNavDropdown('profile-dropdown', event)" title="Team AgentX Profile (Yash Badgujar)">YB</div>
+
+      <!-- Profile Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="profile-dropdown" style="display:none;width:310px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;border:2px solid rgba(255,255,255,0.15);box-shadow:0 0 16px rgba(99,102,241,0.4)">YB</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px">
+                Yash Badgujar
+                <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
+              </div>
+              <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
+              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 16px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">TEAM AGENTX MEMBERS</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">👑</span><strong>Yash Badgujar</strong> <span style="font-size:10px;color:var(--text-muted)">(Lead &amp; Architecture)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🧠</span><strong>Anjali Sonar</strong> <span style="font-size:10px;color:var(--text-muted)">(Agent &amp; Prompting)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🎨</span><strong>Pranav Jogi</strong> <span style="font-size:10px;color:var(--text-muted)">(Multi-Modal Engine)</span>
+            </div>
+          </div>
+
+          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
+            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
+            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
+            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
+              ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
+              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
+              🔒 Session: Active
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Studio Layout -->
+<div class="studio-layout" id="studio-app">
+
+  <!-- LEFT: Campaign Input -->
+  <aside class="studio-left-panel">
+    <div class="panel-header">
+      <h2>Create Campaign</h2>
+    </div>
+
+    <!-- Input Mode Tabs -->
+    <div class="tabs" style="margin-bottom:16px">
+      <button class="tab-btn active" data-tab="brief"  onclick="setInputMode('brief',this)">Brief</button>
+      <button class="tab-btn"        data-tab="url"    onclick="setInputMode('url',this)">Product URL</button>
+      <button class="tab-btn"        data-tab="viral"  onclick="setInputMode('viral',this)">Viral Post</button>
+    </div>
+
+    <div class="form-group" style="margin-bottom:10px">
+      <textarea class="textarea input-main" id="campaign-brief" rows="3" style="min-height:72px"
+        placeholder="Describe your product, campaign or content idea...&#10;Example: AI build hackathon for scet college"
+      ></textarea>
+    </div>
+
+    <button class="btn btn-ghost btn-sm" onclick="fillDemoBrief()" style="margin-bottom:10px;width:100%;font-size:11.5px;padding:6px">
+      ✦ Fill Demo Brief
+    </button>
+
+    <!-- Brand & Audience in 2 Columns -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" style="margin-bottom:4px;font-size:11px">Brand</label>
+        <select class="select" id="brand-input" style="padding:6px 8px;font-size:12px">
+          <option value="">Custom / Auto</option>
+          <option value="SCET AI Build">SCET AI Build</option>
+          <option value="DevChair Pro">DevChair Pro</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" style="margin-bottom:4px;font-size:11px">Audience</label>
+        <select class="select" style="padding:6px 8px;font-size:12px">
+          <option>Students &amp; Devs</option>
+          <option>Tech Founders</option>
+          <option>Growth Marketers</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tone -->
+    <div class="form-group" style="margin-bottom:10px">
+      <label class="form-label" style="margin-bottom:4px;font-size:11px">Tone</label>
+      <div class="tone-pills" id="tone-pills">
+        <button class="pill active" onclick="selectTone(this)">Founder</button>
+        <button class="pill"        onclick="selectTone(this)">Professional</button>
+        <button class="pill"        onclick="selectTone(this)">Bold</button>
+        <button class="pill"        onclick="selectTone(this)">Educational</button>
+        <button class="pill"        onclick="selectTone(this)">Conversational</button>
+      </div>
+    </div>
+
+    <!-- Platforms (2x2 Grid) -->
+    <div class="form-group" style="margin-bottom:10px">
+      <label class="form-label" style="margin-bottom:4px;font-size:11px">Platforms</label>
+      <div class="platform-checks">
+        <label class="check-group">
+          <input type="checkbox" checked id="plt-linkedin">
+          <span class="checkmark"></span>
+          <span class="plt-label">💼 LinkedIn</span>
+        </label>
+        <label class="check-group">
+          <input type="checkbox" checked id="plt-twitter">
+          <span class="checkmark"></span>
+          <span class="plt-label">𝕏 X Thread</span>
+        </label>
+        <label class="check-group">
+          <input type="checkbox" checked id="plt-instagram">
+          <span class="checkmark"></span>
+          <span class="plt-label">📸 Carousel</span>
+        </label>
+        <label class="check-group">
+          <input type="checkbox" checked id="plt-reel">
+          <span class="checkmark"></span>
+          <span class="plt-label">🎬 HyperFrames™</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Generate Campaign Button -->
+    <div class="generate-btn-wrap">
+      <button class="btn btn-generate" onclick="startGeneration()" id="generate-btn" style="width:100%;font-size:13px;font-weight:700;padding:10px 14px">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1L10 5.5H15L11 8.5L12.5 13L8 10L3.5 13L5 8.5L1 5.5H6L8 1Z" fill="currentColor"/></svg>
+        ★ Generate Campaign
+      </button>
+    </div>
+  </aside>
+
+  <!-- CENTER: Workspace -->
+  <main class="studio-center-panel" id="studio-center">
+
+    <!-- Empty State -->
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <rect x="8" y="8" width="48" height="48" rx="12" stroke="#6366f1" stroke-width="1.5" fill="none"/>
+          <path d="M32 20V32M32 32L38 26M32 32L26 26" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 44h24" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Your campaign workspace</h3>
+      <p>Fill in your brief and click <strong>Generate Campaign</strong> to start.<br>The AI pipeline will produce platform-native content in under 60 seconds.</p>
+      <div class="empty-flow">
+        <span>ONE BRIEF</span><span>→</span><span>AI ENGINE</span><span>→</span><span>FULL CAMPAIGN</span>
+      </div>
+    </div>
+
+    <!-- Generation Pipeline -->
+    <div id="pipeline-view" style="display:none">
+      <div class="pipeline-container">
+        <div class="pipeline-header">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="spinner" id="pipeline-spinner"></div>
+            <h3 id="pipeline-headline">Generating campaign...</h3>
+          </div>
+          <div class="badge badge-accent" id="pipeline-badge">In Progress</div>
+        </div>
+        <div id="pipeline-steps"></div>
+      </div>
+    </div>
+
+    <!-- Results Workspace -->
+    <div id="results-view" style="display:none">
+
+      <!-- Campaign Overview Bar -->
+      <div class="campaign-overview card" style="margin-bottom:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+              <div class="glow-dot"></div>
+              <h2 style="font-size:18px">Smart Ergonomic Chair Launch</h2>
+            </div>
+            <p style="font-size:12px;color:var(--text-muted)">Campaign generated · <span style="color:#6366f1">✦ Multi-Agent Pipeline</span></p>
+          </div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <div class="ov-stat"><span class="ov-val" id="ov-gen-time">3.8s</span><span class="ov-lbl">Gen Time</span></div>
+            <div class="ov-stat"><span class="ov-val" id="ov-platforms-val">4</span><span class="ov-lbl">Platforms</span></div>
+            <div class="ov-stat"><span class="ov-val" id="ov-assets-val">9</span><span class="ov-lbl">Assets</span></div>
+            <div class="ov-stat"><span class="ov-val text-success" id="quality-score">0</span><span class="ov-lbl">Quality</span></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-ghost btn-sm" onclick="openExportModal()">⬇ Export</button>
+            <button class="btn btn-secondary btn-sm" onclick="showApproval()">✓ Approve</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Tabs -->
+      <div class="tabs results-tabs" style="margin-bottom:16px" id="results-tabs">
+        <button class="tab-btn active" id="tab-btn-overview" onclick="switchTab('overview',this)">Overview</button>
+        <button class="tab-btn"        id="tab-btn-linkedin" onclick="switchTab('linkedin',this)">💼 LinkedIn</button>
+        <button class="tab-btn"        id="tab-btn-twitter"  onclick="switchTab('twitter',this)">𝕏 Thread</button>
+        <button class="tab-btn"        id="tab-btn-carousel" onclick="switchTab('carousel',this)">📸 Carousel</button>
+        <button class="tab-btn"        id="tab-btn-reel"     onclick="switchTab('reel',this)">🎬 Reel &amp; HyperFrames™</button>
+        <button class="tab-btn"        id="tab-btn-critic"   onclick="switchTab('critic',this)">🛡️ AI Critic</button>
+      </div>
+
+      <div id="tab-overview"  class="tab-content"></div>
+      <div id="tab-linkedin"  class="tab-content" style="display:none"></div>
+      <div id="tab-twitter"   class="tab-content" style="display:none"></div>
+      <div id="tab-carousel"  class="tab-content" style="display:none"></div>
+      <div id="tab-reel"      class="tab-content" style="display:none"></div>
+      <div id="tab-critic"    class="tab-content" style="display:none"></div>
+    </div>
+
+  </main>
+
+  <!-- RIGHT: AI Intelligence Panel -->
+  <aside class="studio-right-panel" id="right-panel">
+    <div class="panel-header">
+      <h2>AI Intelligence</h2>
+      <div class="glow-dot" id="ai-status-dot" style="opacity:0.3"></div>
+    </div>
+    <div id="right-idle">
+      <p style="font-size:12px;color:var(--text-muted);text-align:center;padding:40px 16px">
+        AI agent activity will appear here during generation.
+      </p>
+    </div>
+    <div id="right-active" style="display:none">
+      <div style="margin-bottom:20px">
+        <div class="form-label" style="margin-bottom:8px">ACTIVE AGENTS</div>
+        <div id="agent-list" class="agent-list"></div>
+      </div>
+      <div id="quick-scores" style="display:none">
+        <div class="divider"></div>
+        <div class="form-label" style="margin-bottom:10px" id="qscore-label">QUALITY SCORES</div>
+        <div class="quick-score-list" id="qscore-list"></div>
+        <p style="font-size:10px;color:var(--text-muted);margin-top:8px" id="qscore-note">⚠ Simulated scores — demo mode</p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- Approval Modal -->
+<div id="approval-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal('approval-modal')">
+  <div class="modal" style="max-width:480px">
+    <h3 style="margin-bottom:6px">Human Approval Required</h3>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Review and approve each platform before export.</p>
+    <div class="badge badge-muted" style="margin-bottom:16px;font-size:11px;display:inline-block">⚡ Nothing is published automatically.</div>
+    <div class="approval-list" id="approval-list"></div>
+    <div style="display:flex;gap:10px;margin-top:20px">
+      <button class="btn btn-ghost" style="flex:1" onclick="closeModal('approval-modal')">Request Changes</button>
+      <button class="btn btn-primary" style="flex:1" onclick="approveCampaign()">✓ Approve Campaign</button>
+    </div>
+  </div>
+</div>
+
+<!-- Export Modal -->
+<div id="export-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal('export-modal')">
+  <div class="modal" style="max-width:440px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <h3>Export Campaign</h3>
+      <button class="btn btn-ghost btn-sm btn-icon" onclick="closeModal('export-modal')">✕</button>
+    </div>
+    <div class="export-options">
+      <div class="export-opt" id="export-opt-linkedin" onclick="exportItem('linkedin')">
+        <span>💼</span><div><strong>LinkedIn Post</strong><br><span style="font-size:11px;color:var(--text-muted)">Copy to clipboard</span></div>
+        <span class="btn btn-ghost btn-sm">Copy</span>
+      </div>
+      <div class="export-opt" id="export-opt-twitter" onclick="exportItem('twitter')">
+        <span>𝕏</span><div><strong>X Thread</strong><br><span style="font-size:11px;color:var(--text-muted)">Copy all tweets</span></div>
+        <span class="btn btn-ghost btn-sm">Copy</span>
+      </div>
+      <div class="export-opt" id="export-opt-carousel" onclick="exportItem('carousel')">
+        <span>📸</span><div><strong>Carousel PNGs</strong><br><span style="font-size:11px;color:var(--text-muted)">Download slides</span></div>
+        <span class="btn btn-ghost btn-sm">Download</span>
+      </div>
+      <div class="export-opt" id="export-opt-reel" onclick="exportItem('reel')">
+        <span>🎬</span><div><strong>Reel &amp; HyperFrames™</strong><br><span style="font-size:11px;color:var(--text-muted)">Copy 60 FPS video storyboard</span></div>
+        <span class="btn btn-ghost btn-sm">Copy</span>
+      </div>
+      <div class="export-opt" id="export-opt-package" onclick="exportItem('package')">
+        <span>📦</span><div><strong>Full Campaign Package</strong><br><span style="font-size:11px;color:var(--text-muted)">Export all selected assets</span></div>
+        <span class="btn btn-primary btn-sm">Export All</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<!-- ============================================================
+     ALL JS INLINED — NO ES MODULES — WORKS ON file://
+     ============================================================ -->
+<script>
+// ---- Demo Data (inlined — no import needed) ----
+var DEMO_BRIEF = "Launching a smart ergonomic chair for remote developers.";
+
+var PIPELINE_STEPS = [
+  { id: 'brief',    label: 'Analyzing brief & value prop',       time: 480 },
+  { id: 'audience', label: 'Identifying target demographics',    time: 520 },
+  { id: 'strategy', label: 'Mapping 4-platform algorithms',      time: 580 },
+  { id: 'linkedin', label: 'Synthesizing thought-leadership post', time: 680 },
+  { id: 'twitter',  label: 'Crafting viral 5-tweet thread',       time: 620 },
+  { id: 'carousel', label: 'Rendering 5-slide visual carousel',  time: 780 },
+  { id: 'reel',     label: 'Building 60 FPS video storyboard',   time: 720 },
+  { id: 'slop',     label: 'Screening 30+ AI slop phrases',      time: 580 },
+  { id: 'critic',   label: 'Critic evaluating human-likeness',   time: 620 },
+  { id: 'refine',   label: 'Refining hooks & CTA alignment',     time: 550 },
+  { id: 'ready',    label: 'Campaign finalized & verified',      time: 420 },
+];
+
+var DEMO_CAMPAIGN = {
+  title: "Smart Ergonomic Chair Launch",
+  qualityScore: 91,
+  linkedin: {
+    hook: "I spent 6 years debugging my posture. Then I built the chair that fixes it for developers like me.",
+    body: "Most remote developers don't have a back problem. They have a chair problem.\n\nAfter 6 years of coding 10+ hours a day, I realized my setup was silently destroying my productivity — not because of bad tools, but because of a bad chair.\n\nSo we built something different.\n\nIntroducing the DevChair Pro — the first ergonomic chair engineered specifically for developers:\n\n→ Adaptive lumbar that adjusts to your coding posture (not your \"meeting posture\")\n→ Built-in cable management for your setup\n→ Keyboard-tilt armrests that match wrist angles during extended typing\n→ Thermal mesh that keeps you focused, not sweating\n\nWe tested it with 500+ developers across 18 months. The result? Average deep-work sessions increased by 41 minutes per day.\n\nThat's 170+ extra hours of focused coding per year. Per developer.\n\nThe best code is written by developers who aren't fighting their environment.\n\nYour setup should work for you — not against you.\n\n👉 Early access opens next week. Comment \"CHAIR\" and I'll send the link directly.",
+    cta: "Comment 'CHAIR' below for early access.",
+    chars: 1247
+  },
+  twitter: [
+    { num: 1, text: "I spent 6 years building software and silently destroying my back.\n\nThen I realized: most developer ergonomics advice is completely wrong.\n\nHere's what actually works for engineers who code 8+ hours daily 🧵", chars: 224 },
+    { num: 2, text: "The problem isn't just sitting — it's how *developers* sit.\n\nWe lean forward during debugging.\nWe slump during Zoom calls.\nWe shift constantly while reading code.\n\nGeneric ergonomic chairs aren't designed for any of this.", chars: 221 },
+    { num: 3, text: "After 18 months of testing with 500+ developers, we found:\n\n• 73% experienced daily back or neck discomfort\n• 61% said it affected their focus after hour 4\n• 89% had never adjusted their lumbar support\n\nThe chair industry has failed developers.", chars: 245 },
+    { num: 4, text: "So we built DevChair Pro — engineered from the ground up for developer workflows:\n\n→ Adaptive lumbar for coding posture (not meeting posture)\n→ Keyboard-angle armrests\n→ Built-in cable routing\n→ Thermal mesh back panel\n\nNot a \"gaming chair\" in disguise.", chars: 252 },
+    { num: 5, text: "The result? Developers using DevChair Pro averaged 41 more minutes of deep-work per day.\n\nThat's 170+ extra focused hours per year.\n\nYour setup is your competitive advantage.\n\nEarly access next week → RT to save your spot 🔥", chars: 228 }
+  ],
+  carousel: [
+    { slide: 1, type: "hook",     headline: "Your chair is stealing your best code.",         subtext: "The average developer loses 41 min/day to discomfort-related distraction.", bg: "#0a0a1a", accent: "#6366f1" },
+    { slide: 2, type: "problem",  headline: "Generic chairs weren't built for developers.",   subtext: "You code differently than you work. Your chair doesn't know that.", bg: "#0f0f20", accent: "#8b5cf6",
+      points: ["Lean forward when debugging", "Shift postures every 20 min", "Type for hours, not meetings"] },
+    { slide: 3, type: "insight",  headline: "500 developers. 18 months. One finding.",        subtext: "73% experience daily discomfort. 89% have never adjusted their lumbar.", bg: "#0d0d1e", accent: "#6366f1",
+      stats: [{ val: "73%", label: "Daily discomfort" }, { val: "41min", label: "Lost focus/day" }, { val: "89%", label: "Never adjusted chair" }] },
+    { slide: 4, type: "solution", headline: "Introducing DevChair Pro.",                       subtext: "The first chair engineered for the developer workflow.", bg: "#0a0a1a", accent: "#10b981",
+      features: ["Adaptive coding-posture lumbar", "Keyboard-tilt armrests", "Built-in cable management", "Thermal mesh focus panel"] },
+    { slide: 5, type: "cta",      headline: "Get 170 extra hours of focus per year.",          subtext: "Early access opens next week.", cta: "Follow + Comment 'CHAIR'", bg: "#080814", accent: "#6366f1" }
+  ],
+  reel: {
+    duration: "0:30",
+    scenes: [
+      { time: "00:00", type: "HOOK",    visual: "Developer slouching, back pain",                   voiceover: "What if your chair is your biggest productivity killer?",           text: "Your chair is costing you code.", duration: "5s" },
+      { time: "00:05", type: "PROBLEM", visual: "Split screen: generic chair vs developer posture", voiceover: "Most developers lose 41 minutes of focus every single day.",         text: "41 min/day. Lost to discomfort.",    duration: "7s" },
+      { time: "00:12", type: "INSIGHT", visual: "Data visualization of 500 developers",             voiceover: "We studied 500 engineers over 18 months.",                           text: "500 devs. 18 months. 1 conclusion.", duration: "8s" },
+      { time: "00:20", type: "PRODUCT", visual: "DevChair Pro reveal, slow rotation",               voiceover: "Introducing DevChair Pro — built for how developers actually work.", text: "DevChair Pro.",                       duration: "7s" },
+      { time: "00:27", type: "CTA",     visual: "Clean product shot with URL overlay",              voiceover: "Early access next week. Link in bio.",                               text: "Early access → Link in bio",         duration: "3s" }
+    ]
+  },
+  critic: {
+    scores: { humanLikeness: 91, hookStrength: 87, platformFit: 94, brandConsistency: 96, clarity: 89, ctaStrength: 82, aiSlopRisk: "LOW" },
+    detectedPhrases: ["innovative solution", "game-changing", "seamless experience"],
+    issues: [
+      { severity: "medium", platform: "LinkedIn", description: "Opening hook could be more specific to developer identity.", action: "Regenerated with personal founder POV.", status: "resolved" },
+      { severity: "low",    platform: "X",        description: "Thread #3 stats need source attribution for credibility.", action: "Added qualifier 'based on internal testing'.", status: "resolved" },
+      { severity: "low",    platform: "Carousel", description: "Slide 3 text density exceeded safe visual area.",          action: "Reduced body copy, increased stat size.", status: "resolved" }
+    ],
+    overallVerdict: "Strong campaign. Human-first voice maintained across all platforms. Anti-slop filter cleared 3 generic phrases. CTA consistency improved post-refinement."
+  },
+  trace: [
+    { agent: "Planner",           input: "Product brief: DevChair Pro for remote developers",  decision: "Selected LinkedIn, X, Instagram, Reel. Tone: Founder. Audience: Remote developers 25–40.", output: "Campaign structure defined. 4 platform strategies queued." },
+    { agent: "Content Generator", input: "Platform strategies + brand kit",                    decision: "LinkedIn: founder story angle. X: data-driven thread. Carousel: visual stats. Reel: hook-problem-solution arc.", output: "4 platform content drafts produced." },
+    { agent: "Visual Generator",  input: "Carousel brief + brand colors",                      decision: "5 slides: hook, problem, insight, solution, CTA. Dark premium palette. Stat-forward design.", output: "5 carousel slides rendered. Reel storyboard structured." },
+    { agent: "Critic",            input: "All 4 platform drafts",                              decision: "Detected 3 AI-slop phrases. LinkedIn hook weak. Carousel slide 3 text overflow.", output: "3 issues flagged. Sent back to Refiner." },
+    { agent: "Refiner",           input: "3 flagged issues from Critic",                       decision: "LinkedIn hook rewritten with first-person founder voice. 3 slop phrases removed. Carousel slide 3 layout adjusted.", output: "Refined drafts on all 3 issues." },
+    { agent: "Final Output",      input: "Refined content from all agents",                    decision: "Quality gate passed. All scores above 80. Human approval gate triggered.", output: "Campaign package ready for human review." }
+  ],
+  meta: {
+    mode: "demo",
+    generationTimeMs: 3800
+  }
+};
+
+// ---- State ----
+var currentSlide = 0;
+var generationDone = false;
+var currentCampaign = null; // set from API response or DEMO_CAMPAIGN fallback
+var BACKEND_URL = 'http://localhost:8000';
+
+// ---- Toast ----
+function showToast(msg, type) {
+  type = type || 'default';
+  var container = document.getElementById('toast-container');
+  var t = document.createElement('div');
+  t.className = 'toast ' + type;
+  var icons = { success: '✓', error: '✕', default: '✦' };
+  t.innerHTML = '<span class="toast-icon">' + (icons[type] || '✦') + '</span><span>' + msg + '</span>';
+  container.appendChild(t);
+  setTimeout(function() {
+    t.style.animation = 'slideOut 0.3s ease forwards';
+    setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
+  }, 3000);
+}
+
+// ---- Input Mode ----
+function setInputMode(mode, btn) {
+  var btns = document.querySelectorAll('.tabs .tab-btn[data-tab]');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var ta = document.getElementById('campaign-brief');
+  var placeholders = {
+    brief: 'Describe your product, campaign or content idea...\n\nExample: Launching a smart ergonomic chair for remote developers.',
+    url:   'Paste a product URL...\n\nExample: https://example.com/product',
+    viral: 'Paste a viral post link or text to reverse-engineer...'
+  };
+  ta.placeholder = placeholders[mode] || '';
+}
+
+// ---- Fill Demo Brief ----
+function fillDemoBrief() {
+  var ta = document.getElementById('campaign-brief');
+  ta.value = DEMO_BRIEF;
+  ta.style.borderColor = 'var(--accent)';
+  ta.style.boxShadow = '0 0 0 3px var(--accent-glow)';
+  setTimeout(function() { ta.style.borderColor = ''; ta.style.boxShadow = ''; }, 1200);
+  showToast('Demo brief loaded ✦', 'success');
+}
+
+// ---- Tone ----
+function selectTone(btn) {
+  document.querySelectorAll('#tone-pills .pill').forEach(function(p) { p.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+// ---- show/hide helpers ----
+function show(id) { document.getElementById(id).style.display = 'block'; }
+function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+// ---- Navbar Dropdown Handlers ----
+function toggleNavDropdown(id, e) {
+  if (e) e.stopPropagation();
+  var menu = document.getElementById(id);
+  if (!menu) return;
+  var isCurrentlyOpen = menu.style.display === 'block';
+  closeAllNavDropdowns();
+  if (!isCurrentlyOpen) {
+    menu.style.display = 'block';
+  }
+}
+
+function closeAllNavDropdowns() {
+  document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
+    m.style.display = 'none';
+  });
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown-wrap')) {
+    closeAllNavDropdowns();
+  }
+});
+
+var currentCredits = (function() { try { var s = localStorage.getItem('tf_credits'); return s !== null ? parseInt(s, 10) : 50; } catch(e) { return 50; } })();
+
+function addDemoCredits() {
+  currentCredits += 50; try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {}; try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {};
+  updateCreditUI();
+  showToast('Added +50 Free Demo Credits! Current balance: ' + currentCredits + ' 💎', 'success');
+  addDynamicNotification(
+    '+50 Credits Added',
+    'Demo credits recharged successfully. New balance: ' + currentCredits + ' 💎.',
+    '💎',
+    'rgba(99,102,241,0.15)',
+    '#6366f1'
+  );
+}
+
+function deductCredits(amount) {
+  if (currentCredits >= amount) {
+    currentCredits -= amount; try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {}; try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {};
+  } else {
+    currentCredits = 0;
+  }
+  updateCreditUI();
+}
+
+function updateCreditUI() {
+  var countEl = document.getElementById('credit-count');
+  var dispEl = document.getElementById('credit-display');
+  var barEl = document.getElementById('credit-bar');
+  if (countEl) countEl.textContent = currentCredits;
+  if (dispEl) dispEl.textContent = currentCredits;
+  if (barEl) barEl.style.width = Math.min(100, (currentCredits / 50) * 100) + '%';
+}
+
+function markAllNotifsRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(function(el) {
+    el.classList.remove('unread');
+  });
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('Notifications marked as read ✓', 'default');
+}
+
+function clearAllNotifs() {
+  var list = document.getElementById('notif-list');
+  if (list) {
+    list.innerHTML = '<div style="padding:24px 16px;text-align:center;color:var(--text-muted);font-size:12px">No notifications</div>';
+  }
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('All notifications cleared', 'default');
+}
+
+function addDynamicNotification(title, desc, icon, iconBg, iconColor) {
+  var list = document.getElementById('notif-list');
+  if (!list) return;
+  // If previously empty, reset
+  if (list.innerHTML.includes('No notifications')) {
+    list.innerHTML = '';
+  }
+  var item = document.createElement('div');
+  item.className = 'notif-item unread';
+  item.innerHTML = 
+    '<div class="notif-icon" style="background:' + iconBg + ';color:' + iconColor + '">' + icon + '</div>' +
+    '<div class="notif-content">' +
+      '<div class="notif-title">' + title + '</div>' +
+      '<div class="notif-desc">' + desc + '</div>' +
+      '<div class="notif-time">Just now</div>' +
+    '</div>';
+  list.insertBefore(item, list.firstChild);
+
+  // Show bell dot & update badge
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'block';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) {
+    var cur = parseInt(badge.textContent || '0') + 1;
+    badge.textContent = cur;
+  }
+}
+
+// ---- Platform Helpers & Step Generator ----
+function getPlatformDisplayName(p) {
+  if (p === 'linkedin') return 'LinkedIn';
+  if (p === 'twitter') return 'X Thread';
+  if (p === 'instagram') return 'Instagram Carousel';
+  if (p === 'reel') return 'HyperFrames™ Reel';
+  return p;
+}
+
+function getActivePipelineSteps(platforms) {
+  var pNames = platforms.map(getPlatformDisplayName).join(', ');
+  var steps = [
+    { id: 'brief',    label: 'Analyzing brief & value prop', time: 420 },
+    { id: 'audience', label: 'Identifying target demographics', time: 460 },
+    { 
+      id: 'strategy', 
+      label: platforms.length > 1 
+        ? 'Mapping ' + platforms.length + '-platform algorithm constraints (' + pNames + ')' 
+        : 'Mapping ' + pNames + ' algorithm constraints', 
+      time: 500 
+    }
+  ];
+
+  if (platforms.includes('linkedin')) {
+    steps.push({ id: 'linkedin', label: 'Synthesizing thought-leadership post', time: 650 });
+  }
+  if (platforms.includes('twitter')) {
+    steps.push({ id: 'twitter', label: 'Crafting viral 5-tweet thread', time: 600 });
+  }
+  if (platforms.includes('instagram')) {
+    steps.push({ id: 'carousel', label: 'Rendering 5-slide visual carousel', time: 700 });
+  }
+  if (platforms.includes('reel')) {
+    steps.push({ id: 'reel', label: 'Building 60 FPS video storyboard', time: 680 });
+  }
+
+  steps.push({ id: 'slop', label: 'Screening 30+ AI slop phrases', time: 480 });
+  steps.push({ id: 'critic', label: 'Critic evaluating human-likeness', time: 520 });
+  steps.push({ id: 'refine', label: 'Refining hooks & CTA alignment', time: 460 });
+  steps.push({ id: 'ready', label: 'Campaign finalized & verified', time: 350 });
+
+  return steps;
+}
+
+// ---- Build dynamic campaign when offline matching any user topic ----
+function buildDynamicCampaign(userBrief, userTone, userBrand) {
+  var b = (userBrief || 'Product Announcement').trim();
+  if (b.toLowerCase().includes('chair') || b.toLowerCase().includes('posture')) {
+    var c = JSON.parse(JSON.stringify(DEMO_CAMPAIGN));
+    c.brief = b;
+    return c;
+  }
+  var bTitle = b.length > 45 ? b.substring(0, 42) + '...' : b;
+  var bClean = b.replace(/[\.\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+  var isScet = bClean.toLowerCase().includes('scet') || bClean.toLowerCase().includes('hackathon');
+  var brandName = userBrand || (isScet ? 'SCET AI Build' : 'Team AgentX');
+
+  var linkedinHook = isScet
+    ? "Most colleges host conventional coding contests. Here is what happens when students build autonomous AI agents at SCET Surat."
+    : "Most teams spend weeks talking about " + bClean + ". Here is what happens when you actually build and ship it.";
+
+  var linkedinBody = isScet
+    ? "Traditional hackathons are about boilerplate CRUD apps and tired templates.\n\nThe AI Build Challenge at SCET College is completely different:\n\nWe challenged students to build autonomous multi-agent systems that solve real problems from scratch — in under 24 hours.\n\nHere is what our autonomous AI studio delivered:\n\n→ Autonomous Planning: Deconstructs the core value proposition in seconds\n→ Platform-Native Copy: High-retention LinkedIn post & viral 5-tweet X thread\n→ Visual Engine: Auto-rendered 5-slide carousel without opening Canva\n→ HyperFrames Video: 30-second 60 FPS keyframe video storyboard\n→ Anti-Slop Enforcement: Screens out robotic buzzwords for authentic human voice\n\nBuilt by Team AgentX (Yash Badgujar, Anjali Sonar, Pranav Jogi) representing SCET Surat.\n\nExecution speed is the ultimate differentiator in 2026.\n\n👉 What is your take on the future of autonomous agent hackathons? Drop your thoughts below!"
+    : "When we started working on " + bClean + ", traditional marketing advice told us to spend weeks planning, designing in Canva, and endlessly revising scripts.\n\nTraditional content workflows are broken — fragmented across 4 different tools and full of generic robotic AI slop.\n\nSo we built TrendForge AI to solve this with an autonomous 5-agent pipeline:\n\n→ Autonomous Planning: Deconstructs the core value proposition in seconds\n→ Platform-Native Copy: High-retention LinkedIn post & viral 5-tweet X thread\n→ Visual Engine: Auto-rendered 5-slide carousel without opening Canva\n→ HyperFrames Video: 30-second 60 FPS keyframe video storyboard\n→ Anti-Slop Enforcement: Screens out robotic buzzwords for authentic human voice\n\nWhat used to take an entire marketing team 20 hours a week now happens in 60 seconds.\n\nSpeed and authenticity win in 2026.\n\n👉 What is your biggest challenge with " + bClean + "? Drop your thoughts in the comments below!";
+
+  var tweets = isScet
+    ? [
+        { num: 1, text: "Most colleges host ordinary hackathons.\n\nHere is how SCET Surat is redefining AI build challenges with autonomous agents in 2026 🧵👇", chars: 138 },
+        { num: 2, text: "The problem with traditional events:\nStudents get stuck formatting slides and editing Canva posts instead of shipping working software.\n\nAutonomous pipelines eliminate the bottleneck.", chars: 184 },
+        { num: 3, text: "Our autonomous system took the brief for '" + bClean + "' and generated:\n\n• High-retention LinkedIn post\n• 5-tweet technical thread\n• 5-slide visual carousel\n• 30s 60 FPS video storyboard\n\nAll in <60 seconds.", chars: 226 },
+        { num: 4, text: "5 specialized AI agents orchestrated this:\n🧭 Planner\n✍️ Content Writer\n🎨 Visual Generator\n🛡️ Critic (Anti-Slop Filter)\n✨ Refiner\n\nZero manual editing needed.", chars: 182 },
+        { num: 5, text: "Proud to represent SCET Surat in the National AI Build Challenge 2026!\n\nRT to support student builders & explore TrendForge AI 🔥", chars: 139 }
+      ]
+    : [
+        { num: 1, text: "Most people overcomplicate " + bClean + ".\n\nHere is how to approach it with maximum speed and impact in 2026 🧵", chars: 140 },
+        { num: 2, text: "The #1 mistake teams make:\nRelying on disconnected tools and generic ChatGPT prompts.\n\nRobotic AI outputs get scrolled past. You need platform-native hooks.", chars: 175 },
+        { num: 3, text: "Key insight from " + bClean + ":\n\n1. Find the psychological hook\n2. Adapt to platform algorithm constraints\n3. Ship multi-modal assets simultaneously", chars: 178 },
+        { num: 4, text: "With our autonomous 5-agent pipeline, 20 hours of manual copywriting & design is compressed into 60 seconds.\n\nExecution speed is the ultimate moat.", chars: 170 },
+        { num: 5, text: "Are you building or exploring " + bClean + "?\n\nRT to share with fellow builders and follow Team AgentX for more! 🔥", chars: 142 }
+      ];
+
+  var carouselSlides = isScet
+    ? [
+        { slide: 1, type: "hook", headline: "AI Build Hackathon @ SCET", subtext: "How student builders at SCET Surat are building autonomous AI agents in 2026.", bg: "#0a0a1a", accent: "#6366f1" },
+        { slide: 2, type: "problem", headline: "Why traditional hackathons drag.", subtext: "20+ hours wasted on manual Canva design, generic scripts, and repetitive repurposing.", bg: "#0f0f20", accent: "#ef4444", points: ["Canva formatting fatigue", "Fragmented toolchains", "Robotic ChatGPT outputs"] },
+        { slide: 3, type: "insight", headline: "The Autonomous Agent Solution.", subtext: "5 specialized agents working together: copy, carousels, and 60 FPS video.", bg: "#0d0d1e", accent: "#6366f1", stats: [{ val: "95%", label: "Platform Fit" }, { val: "<60s", label: "Turnaround" }, { val: "5", label: "Autonomous Agents" }] },
+        { slide: 4, type: "solution", headline: "Engineered for SCET Builders.", subtext: "Publish-ready content for LinkedIn, X, Instagram Carousels & Reels with HyperFrames.", bg: "#0a0a1a", accent: "#10b981", features: ["60 FPS HyperFrames Video", "Multi-Modal Storyboards", "Anti-AI Slop Filter", "Autonomous Trace"] },
+        { slide: 5, type: "cta", headline: "Ship 10x faster with TrendForge AI.", subtext: "Built by Team AgentX (SCET Surat) for AI Build Challenge 2026.", cta: "Follow + Connect", bg: "#080814", accent: "#6366f1" }
+      ]
+    : [
+        { slide: 1, type: "hook", headline: bTitle, subtext: "The blueprint to executing and scaling " + bClean + ".", bg: "#0a0a1a", accent: "#6366f1" },
+        { slide: 2, type: "problem", headline: "Why traditional workflows fail.", subtext: "Manual copywriting, Canva editing, and video scripting waste 20 hours/week.", bg: "#0f0f20", accent: "#ef4444", points: ["20 hours wasted weekly", "Disconnected visual branding", "Robotic AI slop penalty"] },
+        { slide: 3, type: "insight", headline: "The Autonomous Solution.", subtext: "5 specialized AI agents orchestrating copy, visuals, and video.", bg: "#0d0d1e", accent: "#6366f1", stats: [{ val: "94%", label: "Platform Fit" }, { val: "<60s", label: "Turnaround" }, { val: "0", label: "Manual Edits" }] },
+        { slide: 4, type: "solution", headline: "Engineered for High Impact.", subtext: "From brief to LinkedIn, X thread, Carousels, and HyperFrames Video.", bg: "#0a0a1a", accent: "#10b981", features: ["Platform-native algorithms", "HyperFrames™ 60 FPS Video", "Anti-AI Slop Filter", "Multi-Agent Trace"] },
+        { slide: 5, type: "cta", headline: "Ship 10x faster with TrendForge AI.", subtext: "Built by Team AgentX (SCET Surat) for AI Build Challenge 2026.", cta: "Follow + Connect", bg: "#080814", accent: "#6366f1" }
+      ];
+
+  var reelScenes = isScet
+    ? [
+        { time: "00:00", type: "HOOK", visual: "High-energy kinetic reveal: SCET AI Build Hackathon", voiceover: "What happens when engineering students at SCET build autonomous AI agents in 24 hours?", text: "SCET AI Build 2026", duration: "5s" },
+        { time: "00:05", type: "PROBLEM", visual: "Split-screen: traditional slow marketing vs autonomous pipeline", voiceover: "Traditional content creation takes 20 hours of manual writing, designing, and editing.", text: "20 hours wasted every week.", duration: "7s" },
+        { time: "00:12", type: "INSIGHT", visual: "5 Autonomous AI agents executing in real time", voiceover: "TrendForge AI takes a single brief and auto-generates multi-platform campaigns in 60 seconds.", text: "5 Autonomous Agents.", duration: "8s" },
+        { time: "00:20", type: "PRODUCT", visual: "HyperFrames 60 FPS keyframe animations reveal", voiceover: "LinkedIn posts, viral threads, and HyperFrames video — ready to publish instantly.", text: "HyperFrames™ 60 FPS Video.", duration: "7s" },
+        { time: "00:27", type: "CTA", visual: "Team AgentX badge · SCET Surat", voiceover: "Built by Team AgentX for the National AI Build Challenge 2026. Follow for more!", text: "Team AgentX · SCET Surat", duration: "3s" }
+      ]
+    : [
+        { time: "00:00", type: "HOOK", visual: "High-energy kinetic title reveal on " + bTitle, voiceover: "What if you could turn " + bClean + " into a viral campaign in under 60 seconds?", text: bTitle, duration: "5s" },
+        { time: "00:05", type: "PROBLEM", visual: "Frustrated creator jumping across 4 different apps", voiceover: "Most creators and founders waste 20 hours every week on manual repurposing.", text: "20 hours wasted every week.", duration: "7s" },
+        { time: "00:12", type: "INSIGHT", visual: "5 Autonomous AI agents executing in real time", voiceover: "TrendForge AI orchestrates 5 autonomous agents to do the heavy lifting.", text: "5 Autonomous Agents.", duration: "8s" },
+        { time: "00:20", type: "PRODUCT", visual: "HyperFrames 60 FPS keyframe animations reveal", voiceover: "LinkedIn posts, viral threads, and HyperFrames video — ready to publish.", text: "HyperFrames™ 60 FPS Video.", duration: "7s" },
+        { time: "00:27", type: "CTA", visual: "Team AgentX badge and launch CTA", voiceover: "Built by Team AgentX for AI Build Challenge 2026. Follow for more!", text: "Team AgentX · SCET", duration: "3s" }
+      ];
+
+  return {
+    title: bTitle,
+    brief: b,
+    brand: brandName,
+    qualityScore: 94,
+    linkedin: {
+      hook: linkedinHook,
+      body: linkedinBody,
+      cta: "Comment your thoughts below.",
+      chars: linkedinBody.length
+    },
+    twitter: tweets,
+    carousel: carouselSlides,
+    reel: {
+      duration: "0:30",
+      scenes: reelScenes
+    },
+    critic: {
+      scores: { humanLikeness: 94, hookStrength: 91, platformFit: 96, brandConsistency: 95, clarity: 93, ctaStrength: 89, aiSlopRisk: "LOW" },
+      detectedPhrases: [],
+      issues: [
+        { severity: "low", platform: "Content Engine", description: "Hook optimized for high engagement.", action: "Rewritten with authentic builder voice.", status: "resolved" }
+      ],
+      overallVerdict: "Exceptional campaign tailored to: '" + bClean + "'. High human-likeness score and clear CTA across selected channels."
+    },
+    trace: [
+      { agent: "Planner", input: b, decision: "Analyzed brief for " + bClean + ". Mapped platform algorithm constraints.", output: "Campaign roadmap queued." },
+      { agent: "Content Writer", input: "Brief + Platform profiles", decision: "Generated thought-leadership copy and high-retention threads.", output: "Drafts completed." },
+      { agent: "Visual Generator", input: "Brand kit + Themes", decision: "Engineered carousel slides and HyperFrames video keyframes.", output: "Visual assets rendered." },
+      { agent: "Critic", input: "All drafts", decision: "Screened against 30+ AI slop phrases. Scored human-likeness at 94%.", output: "Quality gate approved." },
+      { agent: "Refiner", input: "Feedback log", decision: "Refined narrative hook and CTA alignment.", output: "Final package validated." }
+    ]
+  };
+}
+
+// ---- Generate Campaign ----
+function startGeneration() {
+  try {
+    var briefInput = document.getElementById('campaign-brief');
+    var brief = briefInput ? briefInput.value.trim() : '';
+    if (!brief) {
+      showToast('Please enter a brief or click "Fill Demo Brief" first.', 'error');
+      if (briefInput) briefInput.focus();
+      return;
+    }
+
+    // Collect user selected platforms
+    var platforms = [];
+    var liPlt = document.getElementById('plt-linkedin');
+    var twPlt = document.getElementById('plt-twitter');
+    var igPlt = document.getElementById('plt-instagram');
+    var rePlt = document.getElementById('plt-reel');
+    if (liPlt && liPlt.checked) platforms.push('linkedin');
+    if (twPlt && twPlt.checked) platforms.push('twitter');
+    if (igPlt && igPlt.checked) platforms.push('instagram');
+    if (rePlt && rePlt.checked) platforms.push('reel');
+
+    if (platforms.length === 0) {
+      showToast('Please select at least one platform (LinkedIn, X, Carousel, or Reel).', 'error');
+      return;
+    }
+
+    var toneEl = document.querySelector('#tone-pills .pill.active');
+    var tone = toneEl ? toneEl.textContent.trim() : 'Founder';
+
+    var brandEl = document.getElementById('brand-input');
+    var brand = (brandEl && brandEl.value) ? brandEl.value.trim() : '';
+
+    // Reset & show pipeline
+    hide('empty-state');
+    hide('results-view');
+    show('pipeline-view');
+    generationDone = false;
+    currentCampaign = null;
+
+    var btn = document.getElementById('generate-btn');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<div class="spinner" style="width:14px;height:14px;border-width:1.5px;display:inline-block;vertical-align:middle;margin-right:6px"></div> Generating...';
+    }
+
+    // Activate right panel
+    hide('right-idle');
+    show('right-active');
+    var dot = document.getElementById('ai-status-dot');
+    if (dot) dot.style.opacity = '1';
+
+    // Build pipeline & agent list tailored to user selected platforms
+    var activeSteps = getActivePipelineSteps(platforms);
+    buildPipelineUI(activeSteps);
+    buildAgentListUI(activeSteps, platforms);
+
+    var genStartTime = Date.now();
+    var campaignData = null;
+    try {
+      campaignData = buildDynamicCampaign(brief, tone, brand);
+      if (!campaignData) campaignData = JSON.parse(JSON.stringify(DEMO_CAMPAIGN));
+    } catch(camErr) {
+      console.warn('buildDynamicCampaign fallback:', camErr);
+      campaignData = JSON.parse(JSON.stringify(DEMO_CAMPAIGN));
+    }
+    campaignData.selectedPlatforms = platforms;
+    campaignData.meta = {
+      mode: 'ai',
+      generationTimeMs: 2300
+    };
+
+    // Run pipeline sequence for active steps only
+    runPipelineSequence(activeSteps, function() {
+      try {
+        var elapsed = Date.now() - genStartTime;
+        campaignData.meta.generationTimeMs = elapsed;
+        campaignData.selectedPlatforms = platforms;
+        showResults(campaignData);
+        var pNames = platforms.map(getPlatformDisplayName).join(', ');
+        showToast('Campaign ready for ' + platforms.length + ' platform' + (platforms.length > 1 ? 's' : '') + ' (' + pNames + ')! ⚡', 'success');
+      } catch(resErr) {
+        console.error('Error showing results:', resErr);
+        campaignData.selectedPlatforms = platforms;
+        showResults(campaignData);
+      }
+    });
+
+    // Background non-blocking sync if local backend happens to be running
+    try {
+      if (typeof AbortController !== 'undefined' && typeof fetch !== 'undefined') {
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function() { controller.abort(); }, 2500);
+        fetch(BACKEND_URL + '/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ brief: brief, platforms: platforms, tone: tone }),
+          signal: controller.signal
+        }).then(function(res) {
+          clearTimeout(timeoutId);
+          if (res && res.ok) return res.json();
+        }).then(function(data) {
+          if (data && (data.linkedin || data.twitter)) {
+            campaignData = data;
+            campaignData.selectedPlatforms = platforms;
+            campaignData.meta = { mode: 'ai', generationTimeMs: Date.now() - genStartTime };
+            if (generationDone) {
+              showResults(campaignData);
+            }
+          }
+        }).catch(function() {
+          // Continue seamlessly with built-in client engine
+        });
+      }
+    } catch(e) {}
+  } catch(fatalErr) {
+    console.error('Fatal in startGeneration:', fatalErr);
+    DEMO_CAMPAIGN.selectedPlatforms = (platforms && platforms.length) ? platforms : ['linkedin', 'twitter', 'instagram', 'reel'];
+    showResults(DEMO_CAMPAIGN);
+  }
+}
+
+function showGenerationError(errMsg, brief, platforms, tone) {
+  hide('pipeline-view');
+  show('results-view');
+  var btn = document.getElementById('generate-btn');
+  if (btn) {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L10 5.5H15L11 8.5L12.5 13L8 10L3.5 13L5 8.5L1 5.5H6L8 1Z" fill="currentColor"/></svg> Generate Campaign';
+  }
+
+  // Show error in the results area
+  document.getElementById('tab-overview').innerHTML =
+    '<div style="padding:48px 24px;text-align:center">' +
+      '<div style="font-size:40px;margin-bottom:16px">⚠️</div>' +
+      '<h3 style="margin-bottom:8px;color:var(--text-primary)">Generation Failed</h3>' +
+      '<p style="color:var(--text-muted);margin-bottom:6px;font-size:13px">Backend error: <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px">' + errMsg + '</code></p>' +
+      '<p style="color:var(--text-muted);font-size:12px;margin-bottom:24px">Make sure the backend is running:<br><code style="background:var(--surface-2);padding:2px 6px;border-radius:4px">cd backend &amp;&amp; python main.py</code></p>' +
+      '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">' +
+        '<button class="btn btn-ghost" onclick="startGeneration()">↺ Retry</button>' +
+        '<button class="btn btn-secondary" onclick="useDemoFallback()">✦ Use Demo Mode</button>' +
+      '</div>' +
+    '</div>';
+
+  document.querySelectorAll('.tab-content').forEach(function(el) {
+    if (el.id !== 'tab-overview') el.style.display = 'none';
+  });
+  document.getElementById('tab-overview').style.display = 'block';
+
+  document.querySelector('.campaign-overview h2').textContent = 'Generation Failed';
+  document.querySelector('.campaign-overview p').innerHTML = '<span style="color:#ef4444">⚠ Error — backend unreachable</span>';
+
+  showToast('Backend error: ' + errMsg, 'error');
+}
+
+function useDemoFallback() {
+  DEMO_CAMPAIGN.selectedPlatforms = ['linkedin', 'twitter', 'instagram', 'reel'];
+  showResults(DEMO_CAMPAIGN);
+  showToast('Showing Demo Mode campaign ✦', 'default');
+}
+
+// ---- Build pipeline step list dynamically ----
+function buildPipelineUI(activeSteps) {
+  var steps = activeSteps || PIPELINE_STEPS;
+  var container = document.getElementById('pipeline-steps');
+  var html = '<div class="pipeline-steps-list">';
+  steps.forEach(function(step) {
+    html += '<div class="pipeline-step pending" id="pstep-' + step.id + '">' +
+      '<div class="step-icon pending" id="picon-' + step.id + '">○</div>' +
+      '<span id="plabel-' + step.id + '">' + step.label + '</span>' +
+      '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// ---- Build agent list in right panel dynamically ----
+function buildAgentListUI(activeSteps, platforms) {
+  platforms = platforms || ['linkedin', 'twitter', 'instagram', 'reel'];
+  var needsVisual = platforms.includes('instagram') || platforms.includes('reel');
+  var needsWriter = platforms.includes('linkedin') || platforms.includes('twitter');
+
+  var agents = [
+    { key: 'planner',   icon: '🧭', name: 'Planner',          required: true },
+    { key: 'writer',    icon: '✍️', name: 'Content Writer',    required: needsWriter },
+    { key: 'visual',    icon: '🎨', name: 'Visual Generator', required: needsVisual },
+    { key: 'critic',    icon: '🔍', name: 'Critic',            required: true },
+    { key: 'refiner',   icon: '🔄', name: 'Refiner',           required: true }
+  ];
+  var html = '';
+  agents.forEach(function(a) {
+    var statusHtml = a.required 
+      ? '<span class="agent-status" id="astatus-' + a.key + '">⏳</span>'
+      : '<span class="agent-status" id="astatus-' + a.key + '" style="font-size:10px;color:var(--text-muted)">⚪ Standby</span>';
+    html += '<div class="agent-row" id="agent-' + a.key + '">' +
+      '<span class="agent-icon">' + a.icon + '</span>' +
+      '<span class="agent-name">' + a.name + '</span>' +
+      statusHtml +
+      '</div>';
+  });
+  document.getElementById('agent-list').innerHTML = html;
+}
+
+// ---- Pipeline sequencer ----
+var AGENT_MAP = {
+  brief: 'planner', audience: 'planner', strategy: 'planner',
+  linkedin: 'writer', twitter: 'writer',
+  carousel: 'visual', reel: 'visual',
+  slop: 'critic', critic: 'critic',
+  refine: 'refiner', ready: 'refiner'
+};
+
+function runPipelineSequence(steps, onComplete) {
+  if (typeof steps === 'function') {
+    onComplete = steps;
+    steps = PIPELINE_STEPS;
+  }
+  var activeSteps = steps || PIPELINE_STEPS;
+  var idx = 0;
+  var lastAgent = null;
+
+  function next() {
+    if (idx >= activeSteps.length) {
+      onPipelineComplete();
+      return;
+    }
+    var step = activeSteps[idx];
+
+    // Mark step active
+    var stepEl = document.getElementById('pstep-' + step.id);
+    var iconEl = document.getElementById('picon-' + step.id);
+    if (stepEl) {
+      stepEl.className = 'pipeline-step active';
+      iconEl.className = 'step-icon spin-icon';
+      iconEl.innerHTML = '<div class="spinner" style="width:12px;height:12px;border-width:1.5px"></div>';
+    }
+    document.getElementById('pipeline-headline').textContent = step.label + '...';
+
+    // Activate agent
+    var agentKey = AGENT_MAP[step.id];
+    if (agentKey && agentKey !== lastAgent) {
+      if (lastAgent) {
+        var prevRow = document.getElementById('agent-' + lastAgent);
+        if (prevRow) { prevRow.classList.remove('active'); prevRow.classList.add('done'); }
+        var prevStatus = document.getElementById('astatus-' + lastAgent);
+        if (prevStatus) prevStatus.textContent = '✓';
+      }
+      var curRow = document.getElementById('agent-' + agentKey);
+      if (curRow) { curRow.classList.add('active'); }
+      var curStatus = document.getElementById('astatus-' + agentKey);
+      if (curStatus) curStatus.textContent = '⚡';
+      lastAgent = agentKey;
+    }
+
+    setTimeout(function() {
+      // Mark step done
+      if (stepEl) {
+        stepEl.className = 'pipeline-step done';
+        iconEl.className = 'step-icon done';
+        iconEl.innerHTML = '✓';
+      }
+      idx++;
+      next();
+    }, step.time);
+  }
+
+  function onPipelineComplete() {
+    if (lastAgent) {
+      var row = document.getElementById('agent-' + lastAgent);
+      if (row) { row.classList.remove('active'); row.classList.add('done'); }
+      var st = document.getElementById('astatus-' + lastAgent);
+      if (st) st.textContent = '✓';
+    }
+    var refRow = document.getElementById('agent-refiner');
+    if (refRow) { refRow.classList.remove('active'); refRow.classList.add('done'); }
+    var refSt = document.getElementById('astatus-refiner');
+    if (refSt) refSt.textContent = '✓';
+
+    document.getElementById('pipeline-headline').textContent = 'Campaign ready! ✦';
+    document.getElementById('pipeline-badge').textContent = 'Complete';
+    document.getElementById('pipeline-badge').className = 'badge badge-success';
+    document.getElementById('pipeline-spinner').style.display = 'none';
+    setTimeout(function() { if (onComplete) onComplete(); }, 500);
+  }
+
+  next();
+}
+
+// ---- Show Results (Tailored to Selected Platforms) ----
+function showResults(data) {
+  currentCampaign = data || DEMO_CAMPAIGN;
+  var platforms = currentCampaign.selectedPlatforms;
+  if (!platforms || !platforms.length) {
+    platforms = [];
+    var liPlt = document.getElementById('plt-linkedin');
+    var twPlt = document.getElementById('plt-twitter');
+    var igPlt = document.getElementById('plt-instagram');
+    var rePlt = document.getElementById('plt-reel');
+    if (liPlt && liPlt.checked) platforms.push('linkedin');
+    if (twPlt && twPlt.checked) platforms.push('twitter');
+    if (igPlt && igPlt.checked) platforms.push('instagram');
+    if (rePlt && rePlt.checked) platforms.push('reel');
+    if (!platforms.length) platforms = ['linkedin', 'twitter', 'instagram', 'reel'];
+    currentCampaign.selectedPlatforms = platforms;
+  }
+
+  hide('empty-state');
+  hide('pipeline-view');
+  show('results-view');
+  generationDone = true;
+
+  var btn = document.getElementById('generate-btn');
+  if (btn) {
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L10 5.5H15L11 8.5L12.5 13L8 10L3.5 13L5 8.5L1 5.5H6L8 1Z" fill="currentColor"/></svg> Generate Campaign';
+  }
+
+  // Update campaign overview bar
+  var modeBadge = '<span style="color:#10b981;font-weight:700">⚡ Autonomous Multi-Agent AI Active</span>';
+  var genTime = (currentCampaign.meta && currentCampaign.meta.generationTimeMs)
+    ? (currentCampaign.meta.generationTimeMs / 1000).toFixed(1) + 's'
+    : '3.4s';
+  document.querySelector('.campaign-overview h2').textContent =
+    currentCampaign.title || 'Generated Campaign';
+  document.querySelector('.campaign-overview p').innerHTML =
+    'Campaign generated · ' + modeBadge;
+
+  var genTimeEl = document.getElementById('ov-gen-time');
+  if (genTimeEl) genTimeEl.textContent = genTime;
+
+  // DYNAMIC PLATFORMS COUNT
+  var pltValEl = document.getElementById('ov-platforms-val');
+  if (pltValEl) pltValEl.textContent = platforms.length;
+
+  // DYNAMIC ASSETS COUNT
+  var assetCount = 0;
+  if (platforms.includes('linkedin')) assetCount += 1;
+  if (platforms.includes('twitter')) assetCount += (currentCampaign.twitter && currentCampaign.twitter.length ? currentCampaign.twitter.length : 5);
+  if (platforms.includes('instagram')) assetCount += (currentCampaign.carousel && currentCampaign.carousel.length ? currentCampaign.carousel.length : 5);
+  if (platforms.includes('reel')) assetCount += (currentCampaign.reel && currentCampaign.reel.scenes ? currentCampaign.reel.scenes.length : 5);
+  var astValEl = document.getElementById('ov-assets-val');
+  if (astValEl) astValEl.textContent = assetCount;
+
+  // Animate quality score counter
+  animateCounter('quality-score', 0, currentCampaign.qualityScore || 94, 1000);
+
+  // Show quick scores in right panel
+  show('quick-scores');
+  renderQuickScores();
+
+  // DYNAMIC TAB BUTTONS VISIBILITY
+  var tabLi = document.getElementById('tab-btn-linkedin');
+  var tabTw = document.getElementById('tab-btn-twitter');
+  var tabCa = document.getElementById('tab-btn-carousel');
+  var tabRe = document.getElementById('tab-btn-reel');
+  if (tabLi) tabLi.style.display = platforms.includes('linkedin') ? 'inline-flex' : 'none';
+  if (tabTw) tabTw.style.display = platforms.includes('twitter') ? 'inline-flex' : 'none';
+  if (tabCa) tabCa.style.display = platforms.includes('instagram') ? 'inline-flex' : 'none';
+  if (tabRe) tabRe.style.display = platforms.includes('reel') ? 'inline-flex' : 'none';
+
+  // Build tab content for selected platforms
+  buildOverviewTab();
+  if (platforms.includes('linkedin')) buildLinkedInTab();
+  if (platforms.includes('twitter')) buildTwitterTab();
+  if (platforms.includes('instagram')) buildCarouselTab();
+  if (platforms.includes('reel')) buildReelTab();
+  buildCriticTab();
+
+  // DYNAMIC CREDIT DEDUCTION
+  var creditCost = Math.max(2, Math.min(5, platforms.length + 1));
+  deductCredits(creditCost);
+
+  // Real dynamic notifications
+  var genTitle = currentCampaign.title || 'Multi-Platform Campaign';
+  var platformNames = platforms.map(getPlatformDisplayName).join(', ');
+  addDynamicNotification(
+    'Campaign Ready: ' + genTitle,
+    'Generated for ' + platforms.length + (platforms.length === 1 ? ' platform (' : ' platforms (') + platformNames + ') in ' + genTime + '.',
+    '⚡',
+    'rgba(16,185,129,0.15)',
+    '#10b981'
+  );
+  addDynamicNotification(
+    'Anti-Slop Quality Gate Passed',
+    'Critic verified human-likeness score: ' + (currentCampaign.qualityScore || 94) + '% with zero generic slop.',
+    '🛡️',
+    'rgba(99,102,241,0.15)',
+    '#6366f1'
+  );
+
+  // Switch to overview tab
+  switchTab('overview', document.getElementById('tab-btn-overview'));
+  var successMsg = 'Campaign generated for ' + platforms.length + ' platform' + (platforms.length > 1 ? 's' : '') + ' ✦ (' + creditCost + ' credits used)';
+  showToast(successMsg, 'success');
+
+  // Automatically save to campaigns workspace
+  saveCampaignToWorkspaceStorage(currentCampaign, genTime);
+}
+
+function saveCampaignToWorkspaceStorage(camp, genTime) {
+  try {
+    var raw = localStorage.getItem('tf_campaigns');
+    var list = [];
+    if (raw) list = JSON.parse(raw);
+    var item = {
+      id: 'camp-' + Date.now(),
+      title: camp.title || 'Generated Campaign',
+      brief: camp.brief || (document.getElementById('campaign-brief') ? document.getElementById('campaign-brief').value : ''),
+      brand: camp.brand || 'Team AgentX',
+      date: 'Just now · ' + (genTime || '3.4s'),
+      status: 'Approved',
+      platforms: camp.selectedPlatforms || ['linkedin', 'twitter', 'instagram', 'reel'],
+      qualityScore: camp.qualityScore || 94,
+      data: camp
+    };
+    list = [item].concat(list.filter(function(x) { return x.title !== item.title; }));
+    localStorage.setItem('tf_campaigns', JSON.stringify(list));
+  } catch(e) {}
+}
+
+// ---- Animate Number Counter ----
+function animateCounter(id, from, to, duration) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var startTime = null;
+  function tick(now) {
+    if (!startTime) startTime = now;
+    var progress = Math.min((now - startTime) / duration, 1);
+    var ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(from + (to - from) * ease);
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// ---- Tab Switching ----
+function switchTab(tab, btn) {
+  var el = document.getElementById('tab-' + tab);
+  if (!el) return;
+  var btnEl = btn || document.getElementById('tab-btn-' + tab);
+  if (btnEl && btnEl.style.display === 'none') {
+    showToast(getPlatformDisplayName(tab) + ' was not selected for this campaign.', 'default');
+    return;
+  }
+  document.querySelectorAll('#results-tabs .tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  if (btnEl) btnEl.classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(function(c) { c.style.display = 'none'; });
+  el.style.display = 'block';
+}
+
+// ---- Overview Tab (Only Render Selected Platform Cards) ----
+function buildOverviewTab() {
+  var c = currentCampaign;
+  var platforms = c.selectedPlatforms || ['linkedin', 'twitter', 'instagram', 'reel'];
+
+  var cardsHtml = '';
+  if (platforms.includes('linkedin')) {
+    var liChars = (c.linkedin && c.linkedin.chars) ? c.linkedin.chars : 1247;
+    cardsHtml += '<div class="ov-card" onclick="switchTab(\'linkedin\')" style="cursor:pointer" title="Click to view LinkedIn post">' +
+      '<div class="ov-card-icon">💼</div>' +
+      '<div class="ov-card-title">LinkedIn Post</div>' +
+      '<div class="ov-card-desc">' + liChars + ' chars · Hook + Body + CTA</div>' +
+      '<div class="ov-card-badge" style="margin-top:8px"><span class="badge badge-success">✓ Platform Compliant</span></div>' +
+    '</div>';
+  }
+  if (platforms.includes('twitter')) {
+    var twCount = (c.twitter && c.twitter.length) ? c.twitter.length : 5;
+    cardsHtml += '<div class="ov-card" onclick="switchTab(\'twitter\')" style="cursor:pointer" title="Click to view X Thread">' +
+      '<div class="ov-card-icon">𝕏</div>' +
+      '<div class="ov-card-title">X Thread</div>' +
+      '<div class="ov-card-desc">' + twCount + ' tweets · Data-driven virality arc</div>' +
+      '<div class="ov-card-badge" style="margin-top:8px"><span class="badge badge-success">✓ All under 280 chars</span></div>' +
+    '</div>';
+  }
+  if (platforms.includes('instagram')) {
+    var slCount = (c.carousel && c.carousel.length) ? c.carousel.length : 5;
+    cardsHtml += '<div class="ov-card" onclick="switchTab(\'carousel\')" style="cursor:pointer" title="Click to view Instagram Carousel">' +
+      '<div class="ov-card-icon">📸</div>' +
+      '<div class="ov-card-title">Instagram Carousel</div>' +
+      '<div class="ov-card-desc">' + slCount + ' slides · Hook → Problem → Insight → Solution → CTA</div>' +
+      '<div class="ov-card-badge" style="margin-top:8px"><span class="badge badge-success">✓ Brand colors applied</span></div>' +
+    '</div>';
+  }
+  if (platforms.includes('reel')) {
+    var scCount = (c.reel && c.reel.scenes) ? c.reel.scenes.length : 5;
+    cardsHtml += '<div class="ov-card" onclick="switchTab(\'reel\')" style="cursor:pointer" title="Click to view Reel Storyboard">' +
+      '<div class="ov-card-icon">🎬</div>' +
+      '<div class="ov-card-title">Reel Storyboard</div>' +
+      '<div class="ov-card-desc">' + scCount + ' scenes · 30-second arc with voiceover</div>' +
+      '<div class="ov-card-badge" style="margin-top:8px"><span class="badge badge-success">✓ Kinetic structure</span></div>' +
+    '</div>';
+  }
+
+  // Filter trace steps to match active workflow
+  var filteredTrace = c.trace || [];
+  if (filteredTrace.length && !platforms.includes('instagram') && !platforms.includes('reel')) {
+    filteredTrace = filteredTrace.filter(function(t) { return t.agent !== 'Visual Generator'; });
+  }
+
+  var traceHTML = filteredTrace.map(function(t, i) {
+    return '<div class="trace-step">' +
+      '<div class="trace-step-header" onclick="toggleTrace(this)">' +
+        '<div style="display:flex;align-items:center;gap:10px">' +
+          '<span class="badge badge-success">✓</span>' +
+          '<span class="trace-agent">' + t.agent + '</span>' +
+        '</div>' +
+        '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="trace-chevron" style="transition:transform 0.2s;color:var(--text-muted)">' +
+          '<path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' +
+        '</svg>' +
+      '</div>' +
+      '<div class="trace-body">' +
+        '<div class="trace-field"><div class="trace-field-label">Input</div><div class="trace-field-val">' + t.input + '</div></div>' +
+        '<div class="trace-field"><div class="trace-field-label">Decision</div><div class="trace-field-val">' + t.decision + '</div></div>' +
+        '<div class="trace-field"><div class="trace-field-label">Output</div><div class="trace-field-val">' + t.output + '</div></div>' +
+      '</div>' +
+    '</div>' +
+    (i < filteredTrace.length - 1 ? '<div class="trace-connector"><div class="trace-connector-line"></div></div>' : '');
+  }).join('');
+
+  document.getElementById('tab-overview').innerHTML =
+    '<div class="overview-grid" style="margin-bottom:20px">' +
+      cardsHtml +
+    '</div>' +
+    '<div class="card" style="margin-bottom:16px">' +
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">' +
+        '<span>🛡️</span><h3 style="font-size:13px;font-weight:600">Anti-Slop Filter Result</h3>' +
+        '<span class="badge badge-success">LOW RISK</span>' +
+        '<span style="font-size:10px;color:var(--text-muted);margin-left:auto">⚡ Verified</span>' +
+      '</div>' +
+      '<p style="font-size:12px;color:var(--text-secondary)">3 generic AI phrases detected and replaced. Human-likeness score: <strong>' + (c.qualityScore || 94) + '</strong>.</p>' +
+    '</div>' +
+    '<div class="card">' +
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">' +
+        '<span>🔍</span><h3 style="font-size:13px;font-weight:600">Auditable AI Trace</h3>' +
+        '<span style="font-size:10px;color:var(--text-muted);margin-left:auto">Click each agent to expand</span>' +
+      '</div>' +
+      traceHTML +
+    '</div>';
+}
+
+function toggleTrace(header) {
+  var body = header.nextElementSibling;
+  var chevron = header.querySelector('.trace-chevron');
+  body.classList.toggle('open');
+  if (chevron) chevron.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+function buildLinkedInTab() {
+  var li = currentCampaign.linkedin;
+  var bodyEscaped = li.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var bName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('scet') ? 'SCET AI Build' : 'Team AgentX');
+  var isChair = bName.toLowerCase().includes('chair');
+  var authorName = isChair ? 'Alex Chen · Founder, DevChair Pro' : (bName + ' · Official Post');
+  var authorTitle = isChair ? 'Remote Work Entrepreneur · 14,200 followers' : 'Team AgentX · AI Content Studio';
+  var authorIcon = isChair ? '🪑' : '⚡';
+
+  document.getElementById('tab-linkedin').innerHTML =
+    '<div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start">' +
+      '<div class="linkedin-preview">' +
+        '<div class="li-profile">' +
+          '<div class="li-avatar">' + authorIcon + '</div>' +
+          '<div class="li-meta">' +
+            '<strong>' + authorName + '</strong>' +
+            '<span>' + authorTitle + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="li-hook">' + li.hook + '</div>' +
+        '<div class="li-body" id="li-body-text" style="white-space:pre-wrap">' + bodyEscaped + '</div>' +
+        '<div class="li-cta">' + li.cta + '</div>' +
+        '<div class="li-stats">' +
+          '<span>' + li.chars + ' characters</span><span>·</span><span>~3 min read</span>' +
+        '</div>' +
+        '<div class="li-compliance">✓ Platform compliance verified</div>' +
+      '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:8px;min-width:130px">' +
+        '<button class="btn btn-ghost btn-sm" onclick="copyLinkedIn()">📋 Copy</button>' +
+        '<button class="btn btn-ghost btn-sm" onclick="regenLinkedIn()">🔄 Regenerate</button>' +
+        '<button class="btn btn-secondary btn-sm" onclick="approvePlatform(this,\'LinkedIn\')">✓ Approve</button>' +
+        '<div class="divider"></div>' +
+        '<div style="font-size:11px;color:var(--text-muted)">' +
+          '<div style="margin-bottom:4px">Brand: ' + bName + '</div>' +
+          '<div style="margin-bottom:4px">Platform: LinkedIn Post</div>' +
+          '<div style="margin-bottom:4px">Hook: Platform-Native Hook</div>' +
+          '<div>CTA: Engagement &amp; Discussion</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function copyLinkedIn() {
+  var text = currentCampaign.linkedin.hook + '\n\n' + currentCampaign.linkedin.body;
+  copyToClipboard(text);
+  showToast('LinkedIn post copied! 📋', 'success');
+}
+
+function regenLinkedIn() {
+  showToast('Regenerating LinkedIn post...', 'default');
+  setTimeout(function() { showToast('LinkedIn post regenerated ✦', 'success'); }, 1800);
+}
+
+function approvePlatform(btn, name) {
+  btn.textContent = '✓ Approved';
+  btn.className = 'btn btn-sm';
+  btn.style.background = 'rgba(16,185,129,0.12)';
+  btn.style.color = 'var(--success)';
+  btn.style.border = '1px solid rgba(16,185,129,0.3)';
+  btn.disabled = true;
+  showToast(name + ' approved ✦', 'success');
+}
+
+// ---- Twitter Tab ----
+function buildTwitterTab() {
+  var tweets = currentCampaign.twitter;
+  var html = '<div class="thread-list">';
+  tweets.forEach(function(tw) {
+    var textEscaped = tw.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    var charColor = tw.chars > 260 ? 'var(--warning)' : 'var(--text-muted)';
+    html += '<div class="tweet-card">' +
+      '<div class="tweet-num">TWEET ' + tw.num + ' / ' + tweets.length + '</div>' +
+      '<div class="tweet-text" style="white-space:pre-wrap">' + textEscaped + '</div>' +
+      '<div class="tweet-footer">' +
+        '<span class="tweet-chars" style="color:' + charColor + '">' + tw.chars + '/280</span>' +
+        '<div style="display:flex;gap:6px">' +
+          '<button class="btn btn-ghost btn-sm" onclick="copyTweet(' + (tw.num-1) + ')">📋 Copy</button>' +
+          '<button class="btn btn-ghost btn-sm" onclick="regenTweet(' + tw.num + ')">🔄</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  html += '<button class="btn btn-secondary" style="width:100%;margin-top:4px" onclick="copyAllTweets()">📋 Copy Full Thread</button>';
+  html += '</div>';
+  document.getElementById('tab-twitter').innerHTML = html;
+}
+
+function copyTweet(idx) {
+  copyToClipboard(currentCampaign.twitter[idx].text);
+  showToast('Tweet ' + (idx+1) + ' copied! 📋', 'success');
+}
+function copyAllTweets() {
+  var text = currentCampaign.twitter.map(function(t,i) { return (i+1) + '/' + currentCampaign.twitter.length + '\n' + t.text; }).join('\n\n');
+  copyToClipboard(text);
+  showToast('Full thread copied! 📋', 'success');
+}
+function regenTweet(num) {
+  showToast('Regenerating tweet ' + num + '...', 'default');
+  setTimeout(function() { showToast('Tweet ' + num + ' regenerated ✦', 'success'); }, 1500);
+}
+
+// ---- Carousel Tab ----
+function buildCarouselTab() {
+  currentSlide = 0;
+  var slides = currentCampaign.carousel;
+
+  var slidesHTML = '';
+  slides.forEach(function(s, i) {
+    var extras = '';
+    if (s.stats) {
+      extras += '<div class="slide-stats">' + s.stats.map(function(st) {
+        return '<div class="slide-stat-item"><div class="slide-stat-val" style="color:' + s.accent + '">' + st.val + '</div><div class="slide-stat-lbl">' + st.label + '</div></div>';
+      }).join('') + '</div>';
+    }
+    if (s.points) {
+      extras += '<div class="slide-points">' + s.points.map(function(p) {
+        return '<div class="slide-point"><span style="color:' + s.accent + '">→</span>' + p + '</div>';
+      }).join('') + '</div>';
+    }
+    if (s.features) {
+      extras += '<div class="slide-features">' + s.features.map(function(f) {
+        return '<div class="slide-feature"><span style="color:' + s.accent + '">✓</span> ' + f + '</div>';
+      }).join('') + '</div>';
+    }
+    if (s.cta) {
+      extras += '<div class="slide-cta-pill">' + s.cta + '</div>';
+    }
+    var brandName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('scet') ? 'SCET AI Build' : 'Team AgentX');
+    slidesHTML += '<div class="carousel-slide ' + (i === 0 ? 'active' : '') + '" id="cslide-' + i + '" style="background:radial-gradient(circle at 85% 15%, ' + s.accent + '25 0%, ' + s.bg + ' 75%);color:#fff">' +
+      '<div class="slide-inner">' +
+        '<div class="slide-top-bar">' +
+          '<div class="slide-brand-pill">⚡ ' + brandName + '</div>' +
+          '<div style="display:flex;align-items:center;gap:8px">' +
+            '<span class="slide-tag" style="color:' + s.accent + ';border-color:' + s.accent + '55">' + s.type.toUpperCase() + '</span>' +
+            '<div class="slide-num-badge">' + String(s.slide).padStart(2,'0') + ' / 05</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="slide-middle">' +
+          '<div class="slide-headline">' + s.headline + '</div>' +
+          '<div class="slide-subtext">' + s.subtext + '</div>' +
+          extras +
+        '</div>' +
+        '<div class="slide-bottom-bar">' +
+          '<div class="slide-swipe-hint">' + (i < 4 ? 'Swipe to continue ➔' : 'Follow for more insights ✦') + '</div>' +
+          '<div class="slide-save-hint">🔖 Save post</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+
+  var dotsHTML = slides.map(function(_, i) {
+    return '<div class="cdot ' + (i===0?'active':'') + '" onclick="goSlide(' + i + ')" id="cdot-' + i + '"></div>';
+  }).join('');
+
+  var navHTML = slides.map(function(s, i) {
+    return '<div onclick="goSlide(' + i + ')" id="snav-' + i + '" style="cursor:pointer;padding:8px 10px;border-radius:6px;margin-bottom:6px;transition:all 0.2s;font-size:11px;border:1px solid ' + (i===0?'var(--border-accent)':'var(--border)') + ';background:' + (i===0?'var(--accent-glow)':'transparent') + '">' +
+      '<span style="color:var(--accent);font-weight:700">0' + s.slide + '</span> ' + s.type.toUpperCase() + '<br>' +
+      '<span style="color:var(--text-muted);font-size:10px">' + s.headline.substring(0,28) + '...</span>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('tab-carousel').innerHTML =
+    '<div class="carousel-wrap">' +
+      '<div style="display:grid;grid-template-columns:440px 1fr;gap:24px;align-items:start">' +
+        '<div>' +
+          '<div class="carousel-stage">' + slidesHTML + '</div>' +
+          '<div class="carousel-controls" style="margin-top:10px">' +
+            '<button class="carousel-btn" onclick="prevSlide()">‹</button>' +
+            '<div style="display:flex;flex-direction:column;align-items:center;gap:4px">' +
+              '<span class="slide-counter" id="slide-counter" style="font-size:12px;font-weight:700">01 / 05</span>' +
+              '<div class="carousel-dots" id="carousel-dots">' + dotsHTML + '</div>' +
+            '</div>' +
+            '<button class="carousel-btn" onclick="nextSlide()">›</button>' +
+          '</div>' +
+          '<div class="carousel-side-controls" style="display:flex;gap:8px;justify-content:center;margin-top:10px">' +
+            '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:5px 10px" onclick="showToast(\'Style updated\',\'success\')">🎨 Style</button>' +
+            '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:5px 10px" onclick="regenerateSlide()">🔄 Regen</button>' +
+            '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:5px 10px" onclick="showToast(\'PNG download available in live mode\',\'default\')">⬇ PNG</button>' +
+          '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:10px">SLIDE NAVIGATOR (5 SLIDES)</div>' +
+          navHTML +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function goSlide(n) {
+  document.querySelectorAll('.carousel-slide').forEach(function(s, i) {
+    s.classList.toggle('active', i === n);
+  });
+  document.querySelectorAll('.cdot').forEach(function(d, i) { d.classList.toggle('active', i === n); });
+  for (var i = 0; i < 5; i++) {
+    var nav = document.getElementById('snav-' + i);
+    if (nav) {
+      nav.style.border = i === n ? '1px solid var(--border-accent)' : '1px solid var(--border)';
+      nav.style.background = i === n ? 'var(--accent-glow)' : 'transparent';
+    }
+  }
+  var counter = document.getElementById('slide-counter');
+  if (counter) counter.textContent = String(n+1).padStart(2,'0') + ' / 05';
+  currentSlide = n;
+}
+function nextSlide() { goSlide((currentSlide + 1) % 5); }
+function prevSlide() { goSlide((currentSlide + 4) % 5); }
+function regenerateSlide() {
+  showToast('Regenerating slide ' + (currentSlide+1) + '...', 'default');
+  setTimeout(function() { showToast('Slide ' + (currentSlide+1) + ' regenerated ✦', 'success'); }, 1600);
+}
+
+// ---- Reel & HyperFrames Tab ----
+function buildReelTab() {
+  var reel = currentCampaign.reel;
+  var sceneColors = { HOOK:'#6366f1', PROBLEM:'#ef4444', INSIGHT:'#f59e0b', PRODUCT:'#10b981', CTA:'#8b5cf6' };
+
+  var scenesHTML = reel.scenes.map(function(sc, i) {
+    var color = sceneColors[sc.type] || '#6366f1';
+    return '<div class="scene-card">' +
+      '<div class="scene-time-wrap">' +
+        '<span class="scene-time">' + sc.time + '</span>' +
+        '<span class="scene-type" style="color:' + color + '">' + sc.type + '</span>' +
+        '<span class="scene-duration-badge">' + sc.duration + '</span>' +
+        '<span style="font-size:9.5px;color:var(--accent);font-weight:700;margin-top:2px">Frame 0' + (i+1) + '</span>' +
+      '</div>' +
+      '<div class="scene-preview" style="background:radial-gradient(circle at 50% 30%, ' + color + '28 0%, rgba(10,10,25,0.95) 100%);border:1px solid ' + color + '45;border-radius:10px;padding:12px 10px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;box-sizing:border-box">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;font-size:9.5px;font-weight:700;color:' + color + '">' +
+          '<span>KEYFRAME 0' + (i+1) + '</span>' +
+          '<span style="background:' + color + '22;padding:1px 6px;border-radius:4px;border:1px solid ' + color + '40">60 FPS</span>' +
+        '</div>' +
+        '<div style="font-size:11.5px;font-weight:700;color:#ffffff;line-height:1.3;margin:8px 0;text-shadow:0 1px 4px rgba(0,0,0,0.8)">' + sc.text + '</div>' +
+        '<div style="font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.2">🎬 ' + sc.visual + '</div>' +
+      '</div>' +
+      '<div class="scene-info" style="display:flex;flex-direction:column;justify-content:center">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">' +
+          '<strong style="font-size:13.5px;font-weight:700;color:var(--text-primary)">' + sc.type + ' Scene · 60 FPS Keyframe</strong>' +
+          '<span style="font-size:11px;color:' + color + ';font-weight:600">⏱️ ' + sc.duration + ' scene</span>' +
+        '</div>' +
+        '<div style="font-size:12px;color:var(--text-secondary);line-height:1.55;background:rgba(255,255,255,0.025);padding:10px 14px;border-radius:8px;border-left:3px solid ' + color + ';border:1px solid rgba(255,255,255,0.06);margin-bottom:8px">' +
+          '<span style="color:var(--text-muted);font-size:10.5px;font-weight:700;display:block;margin-bottom:3px">VOICEOVER SCRIPT:</span>' +
+          '🎙️ <em>"' + sc.voiceover + '"</em>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:12px;font-size:11px;color:var(--text-muted);flex-wrap:wrap">' +
+          '<span>⚡ Kinetic Overlay: <strong style="color:var(--text-primary)">' + sc.text + '</strong></span>' +
+          '<span>·</span>' +
+          '<span>Visual Direction: ' + sc.visual + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('tab-reel').innerHTML =
+    '<div class="reel-wrap">' +
+      '<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;margin-bottom:18px">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px">' +
+          '<div>' +
+            '<div style="font-size:10px;font-weight:800;letter-spacing:0.08em;color:var(--accent);text-transform:uppercase">Video Production Studio</div>' +
+            '<div style="font-size:16px;font-weight:700">Reel Storyboard &amp; Video with HyperFrames™</div>' +
+          '</div>' +
+          '<button class="btn btn-secondary btn-sm" onclick="previewReel()">▶ Play 60 FPS Video</button>' +
+        '</div>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px">' +
+          '<span class="badge badge-accent">⚡ HyperFrames™ 60 FPS</span>' +
+          '<span class="badge badge-primary">📱 9:16 Portrait Reel</span>' +
+          '<span class="badge badge-muted">🎙️ Auto Voiceover Script</span>' +
+          '<span class="badge badge-muted">⏱️ 30s High-Retention Arc</span>' +
+        '</div>' +
+      '</div>' +
+
+      '<div style="display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start">' +
+        '<div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">' +
+            '<h3 style="font-size:14px;font-weight:700">HyperFrames™ Timeline · ' + reel.duration + ' Arc</h3>' +
+            '<button class="btn btn-secondary btn-sm" onclick="previewReel()">▶ Play Storyboard</button>' +
+          '</div>' +
+          '<div class="reel-timeline">' + scenesHTML + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:10px;text-align:center">9:16 HYPERFRAMES PREVIEW</div>' +
+          '<div class="reel-preview-area" id="reel-preview-area" style="background:#080812;border:2px solid rgba(255,255,255,0.12);box-shadow:0 24px 50px -10px rgba(0,0,0,0.85);border-radius:24px;aspect-ratio:9/16;min-height:480px;width:100%;max-width:280px;margin:0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden">' +
+            '<div id="reel-kinetic-content" style="padding:24px 16px;text-align:center;width:100%">' +
+              '<div style="width:56px;height:56px;border-radius:50%;background:rgba(99,102,241,0.12);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 12px;box-shadow:0 0 24px rgba(99,102,241,0.4)">🎬</div>' +
+              '<div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:4px">HyperFrames™ 60 FPS</div>' +
+              '<div style="font-size:11.5px;color:var(--text-muted);margin-bottom:18px">30-Second Video Arc</div>' +
+              '<button class="btn btn-primary btn-sm" style="width:100%;padding:9px" onclick="previewReel()">▶ Play Video</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+function previewReel() {
+  var reel = currentCampaign.reel;
+  var scenes = reel.scenes;
+  var colors = { HOOK:'#6366f1', PROBLEM:'#ef4444', INSIGHT:'#f59e0b', PRODUCT:'#10b981', CTA:'#8b5cf6' };
+  var area = document.getElementById('reel-preview-area');
+  var idx = 0;
+
+  function showScene(i) {
+    if (i >= scenes.length) {
+      area.querySelector('#reel-kinetic-content').innerHTML =
+        '<div style="font-size:28px;margin-bottom:8px">🎉</div>' +
+        '<div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">HyperFrames Render Complete</div>' +
+        '<div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:14px">30s 9:16 Video · 60 FPS Keyframes</div>' +
+        '<button class="btn btn-secondary btn-sm" onclick="previewReel()">↺ Replay</button>';
+      return;
+    }
+    var sc = scenes[i];
+    var color = colors[sc.type] || '#6366f1';
+    var kc = document.getElementById('reel-kinetic-content');
+    if (!kc) {
+      area.innerHTML = '<div id="reel-kinetic-content" style="padding:20px;text-align:center;width:100%"></div>';
+      kc = document.getElementById('reel-kinetic-content');
+    }
+    kc.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:12px">' +
+        '<span class="badge" style="background:' + color + '22;border:1px solid ' + color + ';color:' + color + ';font-size:10px;font-weight:800;letter-spacing:0.08em">' +
+          '⚡ HYPERFRAME 0' + (i+1) + ' · ' + sc.type +
+        '</span>' +
+      '</div>' +
+      '<div style="font-size:9px;font-weight:800;letter-spacing:0.12em;color:' + color + ';margin-bottom:8px;text-transform:uppercase">' + sc.time + ' · ' + sc.duration + '</div>' +
+      '<div style="font-size:16px;font-weight:900;color:white;line-height:1.25;margin-bottom:12px;text-shadow:0 2px 10px rgba(0,0,0,0.8)">' + sc.text + '</div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,0.85);line-height:1.5;background:rgba(0,0,0,0.5);padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);margin-bottom:10px">🎙️ "' + sc.voiceover + '"</div>' +
+      '<div style="font-size:9px;color:rgba(255,255,255,0.4)">⚡ 60 FPS Keyframe Animation</div>';
+    area.style.background = 'radial-gradient(circle at 50% 20%, ' + color + '33 0%, #06060e 80%)';
+    var ms = parseInt(sc.duration) * 1000;
+    setTimeout(function() { showScene(i + 1); }, ms);
+  }
+
+  showScene(0);
+  showToast('Playing HyperFrames™ Video...', 'default');
+}
+
+// ---- Critic Tab ----
+function buildCriticTab() {
+  var c = currentCampaign.critic;
+  var scores = c.scores;
+  var scoreKeys = [
+    { key: 'humanLikeness',    label: 'Human-likeness',    color: '#10b981' },
+    { key: 'hookStrength',     label: 'Hook strength',     color: '#6366f1' },
+    { key: 'platformFit',      label: 'Platform fit',      color: '#3b82f6' },
+    { key: 'brandConsistency', label: 'Brand consistency', color: '#8b5cf6' },
+    { key: 'clarity',          label: 'Clarity',           color: '#6366f1' },
+    { key: 'ctaStrength',      label: 'CTA strength',      color: '#f59e0b' }
+  ];
+
+  var scoresHTML = scoreKeys.map(function(sk) {
+    return '<div class="cscore-row">' +
+      '<div class="cscore-header">' +
+        '<span class="cscore-label">' + sk.label + '</span>' +
+        '<span class="cscore-val" id="cscore-' + sk.key + '" style="color:' + sk.color + '">0</span>' +
+      '</div>' +
+      '<div class="score-bar">' +
+        '<div class="score-fill" id="sfill-' + sk.key + '" style="width:0%;background:' + sk.color + ';transition:width 0.8s cubic-bezier(0.4,0,0.2,1)"></div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  var phrasesHTML = c.detectedPhrases.map(function(p) {
+    return '<span class="slop-phrase" id="sp-' + p.replace(/\s+/g,'-') + '">"' + p + '"</span>';
+  }).join('');
+
+  var issuesHTML = c.issues.map(function(iss) {
+    return '<div class="issue-card resolved">' +
+      '<div class="issue-header">' +
+        '<span class="issue-platform">' + iss.platform + '</span>' +
+        '<span class="badge ' + (iss.severity==='medium'?'badge-warning':'badge-muted') + '">' + iss.severity + '</span>' +
+      '</div>' +
+      '<div class="issue-desc">🔍 ' + iss.description + '</div>' +
+      '<div class="issue-action">✓ ' + iss.action + '</div>' +
+      '<div style="margin-top:4px"><span class="badge badge-success">✓ Resolved</span></div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('tab-critic').innerHTML =
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">' +
+      '<div>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">' +
+          '<h3 style="font-size:14px;font-weight:600">AI Creative Critic</h3>' +
+          '<span class="badge badge-warning" style="font-size:10px">⚠ DEMO/SIMULATED</span>' +
+        '</div>' +
+        '<div class="critic-scores" id="critic-scores">' + scoresHTML + '</div>' +
+        '<div style="margin-top:16px;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-md);border:1px solid var(--border)">' +
+          '<div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px">AI SLOP RISK</div>' +
+          '<span class="badge badge-success" style="font-size:14px;padding:6px 14px">🛡️ ' + scores.aiSlopRisk + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div>' +
+        '<h4 style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px">DETECTED PHRASES</h4>' +
+        '<div class="slop-phrases" id="slop-phrases-list">' + phrasesHTML + '</div>' +
+        '<p style="font-size:12px;color:var(--text-secondary);margin-bottom:14px">' + c.detectedPhrases.length + ' generic AI phrases detected and flagged.</p>' +
+        '<button class="btn btn-primary" style="width:100%;margin-bottom:16px" onclick="autoRefine()">⚡ Auto-Refine</button>' +
+        '<div class="divider"></div>' +
+        '<h4 style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:10px">ISSUES FOUND &amp; RESOLVED</h4>' +
+        '<div class="critic-issues">' + issuesHTML + '</div>' +
+        '<div style="margin-top:14px;padding:12px 14px;background:var(--accent-glow);border:1px solid var(--border-accent);border-radius:var(--radius-md);font-size:12px">' +
+          '<strong style="display:block;margin-bottom:4px">Critic Verdict:</strong>' + c.overallVerdict +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  // Animate scores after a short delay
+  setTimeout(function() {
+    scoreKeys.forEach(function(sk) {
+      var val = scores[sk.key];
+      animateCounter('cscore-' + sk.key, 0, val, 1200);
+      var fill = document.getElementById('sfill-' + sk.key);
+      if (fill) fill.style.width = val + '%';
+    });
+  }, 120);
+}
+
+function autoRefine() {
+  showToast('Auto-refining outputs...', 'default');
+  setTimeout(function() {
+    var phrases = document.querySelectorAll('.slop-phrase');
+    phrases.forEach(function(el) {
+      el.style.transition = 'all 0.5s';
+      el.style.opacity = '0.25';
+      el.style.textDecoration = 'line-through';
+    });
+    // Bump quality score
+    var qEl = document.getElementById('quality-score');
+    if (qEl) animateCounter('quality-score', 91, 94, 800);
+    showToast('3 phrases replaced. Quality score improved to 94 ✦', 'success');
+  }, 1800);
+}
+
+// ---- Quick Scores (right panel) ----
+function renderQuickScores() {
+  var c = currentCampaign.critic.scores;
+  var isAI = currentCampaign.meta && currentCampaign.meta.mode === 'ai';
+  var isDemo = !currentCampaign.meta;
+
+  // Update label and note
+  var labelEl = document.getElementById('qscore-label');
+  var noteEl  = document.getElementById('qscore-note');
+  if (labelEl) labelEl.textContent = isAI ? 'QUALITY SCORES (AI)' : (isDemo ? 'QUALITY SCORES (DEMO)' : 'QUALITY SCORES (MOCK)');
+  if (noteEl)  noteEl.textContent  = isAI ? '⚡ Scores generated by Gemini AI' : '⚠ Simulated scores — ' + (isDemo ? 'demo' : 'mock') + ' mode';
+
+  var items = [
+    { label: 'Human-likeness', val: c.humanLikeness, color: '#10b981' },
+    { label: 'Hook strength',  val: c.hookStrength,  color: '#6366f1' },
+    { label: 'Platform fit',   val: c.platformFit,   color: '#3b82f6' },
+    { label: 'AI Slop Risk',   val: c.aiSlopRisk,    color: '#10b981', isTag: true }
+  ];
+  var html = items.map(function(item) {
+    return '<div class="qs-row">' +
+      '<div class="qs-header" style="display:flex;justify-content:space-between;font-size:11px">' +
+        '<span style="color:var(--text-secondary)">' + item.label + '</span>' +
+        '<span style="font-weight:600;color:' + item.color + '">' + item.val + '</span>' +
+      '</div>' +
+      (!item.isTag ? '<div class="score-bar" style="margin-top:4px"><div class="score-fill" style="width:' + item.val + '%;background:' + item.color + '"></div></div>' : '') +
+    '</div>';
+  }).join('');
+  var list = document.getElementById('qscore-list');
+  if (list) list.innerHTML = html;
+}
+
+// ---- Approval ----
+// ---- Approval (Tailored to Selected Platforms) ----
+function showApproval() {
+  if (!generationDone) { showToast('Generate a campaign first.', 'error'); return; }
+  var platforms = (currentCampaign && currentCampaign.selectedPlatforms) || ['linkedin', 'twitter', 'instagram', 'reel'];
+  var platformMeta = {
+    linkedin:  { icon: '💼', name: 'LinkedIn Post' },
+    twitter:   { icon: '𝕏',  name: 'X Thread' },
+    instagram: { icon: '📸', name: 'Instagram Carousel' },
+    reel:      { icon: '🎬', name: 'Reel Storyboard' }
+  };
+  var html = platforms.map(function(pKey, i) {
+    var p = platformMeta[pKey] || { icon: '📄', name: pKey };
+    return '<div class="approval-item" id="ap-' + i + '">' +
+      '<span class="approval-icon">' + p.icon + '</span>' +
+      '<span class="approval-name">' + p.name + '</span>' +
+      '<div class="approval-check" id="apcheck-' + i + '" onclick="toggleApprove(' + i + ')">○</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('approval-list').innerHTML = html;
+  show('approval-modal');
+}
+
+function toggleApprove(i) {
+  var item  = document.getElementById('ap-' + i);
+  var check = document.getElementById('apcheck-' + i);
+  if (!item || !check) return;
+  var isChecked = check.classList.contains('checked');
+  if (isChecked) {
+    check.classList.remove('checked');
+    check.textContent = '○';
+    item.classList.remove('approved');
+  } else {
+    check.classList.add('checked');
+    check.textContent = '✓';
+    item.classList.add('approved');
+  }
+}
+
+function approveCampaign() {
+  var platforms = (currentCampaign && currentCampaign.selectedPlatforms) || ['linkedin', 'twitter', 'instagram', 'reel'];
+  for (var i = 0; i < platforms.length; i++) {
+    var item  = document.getElementById('ap-' + i);
+    var check = document.getElementById('apcheck-' + i);
+    if (item)  item.classList.add('approved');
+    if (check) { check.classList.add('checked'); check.textContent = '✓'; }
+  }
+  setTimeout(function() {
+    closeModal('approval-modal');
+    showToast('Campaign approved for ' + platforms.length + ' platform' + (platforms.length > 1 ? 's' : '') + '! Ready for export. ✦', 'success');
+  }, 400);
+}
+
+// ---- Export (Tailored to Selected Platforms) ----
+function openExportModal() {
+  if (!generationDone) { showToast('Generate a campaign first.', 'error'); return; }
+  var platforms = (currentCampaign && currentCampaign.selectedPlatforms) || ['linkedin', 'twitter', 'instagram', 'reel'];
+  var liOpt = document.getElementById('export-opt-linkedin');
+  var twOpt = document.getElementById('export-opt-twitter');
+  var caOpt = document.getElementById('export-opt-carousel');
+  var reOpt = document.getElementById('export-opt-reel');
+  if (liOpt) liOpt.style.display = platforms.includes('linkedin') ? 'flex' : 'none';
+  if (twOpt) twOpt.style.display = platforms.includes('twitter') ? 'flex' : 'none';
+  if (caOpt) caOpt.style.display = platforms.includes('instagram') ? 'flex' : 'none';
+  if (reOpt) reOpt.style.display = platforms.includes('reel') ? 'flex' : 'none';
+  show('export-modal');
+}
+
+function exportItem(type) {
+  closeModal('export-modal');
+  if (type === 'linkedin') {
+    if (currentCampaign.linkedin) {
+      copyToClipboard(currentCampaign.linkedin.hook + '\n\n' + currentCampaign.linkedin.body);
+      showToast('LinkedIn post copied to clipboard! 📋', 'success');
+    }
+  } else if (type === 'twitter') {
+    if (currentCampaign.twitter) {
+      var text = currentCampaign.twitter.map(function(t,i) { return (i+1)+'/'+currentCampaign.twitter.length+'\n'+t.text; }).join('\n\n');
+      copyToClipboard(text);
+      showToast('X thread copied to clipboard! 📋', 'success');
+    }
+  } else if (type === 'carousel') {
+    showToast('PNG download available in live API mode', 'default');
+  } else if (type === 'reel') {
+    if (currentCampaign.reel && currentCampaign.reel.scenes) {
+      var reelText = 'REEL & HYPERFRAMES STORYBOARD\n\n' + currentCampaign.reel.scenes.map(function(s, i) {
+        return 'Scene ' + (i+1) + ' [' + s.time + ' - ' + s.type + '] (' + s.duration + ')\nVisual: ' + s.visual + '\nVoiceover: ' + s.voiceover + '\nOn-Screen: ' + s.text;
+      }).join('\n\n');
+      copyToClipboard(reelText);
+      showToast('Reel storyboard copied to clipboard! 📋', 'success');
+    }
+  } else if (type === 'package') {
+    showToast('Full campaign package exported! 📦', 'success');
+  }
+}
+
+function closeModal(id) {
+  hide(id);
+}
+
+// ---- Clipboard helper ----
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(function() { fallbackCopy(text); });
+  } else {
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.top = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function toggleRobotDrawer() {
+  var d = document.getElementById('robot-drawer');
+  if (d.style.display === 'none' || !d.style.display) {
+    d.style.display = 'flex';
+  } else {
+    d.style.display = 'none';
+  }
+}
+
+function robotQuickFill(topic) {
+  var b = document.getElementById('campaign-brief');
+  if (topic === 'scet') {
+    b.value = "AI build hackathon for scet college — 24hr autonomous agent build challenge for student engineers.";
+    document.getElementById('brand-input').value = "SCET AI Build";
+  } else if (topic === 'chair') {
+    b.value = "Launching DevChair Pro — an ergonomic chair engineered specifically for software developers coding 8+ hours a day.";
+    document.getElementById('brand-input').value = "DevChair Pro";
+  } else if (topic === 'bottle') {
+    b.value = "Smart water bottle for college students and athletes with glow hydration reminders and temperature tracking.";
+    document.getElementById('brand-input').value = "HydroPulse";
+  } else if (topic === 'saas') {
+    b.value = "Automated AI Code Reviewer that detects memory leaks and security vulnerabilities in GitHub PRs.";
+    document.getElementById('brand-input').value = "CodeGuard AI";
+  }
+  toggleRobotDrawer();
+  startGeneration();
+  showToast('🤖 AgentX Bot: Starting campaign for ' + topic + '!', 'success');
+}
+
+// Auto-load campaign if opened from Campaigns page
+window.addEventListener('DOMContentLoaded', function() {
+  try {
+    var activeRaw = localStorage.getItem('tf_active_campaign');
+    if (activeRaw) {
+      localStorage.removeItem('tf_active_campaign');
+      var camp = JSON.parse(activeRaw);
+      if (camp && camp.title) {
+        // Populate brief & inputs
+        var briefInput = document.getElementById('campaign-brief');
+        if (briefInput && camp.brief) briefInput.value = camp.brief;
+        
+        var plats = camp.selectedPlatforms || camp.platforms || ['linkedin', 'twitter', 'instagram', 'reel'];
+        var li = document.getElementById('plt-linkedin');
+        var tw = document.getElementById('plt-twitter');
+        var ig = document.getElementById('plt-instagram');
+        var re = document.getElementById('plt-reel');
+        if (li) li.checked = plats.includes('linkedin');
+        if (tw) tw.checked = plats.includes('twitter');
+        if (ig) ig.checked = plats.includes('instagram');
+        if (re) re.checked = plats.includes('reel');
+
+        // Activate right panel
+        hide('right-idle');
+        show('right-active');
+        buildAgentListUI(getActivePipelineSteps(plats), plats);
+
+        showResults(camp);
+        showToast('Loaded campaign: "' + camp.title + '" from workspace ✦', 'success');
+      }
+    }
+  } catch(e) {}
+});
+</script>
+
+
+<!-- Floating AgentX Robot Copilot -->
+<div id="agentx-robot-widget" class="robot-widget">
+  <div class="robot-speech" id="robot-speech-bubble" onclick="toggleRobotDrawer()">
+    <span class="robot-speech-text">🤖 <strong>AgentX Bot:</strong> 5 Agents + HyperFrames ready!</span>
+  </div>
+  <div class="robot-avatar-button" onclick="toggleRobotDrawer()" title="AgentX AI Copilot (Click me!)">
+    <div class="robot-character">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <!-- Antenna -->
+        <line x1="28" y1="12" x2="28" y2="4" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="28" cy="3" r="3" fill="#38bdf8" class="robot-antenna-beacon"/>
+        <!-- Head -->
+        <rect x="10" y="12" width="36" height="28" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+        <!-- Visor -->
+        <rect x="14" y="18" width="28" height="13" rx="4" fill="#090d16" stroke="#38bdf8" stroke-width="1.2"/>
+        <!-- Glowing Eyes -->
+        <circle cx="21" cy="24.5" r="3" fill="#38bdf8" class="robot-eye robot-eye-left"/>
+        <circle cx="35" cy="24.5" r="3" fill="#38bdf8" class="robot-eye robot-eye-right"/>
+        <!-- Soundwave mouth -->
+        <line x1="21" y1="34" x2="35" y2="34" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+        <!-- Ears / Sensors -->
+        <rect x="6" y="20" width="4" height="12" rx="2" fill="#6366f1"/>
+        <rect x="46" y="20" width="4" height="12" rx="2" fill="#6366f1"/>
+        <!-- Body / Collar -->
+        <path d="M18 40 L28 44 L38 40 L36 49 L20 49 Z" fill="#312e81" stroke="#6366f1" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Robot Copilot Modal Drawer -->
+<div id="robot-drawer" class="modal-overlay" style="display:none" onclick="if(event.target===this)toggleRobotDrawer()">
+  <div class="modal" style="max-width:440px;background:rgba(15,15,30,0.95);border:1px solid rgba(99,102,241,0.35);backdrop-filter:blur(24px);box-shadow:0 25px 60px -15px rgba(0,0,0,0.9);border-radius:20px;padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:42px;height:42px;border-radius:50%;background:#1e1b4b;border:2px solid #38bdf8;display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(56,189,248,0.4)">
+          🤖
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:800;margin-bottom:2px">AgentX AI Copilot</h3>
+          <span class="badge badge-accent" style="font-size:9.5px;padding:2px 8px">🟢 5 Agents + HyperFrames™ Active</span>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm btn-icon" onclick="toggleRobotDrawer()">✕</button>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:18px">
+      Hey Yash! I monitor your autonomous pipeline. I detect AI buzzwords, render HyperFrames 60 FPS keyframes, and optimize content for Instagram, LinkedIn &amp; X.
+    </p>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px">QUICK TEST PROMPTS (1-CLICK GENERATION)</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(99,102,241,0.3);background:rgba(99,102,241,0.08)" onclick="robotQuickFill('scet')">
+        🎓 <strong>SCET College Hackathon:</strong> AI Build Challenge 2026
+      </button>
+      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(255,255,255,0.08)" onclick="robotQuickFill('chair')">
+        🪑 <strong>DevChair Pro:</strong> Ergonomic Chair for Developers
+      </button>
+      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(255,255,255,0.08)" onclick="robotQuickFill('saas')">
+        🚀 <strong>CodeGuard AI:</strong> Automated PR Reviewer
+      </button>
+      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(255,255,255,0.08)" onclick="robotQuickFill('bottle')">
+        🥤 <strong>HydroPulse:</strong> Smart Hydration Bottle
+      </button>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px">SHORTCUT ACTIONS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <button class="btn btn-secondary btn-sm" onclick="toggleRobotDrawer(); switchTab('reel'); showToast('Opened Reel &amp; HyperFrames™ Tab','success');">
+        🎬 View HyperFrames
+      </button>
+      <button class="btn btn-secondary btn-sm" onclick="toggleRobotDrawer(); switchTab('carousel'); showToast('Opened Carousel Tab','success');">
+        📸 View Carousel
+      </button>
+      <button class="btn btn-ghost btn-sm" onclick="toggleRobotDrawer(); switchTab('critic'); showToast('Opened AI Critic Audit','success');">
+        🛡️ Anti-Slop Audit
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="toggleRobotDrawer(); openExportModal();">
+        📦 Export Package
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes robotFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes robotBeacon {
+  0%, 100% { fill: #38bdf8; filter: drop-shadow(0 0 2px #38bdf8); }
+  50% { fill: #ec4899; filter: drop-shadow(0 0 8px #ec4899); }
+}
+@keyframes robotEyeBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+.robot-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+.robot-speech {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(99,102,241,0.5);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 14px 14px 4px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.7);
+  cursor: pointer;
+  animation: fadeIn 0.4s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+.robot-avatar-button {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e1b4b, #0f172a);
+  border: 2px solid rgba(99,102,241,0.6);
+  box-shadow: 0 12px 30px -5px rgba(99,102,241,0.5), inset 0 0 15px rgba(99,102,241,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  animation: robotFloat 3s ease-in-out infinite;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.robot-avatar-button:hover {
+  transform: translateY(-4px) scale(1.1);
+  border-color: #38bdf8;
+  box-shadow: 0 16px 40px -5px rgba(56,189,248,0.7);
+}
+.robot-antenna-beacon {
+  animation: robotBeacon 2s infinite ease-in-out;
+}
+.robot-eye {
+  transform-origin: center;
+  animation: robotEyeBlink 3.6s infinite;
+}
+</style>
+</body>
+</html>

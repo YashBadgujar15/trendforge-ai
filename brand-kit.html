@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Kit — TrendForge AI</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/brand-kit.css">
+</head>
+<body>
+<div class="bg-canvas"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div></div>
+
+<div class="demo-banner">
+  <span>⚡</span>
+  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Multi-Modal Autonomous Content Studio (PS-02)
+</div>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"><div class="logo-mark">TF</div><span>TrendForge AI</span></a>
+  <div class="navbar-nav">
+    <a href="studio.html"    class="nav-link">Studio</a>
+    <a href="campaigns.html" class="nav-link">Campaigns</a>
+    <a href="brand-kit.html" class="nav-link active">Brand Kit</a>
+    <a href="analytics.html" class="nav-link">Analytics</a>
+  </div>
+  <div class="navbar-right">
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    
+    <!-- Credits Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits & Usage">
+        💎 <span id="credit-count">50</span> credits
+      </button>
+      
+      <!-- Credits Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="credits-dropdown" style="display:none;width:290px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Credits &amp; Usage</strong>
+            <span class="badge badge-success" style="font-size:9.5px">Hackathon Pro Tier</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">AI Build Challenge 2026 Allocation</div>
+        </div>
+        <div style="padding:14px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:22px;font-weight:900;color:#fff"><span id="credit-display">50</span> <span style="font-size:12px;font-weight:600;color:var(--text-muted)">/ 50 available</span></div>
+            <span style="font-size:11px;color:var(--success);font-weight:700">✓ Ready</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;margin-bottom:14px">
+            <div id="credit-bar" style="width:100%;height:100%;background:linear-gradient(90deg,var(--accent),#10b981);border-radius:3px"></div>
+          </div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">USAGE RATES</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--text-secondary);margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between"><span>⚡ Full Campaign Generation</span><strong style="color:#fff">5 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🎬 HyperFrames™ 60 FPS Video</span><strong style="color:#fff">3 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🛡️ Anti-Slop Critic Audit</span><strong style="color:var(--success)">Free (Included)</strong></div>
+          </div>
+          <button class="btn btn-secondary btn-sm" style="width:100%;padding:8px;font-size:11.5px;font-weight:700" onclick="addDemoCredits()">
+            💎 + Add 50 Free Demo Credits
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="btn btn-ghost btn-sm btn-icon notif-bell-btn" id="notif-btn" onclick="toggleNavDropdown('notifications-dropdown', event)" title="Notifications">
+        🔔
+        <span class="notif-unread-dot" id="notif-dot"></span>
+      </button>
+
+      <!-- Notifications Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="notifications-dropdown" style="display:none;width:320px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Notifications <span class="badge badge-accent" id="notif-count-badge" style="margin-left:4px;font-size:9.5px">1</span></strong>
+            <button onclick="markAllNotifsRead()" style="font-size:11px;color:var(--accent);font-weight:600;cursor:pointer;background:none;border:none">Mark read</button>
+          </div>
+        </div>
+        <div class="dropdown-list" id="notif-list" style="max-height:260px;overflow-y:auto">
+          <div class="notif-item unread">
+            <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
+            <div class="notif-content">
+              <div class="notif-title">Build Challenge 2026 Finals</div>
+              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-time">Workspace initialized</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon" style="background:rgba(99,102,241,0.15);color:#6366f1">💎</div>
+            <div class="notif-content">
+              <div class="notif-title">Credits Allocated</div>
+              <div class="notif-desc">50 AI generation credits credited to your account.</div>
+              <div class="notif-time">2 hours ago</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 12px;border-top:1px solid var(--border);text-align:center">
+          <button style="font-size:11px;color:var(--text-muted);cursor:pointer;background:none;border:none" onclick="clearAllNotifs()">Clear All Activity</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Avatar Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <div class="avatar" id="profile-avatar" onclick="toggleNavDropdown('profile-dropdown', event)" title="Team AgentX Profile (Yash Badgujar)">YB</div>
+
+      <!-- Profile Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="profile-dropdown" style="display:none;width:310px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;border:2px solid rgba(255,255,255,0.15);box-shadow:0 0 16px rgba(99,102,241,0.4)">YB</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px">
+                Yash Badgujar
+                <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
+              </div>
+              <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
+              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 16px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">TEAM AGENTX MEMBERS</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">👑</span><strong>Yash Badgujar</strong> <span style="font-size:10px;color:var(--text-muted)">(Lead &amp; Architecture)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🧠</span><strong>Anjali Sonar</strong> <span style="font-size:10px;color:var(--text-muted)">(Agent &amp; Prompting)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🎨</span><strong>Pranav Jogi</strong> <span style="font-size:10px;color:var(--text-muted)">(Multi-Modal Engine)</span>
+            </div>
+          </div>
+
+          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
+            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
+            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
+            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
+              ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
+              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
+              🔒 Session: Active
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+<div class="bk-layout">
+  <!-- LEFT: Config -->
+  <div class="bk-left">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+      <h1 style="font-size:20px;font-weight:700">Brand Kit</h1>
+      <button class="btn btn-primary btn-sm" onclick="saveBrandKit()">Save Kit</button>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3 class="section-card-title">Brand Identity</h3>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="form-label">Brand Name</label>
+          <input class="input" id="bk-name" value="DevChair Pro" oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tagline</label>
+          <input class="input" id="bk-tagline" value="Built for developers who build." oninput="updatePreview()">
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label class="form-label">Brand Description</label>
+        <textarea class="textarea" id="bk-desc" rows="3" oninput="updatePreview()">Premium ergonomic furniture engineered specifically for remote developers and engineers. Function-first design. No compromises.</textarea>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3 class="section-card-title">Colors</h3>
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label class="form-label">Primary</label>
+          <div class="color-input-wrap">
+            <input type="color" id="bk-color1" value="#6366f1" oninput="updatePreview()" class="color-picker">
+            <input class="input" id="bk-color1-hex" value="#6366f1" oninput="syncColor('bk-color1','bk-color1-hex')">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Secondary</label>
+          <div class="color-input-wrap">
+            <input type="color" id="bk-color2" value="#10b981" oninput="updatePreview()" class="color-picker">
+            <input class="input" id="bk-color2-hex" value="#10b981" oninput="syncColor('bk-color2','bk-color2-hex')">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Background</label>
+          <div class="color-input-wrap">
+            <input type="color" id="bk-color3" value="#0a0a1a" oninput="updatePreview()" class="color-picker">
+            <input class="input" id="bk-color3-hex" value="#0a0a1a" oninput="syncColor('bk-color3','bk-color3-hex')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3 class="section-card-title">Typography</h3>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="form-label">Heading Font</label>
+          <select class="select" id="bk-font-head" onchange="updatePreview()">
+            <option>Inter</option>
+            <option>Geist</option>
+            <option>SF Pro Display</option>
+            <option>DM Sans</option>
+            <option>Manrope</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Body Font</label>
+          <select class="select" id="bk-font-body" onchange="updatePreview()">
+            <option>Inter</option>
+            <option>Geist</option>
+            <option>DM Sans</option>
+            <option>Source Sans Pro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3 class="section-card-title">Voice & Audience</h3>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="form-label">Default Tone</label>
+          <select class="select" id="bk-tone">
+            <option>Founder</option>
+            <option>Professional</option>
+            <option>Bold</option>
+            <option>Educational</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Primary Audience</label>
+          <input class="input" id="bk-audience" value="Remote developers, 25–40">
+        </div>
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label class="form-label">Brand Voice Traits</label>
+        <div class="voice-traits" id="voice-traits">
+          <button class="pill active" onclick="this.classList.toggle('active')">Confident</button>
+          <button class="pill active" onclick="this.classList.toggle('active')">Human</button>
+          <button class="pill active" onclick="this.classList.toggle('active')">Technical</button>
+          <button class="pill active" onclick="this.classList.toggle('active')">Minimal</button>
+          <button class="pill"        onclick="this.classList.toggle('active')">Witty</button>
+          <button class="pill"        onclick="this.classList.toggle('active')">Authoritative</button>
+          <button class="pill"        onclick="this.classList.toggle('active')">Empathetic</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3 class="section-card-title">Word Lists</h3>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="form-label">✓ Words to Use</label>
+          <textarea class="textarea" id="bk-words-use" rows="3" placeholder="developer, engineer, build, deep work...">developer, engineer, build, deep work, focused, precision, craft</textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">✗ Words to Avoid</label>
+          <textarea class="textarea" id="bk-words-avoid" rows="3" placeholder="delve, elevate, unlock, journey...">delve, elevate, unlock, journey, game-changing, revolutionary, seamless, robust</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Live Preview -->
+  <div class="bk-right">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <h3 style="font-size:14px;font-weight:600">Live Brand Preview</h3>
+      <span class="badge badge-accent">Live</span>
+    </div>
+
+    <!-- Brand Card Preview -->
+    <div class="bk-preview-card" id="bk-preview-card">
+      <div class="bkp-header" id="bkp-header">
+        <div class="bkp-logo" id="bkp-logo">DC</div>
+        <div>
+          <div class="bkp-name" id="bkp-name">DevChair Pro</div>
+          <div class="bkp-tagline" id="bkp-tagline">Built for developers who build.</div>
+        </div>
+      </div>
+      <div class="bkp-body" id="bkp-body">
+        Premium ergonomic furniture engineered specifically for remote developers and engineers. Function-first design. No compromises.
+      </div>
+      <div class="bkp-colors" id="bkp-colors">
+        <div class="bkp-swatch" id="swatch1" style="background:#6366f1" title="Primary"></div>
+        <div class="bkp-swatch" id="swatch2" style="background:#10b981" title="Secondary"></div>
+        <div class="bkp-swatch" id="swatch3" style="background:#0a0a1a;border:1px solid #333" title="Background"></div>
+      </div>
+    </div>
+
+    <!-- Voice Preview -->
+    <div class="card" style="margin-top:16px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:12px">BRAND VOICE</div>
+      <div class="voice-display" id="voice-display">
+        <div class="voice-trait-tag">Confident</div>
+        <div class="voice-trait-tag">Human</div>
+        <div class="voice-trait-tag">Technical</div>
+        <div class="voice-trait-tag">Minimal</div>
+      </div>
+    </div>
+
+    <!-- Sample Post Preview -->
+    <div class="card" style="margin-top:16px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:12px">SAMPLE BRAND VOICE</div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;font-style:italic">
+        "I spent 6 years debugging my posture. Then I built the chair that fixes it for developers like me.
+        <br><br>
+        Most remote developers don't have a back problem. They have a chair problem."
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">← This is how <strong id="bkp-name-inline">DevChair Pro</strong> sounds.</div>
+    </div>
+
+    <!-- Anti-Slop Word Check -->
+    <div class="card" style="margin-top:16px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:12px">ANTI-SLOP WORD LIST</div>
+      <div id="avoid-word-tags" style="display:flex;flex-wrap:wrap;gap:6px">
+        <span class="slop-word-tag">delve</span>
+        <span class="slop-word-tag">elevate</span>
+        <span class="slop-word-tag">unlock</span>
+        <span class="slop-word-tag">journey</span>
+        <span class="slop-word-tag">game-changing</span>
+        <span class="slop-word-tag">seamless</span>
+        <span class="slop-word-tag">robust</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-top:20px">
+      <a href="studio.html" class="btn btn-primary" style="width:100%">
+        Use in Studio →
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script>
+function saveBrandKit() {
+  const name = document.getElementById('bk-name').value;
+  localStorage.setItem('tf_brandkit', JSON.stringify({ name }));
+  showToast('Brand kit saved! ✦', 'success');
+  updatePreview();
+}
+
+function updatePreview() {
+  const name    = document.getElementById('bk-name').value || 'Brand';
+  const tagline = document.getElementById('bk-tagline').value || '';
+  const desc    = document.getElementById('bk-desc').value || '';
+  const c1      = document.getElementById('bk-color1').value;
+  const c2      = document.getElementById('bk-color2').value;
+  const c3      = document.getElementById('bk-color3').value;
+
+  document.getElementById('bkp-name').textContent    = name;
+  document.getElementById('bkp-tagline').textContent = tagline;
+  document.getElementById('bkp-body').textContent    = desc;
+  document.getElementById('bkp-name-inline').textContent = name;
+  document.getElementById('bkp-logo').textContent    = name.slice(0,2).toUpperCase();
+  document.getElementById('bkp-logo').style.background = `linear-gradient(135deg, ${c1}, ${c2})`;
+  document.getElementById('swatch1').style.background = c1;
+  document.getElementById('swatch2').style.background = c2;
+  document.getElementById('swatch3').style.background = c3;
+  document.getElementById('bkp-header').style.borderColor = c1 + '40';
+
+  document.getElementById('bk-color1-hex').value = c1;
+  document.getElementById('bk-color2-hex').value = c2;
+  document.getElementById('bk-color3-hex').value = c3;
+
+  // Update avoid word tags
+  const avoidText = document.getElementById('bk-words-avoid').value;
+  const words = avoidText.split(',').map(w => w.trim()).filter(Boolean);
+  document.getElementById('avoid-word-tags').innerHTML = words.map(w =>
+    `<span class="slop-word-tag">${w}</span>`
+  ).join('');
+}
+
+function syncColor(pickerId, hexId) {
+  const hex = document.getElementById(hexId).value;
+  if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+    document.getElementById(pickerId).value = hex;
+    updatePreview();
+  }
+}
+
+function showToast(msg, type) {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span class="toast-icon">${type==='success'?'✓':'✦'}</span><span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation='slideOut 0.3s ease forwards'; setTimeout(()=>t.remove(),300); }, 3000);
+}
+</script>
+
+<!-- Global Navbar Dropdowns Controller (Shared across all pages) -->
+<script>
+// ---- Helpers ----
+function show(id) { var el = document.getElementById(id); if (el) el.style.display = 'block'; }
+function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+
+// ---- Toast helper ----
+function showToast(msg, type) {
+  type = type || 'default';
+  var container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    document.body.appendChild(container);
+  }
+  var t = document.createElement('div');
+  t.className = 'toast ' + type;
+  var icons = { success: '✓', error: '✕', default: '✦' };
+  t.innerHTML = '<span class="toast-icon">' + (icons[type] || '✦') + '</span><span>' + msg + '</span>';
+  container.appendChild(t);
+  setTimeout(function() {
+    t.style.animation = 'slideOut 0.3s ease forwards';
+    setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
+  }, 3000);
+}
+
+// ---- Navbar Dropdown Handlers ----
+function toggleNavDropdown(id, e) {
+  if (e) e.stopPropagation();
+  var menu = document.getElementById(id);
+  if (!menu) return;
+  var isCurrentlyOpen = menu.style.display === 'block';
+  closeAllNavDropdowns();
+  if (!isCurrentlyOpen) {
+    menu.style.display = 'block';
+  }
+}
+
+function closeAllNavDropdowns() {
+  document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
+    m.style.display = 'none';
+  });
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown-wrap')) {
+    closeAllNavDropdowns();
+  }
+});
+
+// Shared credits with localStorage persistence!
+var currentCredits = (function() {
+  try {
+    var saved = localStorage.getItem('tf_credits');
+    return saved !== null ? parseInt(saved, 10) : 50;
+  } catch(e) { return 50; }
+})();
+
+function saveCredits() {
+  try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {}
+}
+
+function updateCreditUI() {
+  var countEl = document.getElementById('credit-count');
+  var dispEl = document.getElementById('credit-display');
+  var barEl = document.getElementById('credit-bar');
+  if (countEl) countEl.textContent = currentCredits;
+  if (dispEl) dispEl.textContent = currentCredits;
+  if (barEl) barEl.style.width = Math.min(100, (currentCredits / 50) * 100) + '%';
+}
+
+function addDemoCredits() {
+  currentCredits += 50;
+  saveCredits();
+  updateCreditUI();
+  showToast('Added +50 Free Demo Credits! Current balance: ' + currentCredits + ' 💎', 'success');
+  addDynamicNotification(
+    '+50 Credits Added',
+    'Demo credits recharged successfully. New balance: ' + currentCredits + ' 💎.',
+    '💎',
+    'rgba(99,102,241,0.15)',
+    '#6366f1'
+  );
+}
+
+function deductCredits(amount) {
+  if (currentCredits >= amount) {
+    currentCredits -= amount;
+  } else {
+    currentCredits = 0;
+  }
+  saveCredits();
+  updateCreditUI();
+}
+
+function markAllNotifsRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(function(el) {
+    el.classList.remove('unread');
+  });
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('Notifications marked as read ✓', 'default');
+}
+
+function clearAllNotifs() {
+  var list = document.getElementById('notif-list');
+  if (list) {
+    list.innerHTML = '<div style="padding:24px 16px;text-align:center;color:var(--text-muted);font-size:12px">No notifications</div>';
+  }
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('All notifications cleared', 'default');
+}
+
+function addDynamicNotification(title, desc, icon, iconBg, iconColor) {
+  var list = document.getElementById('notif-list');
+  if (!list) return;
+  if (list.innerHTML.includes('No notifications')) {
+    list.innerHTML = '';
+  }
+  var item = document.createElement('div');
+  item.className = 'notif-item unread';
+  item.innerHTML = 
+    '<div class="notif-icon" style="background:' + iconBg + ';color:' + iconColor + '">' + icon + '</div>' +
+    '<div class="notif-content">' +
+      '<div class="notif-title">' + title + '</div>' +
+      '<div class="notif-desc">' + desc + '</div>' +
+      '<div class="notif-time">Just now</div>' +
+    '</div>';
+  list.insertBefore(item, list.firstChild);
+
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'block';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) {
+    var cur = parseInt(badge.textContent || '0') + 1;
+    badge.textContent = cur;
+  }
+}
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateCreditUI);
+} else {
+  updateCreditUI();
+}
+</script>
+</body>
+</html>

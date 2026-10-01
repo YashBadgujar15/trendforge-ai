@@ -1,0 +1,30 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0 -- D:\Heritage_Intelligence_Platform\trendforge-ai\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\Heritage_Intelligence_Platform\trendforge-ai\backend
+plugins: anyio-4.15.1
+collecting ... collected 21 items
+
+tests/test_backend.py::TestHealth::test_health_returns_200 PASSED        [  4%]
+tests/test_backend.py::TestHealth::test_health_json_structure PASSED     [  9%]
+tests/test_backend.py::TestHealth::test_health_has_mode PASSED           [ 14%]
+tests/test_backend.py::TestGenerateValidation::test_missing_brief_returns_error PASSED [ 19%]
+tests/test_backend.py::TestGenerateValidation::test_empty_brief_returns_error PASSED [ 23%]
+tests/test_backend.py::TestGenerateValidation::test_missing_body_returns_error PASSED [ 28%]
+tests/test_backend.py::TestGenerateValidation::test_non_json_returns_error PASSED [ 33%]
+tests/test_backend.py::TestGenerateValidation::test_error_response_has_error_key PASSED [ 38%]
+tests/test_backend.py::TestGenerateResponseStructure::test_returns_200 PASSED [ 42%]
+tests/test_backend.py::TestGenerateResponseStructure::test_top_level_keys_present PASSED [ 47%]
+tests/test_backend.py::TestGenerateResponseStructure::test_meta_fields PASSED [ 52%]
+tests/test_backend.py::TestGenerateResponseStructure::test_quality_score_is_numeric PASSED [ 57%]
+tests/test_backend.py::TestGenerateResponseStructure::test_linkedin_structure PASSED [ 61%]
+tests/test_backend.py::TestGenerateResponseStructure::test_twitter_is_list_of_5 PASSED [ 66%]
+tests/test_backend.py::TestGenerateResponseStructure::test_carousel_is_list_of_5 PASSED [ 71%]
+tests/test_backend.py::TestGenerateResponseStructure::test_reel_structure PASSED [ 76%]
+tests/test_backend.py::TestGenerateResponseStructure::test_critic_scores_structure PASSED [ 80%]
+tests/test_backend.py::TestGenerateResponseStructure::test_trace_is_list PASSED [ 85%]
+tests/test_backend.py::TestMockRouting::test_mock_mode_flag PASSED       [ 90%]
+tests/test_backend.py::TestMockRouting::test_mock_mode_health PASSED     [ 95%]
+tests/test_backend.py::TestCORS::test_options_preflight PASSED           [100%]
+
+============================= 21 passed in 4.08s ==============================

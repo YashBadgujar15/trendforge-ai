@@ -1,0 +1,66 @@
+/* ============================================================
+   TRENDFORGE AI — Brand Kit Styles
+   ============================================================ */
+
+.bk-layout {
+  display: grid; grid-template-columns: 1fr 340px; gap: 24px;
+  max-width: 1100px; margin: 0 auto; padding: 32px 24px;
+  position: relative; z-index: 1; min-height: calc(100vh - 92px);
+  align-items: start;
+}
+.section-card-title { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--text-primary); }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+.color-input-wrap { display: flex; gap: 6px; align-items: center; }
+.color-picker {
+  width: 36px; height: 36px; border: none; border-radius: var(--radius-sm);
+  cursor: pointer; padding: 2px; background: none; flex-shrink: 0;
+}
+
+.voice-traits { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- Brand Preview Card ---- */
+.bk-preview-card {
+  background: #0d0d1e; border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 24px; overflow: hidden;
+}
+.bkp-header {
+  display: flex; align-items: center; gap: 12px;
+  padding-bottom: 16px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.bkp-logo {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #10b981);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.bkp-name    { font-size: 16px; font-weight: 700; }
+.bkp-tagline { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.bkp-body    { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+.bkp-colors  { display: flex; gap: 8px; }
+.bkp-swatch  { width: 28px; height: 28px; border-radius: 6px; cursor: pointer; }
+
+/* ---- Voice ---- */
+.voice-display { display: flex; flex-wrap: wrap; gap: 6px; }
+.voice-trait-tag {
+  padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  background: var(--accent-glow); border: 1px solid var(--border-accent); color: var(--accent);
+}
+
+/* ---- Slop Word Tags ---- */
+.slop-word-tag {
+  padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 500;
+  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2);
+  color: var(--danger);
+}
+
+@media (max-width: 900px) {
+  .bk-layout { grid-template-columns: 1fr; }
+  .bk-right { position: static; }
+  .form-grid-3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+}

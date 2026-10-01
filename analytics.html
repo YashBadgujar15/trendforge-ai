@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics — TrendForge AI</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+<div class="bg-canvas"><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div></div>
+
+<div class="demo-banner">
+  <span>⚡</span>
+  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Multi-Modal Autonomous Content Studio (PS-02)
+</div>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"><div class="logo-mark">TF</div><span>TrendForge AI</span></a>
+  <div class="navbar-nav">
+    <a href="studio.html"    class="nav-link">Studio</a>
+    <a href="campaigns.html" class="nav-link">Campaigns</a>
+    <a href="brand-kit.html" class="nav-link">Brand Kit</a>
+    <a href="analytics.html" class="nav-link active">Analytics</a>
+  </div>
+  <div class="navbar-right">
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    
+    <!-- Credits Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits & Usage">
+        💎 <span id="credit-count">50</span> credits
+      </button>
+      
+      <!-- Credits Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="credits-dropdown" style="display:none;width:290px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Credits &amp; Usage</strong>
+            <span class="badge badge-success" style="font-size:9.5px">Hackathon Pro Tier</span>
+          </div>
+          <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px">AI Build Challenge 2026 Allocation</div>
+        </div>
+        <div style="padding:14px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:22px;font-weight:900;color:#fff"><span id="credit-display">50</span> <span style="font-size:12px;font-weight:600;color:var(--text-muted)">/ 50 available</span></div>
+            <span style="font-size:11px;color:var(--success);font-weight:700">✓ Ready</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;margin-bottom:14px">
+            <div id="credit-bar" style="width:100%;height:100%;background:linear-gradient(90deg,var(--accent),#10b981);border-radius:3px"></div>
+          </div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">USAGE RATES</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--text-secondary);margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between"><span>⚡ Full Campaign Generation</span><strong style="color:#fff">5 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🎬 HyperFrames™ 60 FPS Video</span><strong style="color:#fff">3 credits</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>🛡️ Anti-Slop Critic Audit</span><strong style="color:var(--success)">Free (Included)</strong></div>
+          </div>
+          <button class="btn btn-secondary btn-sm" style="width:100%;padding:8px;font-size:11.5px;font-weight:700" onclick="addDemoCredits()">
+            💎 + Add 50 Free Demo Credits
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <button class="btn btn-ghost btn-sm btn-icon notif-bell-btn" id="notif-btn" onclick="toggleNavDropdown('notifications-dropdown', event)" title="Notifications">
+        🔔
+        <span class="notif-unread-dot" id="notif-dot"></span>
+      </button>
+
+      <!-- Notifications Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="notifications-dropdown" style="display:none;width:320px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <strong style="font-size:13px;color:#fff">Notifications <span class="badge badge-accent" id="notif-count-badge" style="margin-left:4px;font-size:9.5px">1</span></strong>
+            <button onclick="markAllNotifsRead()" style="font-size:11px;color:var(--accent);font-weight:600;cursor:pointer;background:none;border:none">Mark read</button>
+          </div>
+        </div>
+        <div class="dropdown-list" id="notif-list" style="max-height:260px;overflow-y:auto">
+          <div class="notif-item unread">
+            <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
+            <div class="notif-content">
+              <div class="notif-title">Build Challenge 2026 Finals</div>
+              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-time">Workspace initialized</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon" style="background:rgba(99,102,241,0.15);color:#6366f1">💎</div>
+            <div class="notif-content">
+              <div class="notif-title">Credits Allocated</div>
+              <div class="notif-desc">50 AI generation credits credited to your account.</div>
+              <div class="notif-time">2 hours ago</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 12px;border-top:1px solid var(--border);text-align:center">
+          <button style="font-size:11px;color:var(--text-muted);cursor:pointer;background:none;border:none" onclick="clearAllNotifs()">Clear All Activity</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Avatar Dropdown Trigger -->
+    <div class="nav-dropdown-wrap">
+      <div class="avatar" id="profile-avatar" onclick="toggleNavDropdown('profile-dropdown', event)" title="Team AgentX Profile (Yash Badgujar)">YB</div>
+
+      <!-- Profile Dropdown Menu -->
+      <div class="nav-dropdown-menu" id="profile-dropdown" style="display:none;width:310px">
+        <div class="dropdown-header">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;border:2px solid rgba(255,255,255,0.15);box-shadow:0 0 16px rgba(99,102,241,0.4)">YB</div>
+            <div>
+              <div style="font-size:13.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px">
+                Yash Badgujar
+                <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
+              </div>
+              <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
+              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 16px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px">TEAM AGENTX MEMBERS</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">👑</span><strong>Yash Badgujar</strong> <span style="font-size:10px;color:var(--text-muted)">(Lead &amp; Architecture)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🧠</span><strong>Anjali Sonar</strong> <span style="font-size:10px;color:var(--text-muted)">(Agent &amp; Prompting)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-secondary)">
+              <span style="font-size:12px">🎨</span><strong>Pranav Jogi</strong> <span style="font-size:10px;color:var(--text-muted)">(Multi-Modal Engine)</span>
+            </div>
+          </div>
+
+          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
+            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
+            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
+            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
+              ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
+              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
+            </button>
+            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
+              🔒 Session: Active
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+<div class="an-page">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+    <div>
+      <h1 style="font-size:22px;font-weight:700">Analytics</h1>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:4px">Campaign performance & evaluation lab</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <select class="select" style="width:auto;font-size:12px">
+        <option>Last 7 days</option>
+        <option>Last 30 days</option>
+        <option>All time</option>
+      </select>
+      <button class="btn btn-ghost btn-sm" onclick="refreshData()">⟳ Refresh</button>
+    </div>
+  </div>
+
+  <!-- KPI Grid -->
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi-card card">
+      <div class="kpi-icon">🎯</div>
+      <div class="kpi-val" id="kpi-campaigns">0</div>
+      <div class="kpi-label">Campaigns Generated</div>
+      <div class="kpi-trend up">+12 this week</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">⚡</div>
+      <div class="kpi-val" id="kpi-time">0s</div>
+      <div class="kpi-label">Avg Generation Time</div>
+      <div class="kpi-trend up">↓ 8s faster than last week</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">✓</div>
+      <div class="kpi-val" id="kpi-compliance">0%</div>
+      <div class="kpi-label">Platform Compliance</div>
+      <div class="kpi-trend up">↑ 2% vs last month</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">🛡️</div>
+      <div class="kpi-val" id="kpi-critic">0</div>
+      <div class="kpi-label">Avg Critic Score</div>
+      <div class="kpi-trend neutral">⚠ Demo/Simulated</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">👤</div>
+      <div class="kpi-val" id="kpi-approval">0%</div>
+      <div class="kpi-label">Human Approval Rate</div>
+      <div class="kpi-trend neutral">First-pass approvals</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">✏️</div>
+      <div class="kpi-val" id="kpi-edits">0</div>
+      <div class="kpi-label">Avg Edits Required</div>
+      <div class="kpi-trend up">↓ vs 3.2 traditional</div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <!-- Weekly Activity Bar Chart -->
+    <div class="card chart-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <h3 style="font-size:13px;font-weight:600">Weekly Campaign Activity</h3>
+        <span class="badge badge-muted" style="font-size:10px">⚠ Simulated</span>
+      </div>
+      <div class="bar-chart" id="bar-chart">
+        <!-- JS rendered -->
+      </div>
+      <div class="bar-chart-labels" id="bar-chart-labels"></div>
+    </div>
+
+    <!-- Platform Breakdown -->
+    <div class="card chart-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <h3 style="font-size:13px;font-weight:600">Platform Breakdown</h3>
+        <span class="badge badge-muted" style="font-size:10px">⚠ Simulated</span>
+      </div>
+      <div id="platform-chart">
+        <!-- JS rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Evaluation Lab -->
+  <div class="card" style="margin-top:24px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+      <h3 style="font-size:15px;font-weight:600">Evaluation Lab</h3>
+      <span class="badge badge-warning">⚠ Simulated Data</span>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px">25-Brief Benchmark Suite · Real benchmark results pending live deployment.</p>
+
+    <!-- Benchmark Table -->
+    <div class="bench-tabs tabs" style="margin-bottom:16px">
+      <button class="tab-btn active" onclick="switchBench('all',this)">All Categories</button>
+      <button class="tab-btn" onclick="switchBench('saas',this)">SaaS</button>
+      <button class="tab-btn" onclick="switchBench('d2c',this)">D2C</button>
+      <button class="tab-btn" onclick="switchBench('creator',this)">Creator</button>
+    </div>
+
+    <div class="bench-grid" id="bench-grid">
+      <!-- JS rendered -->
+    </div>
+
+    <!-- Workflow Comparison -->
+    <div style="margin-top:24px">
+      <h4 style="font-size:13px;font-weight:600;margin-bottom:14px">TrendForge vs Traditional Workflow</h4>
+      <div class="comparison-grid" id="comparison-grid">
+        <!-- JS rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Compliance Details -->
+  <div class="card" style="margin-top:24px">
+    <h3 style="font-size:13px;font-weight:600;margin-bottom:16px">Platform Compliance Details</h3>
+    <span class="badge badge-muted" style="font-size:10px;margin-bottom:14px;display:inline-block">⚠ Simulated</span>
+    <div class="compliance-list" id="compliance-list">
+      <!-- JS rendered -->
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script>
+const DATA = {
+  campaigns: 47,
+  avgTime: '52',
+  compliance: 96,
+  criticScore: 89,
+  approvalRate: 78,
+  avgEdits: 1.4,
+  weeklyActivity: [12, 8, 15, 11, 19, 14, 9],
+  weekDays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+  benchmarks: [
+    { category: 'SaaS Products', tf: 91, trad: 38, briefs: 10, type: 'saas' },
+    { category: 'D2C Brands',    tf: 88, trad: 35, briefs: 8,  type: 'd2c'  },
+    { category: 'Creator Content',tf:94, trad: 42, briefs: 7,  type: 'creator' },
+  ],
+  platforms: [
+    { name: 'LinkedIn',  icon: '💼', count: 47, compliance: 97, color: '#6366f1' },
+    { name: 'X/Twitter', icon: '𝕏',  count: 45, compliance: 95, color: '#3b82f6' },
+    { name: 'Instagram', icon: '📸', count: 43, compliance: 96, color: '#e1306c' },
+    { name: 'Reel',      icon: '🎬', count: 38, compliance: 91, color: '#ff0050' },
+  ],
+  comparisons: [
+    { metric: 'Time to campaign',    trendforge: '< 1 min',   traditional: '3.5–5 hours' },
+    { metric: 'Tools required',      trendforge: '1',          traditional: '4+' },
+    { metric: 'Platform compliance', trendforge: '96%',        traditional: 'Manual' },
+    { metric: 'AI slop risk',        trendforge: 'LOW (auto)', traditional: 'Not checked' },
+    { metric: 'Audit trail',         trendforge: 'Full trace', traditional: 'None' },
+    { metric: 'Human approval',      trendforge: 'Required',   traditional: 'Optional' },
+  ],
+};
+
+function animateCounter(id, to, suffix = '', duration = 1200) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const start = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = (typeof to === 'number' ? (Number.isInteger(to) ? Math.round(to * ease) : (to * ease).toFixed(1)) : to) + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function renderBarChart() {
+  const max = Math.max(...DATA.weeklyActivity);
+  const chart = document.getElementById('bar-chart');
+  const labels = document.getElementById('bar-chart-labels');
+  chart.innerHTML = DATA.weeklyActivity.map((v, i) => {
+    const height = (v / max) * 120;
+    return `<div class="bar-col">
+      <div class="bar-val">${v}</div>
+      <div class="bar-fill" style="height:0px;background:${i===4?'var(--accent)':'rgba(99,102,241,0.4)'}" data-h="${height}"></div>
+    </div>`;
+  }).join('');
+  labels.innerHTML = DATA.weekDays.map(d => `<span>${d}</span>`).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill').forEach(b => {
+      b.style.transition = 'height 0.8s cubic-bezier(0.4,0,0.2,1)';
+      b.style.height = b.dataset.h + 'px';
+    });
+  }, 100);
+}
+
+function renderPlatformChart() {
+  const el = document.getElementById('platform-chart');
+  el.innerHTML = DATA.platforms.map(p => `
+    <div class="plt-row">
+      <span style="font-size:16px">${p.icon}</span>
+      <span style="min-width:80px;font-size:12px;font-weight:500">${p.name}</span>
+      <div class="plt-bar-wrap">
+        <div class="plt-bar" style="background:${p.color}22;border:1px solid ${p.color}33;border-radius:4px;height:8px;flex:1">
+          <div class="plt-bar-fill" style="height:100%;width:0%;background:${p.color};border-radius:4px;transition:width 0.8s ease" data-w="${p.count/47*100}"></div>
+        </div>
+      </div>
+      <span style="font-size:12px;font-weight:600;color:${p.color};min-width:28px">${p.count}</span>
+      <span class="badge badge-success" style="font-size:10px">${p.compliance}%</span>
+    </div>
+  `).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.plt-bar-fill').forEach(b => { b.style.width = b.dataset.w + '%'; });
+  }, 100);
+}
+
+function renderBenchmarks(filter = 'all') {
+  const grid = document.getElementById('bench-grid');
+  const items = filter === 'all' ? DATA.benchmarks : DATA.benchmarks.filter(b => b.type === filter);
+  grid.innerHTML = items.map(b => `
+    <div class="bench-card card-sm card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div style="font-size:13px;font-weight:600">${b.category}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">${b.briefs} briefs tested</div>
+        </div>
+        <span class="badge badge-muted">⚠ Simulated</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="bench-val" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--accent)">${b.tf}</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:2px">TrendForge</div>
+        </div>
+        <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--text-secondary)">${b.trad}</div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:2px">Traditional</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--success);font-weight:500">↑ ${b.tf - b.trad} pts improvement</div>
+    </div>
+  `).join('');
+}
+
+function renderComparison() {
+  const header = `<div class="comp-row" style="background:var(--bg-card)">
+    <span class="comp-metric" style="font-weight:700;color:var(--text-secondary)">Metric</span>
+    <span class="comp-tf" style="font-weight:700;color:var(--accent)">TrendForge AI</span>
+    <span class="comp-trad" style="font-weight:700;color:var(--text-muted)">Traditional</span>
+  </div>`;
+  const rows = DATA.comparisons.map(c => `
+    <div class="comp-row">
+      <span class="comp-metric">${c.metric}</span>
+      <span class="comp-tf">${c.trendforge}</span>
+      <span class="comp-trad">${c.traditional}</span>
+    </div>
+  `).join('');
+  document.getElementById('comparison-grid').innerHTML = header + rows;
+}
+
+function renderCompliance() {
+  document.getElementById('compliance-list').innerHTML = DATA.platforms.map(p => `
+    <div class="comp-item">
+      <span style="font-size:16px">${p.icon}</span>
+      <span style="flex:1;font-size:13px;font-weight:500">${p.name}</span>
+      <div style="width:200px">
+        <div class="score-bar"><div class="score-fill score-fill-accent" style="width:${p.compliance}%"></div></div>
+      </div>
+      <span style="font-size:13px;font-weight:700;color:var(--success);min-width:40px;text-align:right">${p.compliance}%</span>
+    </div>
+  `).join('');
+}
+
+window.switchBench = function(filter, btn) {
+  document.querySelectorAll('.bench-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBenchmarks(filter);
+};
+
+window.refreshData = function() {
+  showToast('Data refreshed (demo mode)', 'default');
+};
+
+function showToast(msg, type) {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span class="toast-icon">${type==='success'?'✓':'✦'}</span><span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation='slideOut 0.3s ease forwards'; setTimeout(()=>t.remove(),300); }, 3000);
+}
+
+// Init
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    animateCounter('kpi-campaigns', DATA.campaigns, '');
+    animateCounter('kpi-time', DATA.avgTime, 's');
+    animateCounter('kpi-compliance', DATA.compliance, '%');
+    animateCounter('kpi-critic', DATA.criticScore, '');
+    animateCounter('kpi-approval', DATA.approvalRate, '%');
+    animateCounter('kpi-edits', DATA.avgEdits, '');
+  }, 200);
+  renderBarChart();
+  renderPlatformChart();
+  renderBenchmarks();
+  renderComparison();
+  renderCompliance();
+});
+</script>
+
+<!-- Global Navbar Dropdowns Controller (Shared across all pages) -->
+<script>
+// ---- Helpers ----
+function show(id) { var el = document.getElementById(id); if (el) el.style.display = 'block'; }
+function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+
+// ---- Toast helper ----
+function showToast(msg, type) {
+  type = type || 'default';
+  var container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    document.body.appendChild(container);
+  }
+  var t = document.createElement('div');
+  t.className = 'toast ' + type;
+  var icons = { success: '✓', error: '✕', default: '✦' };
+  t.innerHTML = '<span class="toast-icon">' + (icons[type] || '✦') + '</span><span>' + msg + '</span>';
+  container.appendChild(t);
+  setTimeout(function() {
+    t.style.animation = 'slideOut 0.3s ease forwards';
+    setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
+  }, 3000);
+}
+
+// ---- Navbar Dropdown Handlers ----
+function toggleNavDropdown(id, e) {
+  if (e) e.stopPropagation();
+  var menu = document.getElementById(id);
+  if (!menu) return;
+  var isCurrentlyOpen = menu.style.display === 'block';
+  closeAllNavDropdowns();
+  if (!isCurrentlyOpen) {
+    menu.style.display = 'block';
+  }
+}
+
+function closeAllNavDropdowns() {
+  document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
+    m.style.display = 'none';
+  });
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown-wrap')) {
+    closeAllNavDropdowns();
+  }
+});
+
+// Shared credits with localStorage persistence!
+var currentCredits = (function() {
+  try {
+    var saved = localStorage.getItem('tf_credits');
+    return saved !== null ? parseInt(saved, 10) : 50;
+  } catch(e) { return 50; }
+})();
+
+function saveCredits() {
+  try { localStorage.setItem('tf_credits', currentCredits); } catch(e) {}
+}
+
+function updateCreditUI() {
+  var countEl = document.getElementById('credit-count');
+  var dispEl = document.getElementById('credit-display');
+  var barEl = document.getElementById('credit-bar');
+  if (countEl) countEl.textContent = currentCredits;
+  if (dispEl) dispEl.textContent = currentCredits;
+  if (barEl) barEl.style.width = Math.min(100, (currentCredits / 50) * 100) + '%';
+}
+
+function addDemoCredits() {
+  currentCredits += 50;
+  saveCredits();
+  updateCreditUI();
+  showToast('Added +50 Free Demo Credits! Current balance: ' + currentCredits + ' 💎', 'success');
+  addDynamicNotification(
+    '+50 Credits Added',
+    'Demo credits recharged successfully. New balance: ' + currentCredits + ' 💎.',
+    '💎',
+    'rgba(99,102,241,0.15)',
+    '#6366f1'
+  );
+}
+
+function deductCredits(amount) {
+  if (currentCredits >= amount) {
+    currentCredits -= amount;
+  } else {
+    currentCredits = 0;
+  }
+  saveCredits();
+  updateCreditUI();
+}
+
+function markAllNotifsRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(function(el) {
+    el.classList.remove('unread');
+  });
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('Notifications marked as read ✓', 'default');
+}
+
+function clearAllNotifs() {
+  var list = document.getElementById('notif-list');
+  if (list) {
+    list.innerHTML = '<div style="padding:24px 16px;text-align:center;color:var(--text-muted);font-size:12px">No notifications</div>';
+  }
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'none';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) badge.textContent = '0';
+  showToast('All notifications cleared', 'default');
+}
+
+function addDynamicNotification(title, desc, icon, iconBg, iconColor) {
+  var list = document.getElementById('notif-list');
+  if (!list) return;
+  if (list.innerHTML.includes('No notifications')) {
+    list.innerHTML = '';
+  }
+  var item = document.createElement('div');
+  item.className = 'notif-item unread';
+  item.innerHTML = 
+    '<div class="notif-icon" style="background:' + iconBg + ';color:' + iconColor + '">' + icon + '</div>' +
+    '<div class="notif-content">' +
+      '<div class="notif-title">' + title + '</div>' +
+      '<div class="notif-desc">' + desc + '</div>' +
+      '<div class="notif-time">Just now</div>' +
+    '</div>';
+  list.insertBefore(item, list.firstChild);
+
+  var dot = document.getElementById('notif-dot');
+  if (dot) dot.style.display = 'block';
+  var badge = document.getElementById('notif-count-badge');
+  if (badge) {
+    var cur = parseInt(badge.textContent || '0') + 1;
+    badge.textContent = cur;
+  }
+}
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', updateCreditUI);
+} else {
+  updateCreditUI();
+}
+</script>
+</body>
+</html>
