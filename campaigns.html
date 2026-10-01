@@ -110,6 +110,58 @@
   white-space: pre-wrap;
   color: var(--text-secondary);
 }
+.badge-status {
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.badge-status:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.2);
+}
+.status-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  min-width: 175px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.status-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition);
+}
+.status-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+.status-menu-btn.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: #fff;
+}
 </style>
 </head>
 <body>
@@ -332,9 +384,10 @@
     <!-- Modal Footer Actions -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:10px">
       <button class="btn btn-ghost btn-sm" onclick="copyModalContent()">📋 Copy Current Asset</button>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-ghost btn-sm" onclick="closePreviewModal()">Close</button>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn btn-sm" id="modal-approve-action-btn" onclick="toggleModalApprove()"></button>
         <button class="btn btn-primary btn-sm" id="modal-open-studio-btn" onclick="openActiveInStudio()">⚡ Open Full Studio</button>
+        <button class="btn btn-ghost btn-sm" onclick="closePreviewModal()">Close</button>
       </div>
     </div>
   </div>
@@ -728,6 +781,18 @@ function renderCampaigns() {
 
     var scoreColor = (item.qualityScore >= 90) ? 'var(--success)' : (item.qualityScore >= 80 ? 'var(--accent)' : '#f59e0b');
 
+    var isApproved = (item.status || '').toLowerCase() === 'approved';
+    var isPending  = (item.status || '').toLowerCase() === 'pending';
+    var isDraft    = (item.status || '').toLowerCase() === 'draft';
+
+    var statusClass = isApproved ? 'badge-success' : (isPending ? 'badge-warning' : 'badge-muted');
+    var statusLabel = isApproved ? '✓ Approved' : (isPending ? '⏳ Pending Review' : '📝 Draft');
+
+    // Dedicated green Approve button on card if pending!
+    var approveBtnHtml = isPending
+      ? '<button class="btn btn-sm" style="flex:1;background:rgba(16,185,129,0.18);color:#10b981;border:1px solid rgba(16,185,129,0.4);font-weight:700" onclick="setCampaignStatusDirect(\'' + item.id + '\', \'Approved\')">✓ Approve</button>'
+      : '';
+
     html += 
       '<div class="campaign-card" id="card-' + item.id + '">' +
         '<div>' +
@@ -736,9 +801,16 @@ function renderCampaigns() {
               '<h3 style="font-size:15px;font-weight:700;margin-bottom:3px;color:#fff">' + escapeHtml(item.title) + '</h3>' +
               '<div style="font-size:11.5px;color:var(--text-muted)">' + escapeHtml(item.date || 'Recent') + ' · <span style="color:var(--accent)">' + escapeHtml(item.brand || 'Team AgentX') + '</span></div>' +
             '</div>' +
-            '<span class="badge ' + statusClass + ' badge-status" onclick="toggleCampaignStatus(\'' + item.id + '\')" title="Click to toggle status">' + 
-              escapeHtml(item.status || 'Approved') + 
-            '</span>' +
+            '<div style="position:relative">' +
+              '<button class="badge ' + statusClass + ' badge-status" onclick="openStatusMenu(\'' + item.id + '\', event)" title="Status: ' + statusLabel + ' (Click to change)">' + 
+                statusLabel + ' ▾' + 
+              '</button>' +
+              '<div class="status-menu" id="smenu-' + item.id + '" style="display:none">' +
+                '<button class="status-menu-btn' + (isApproved ? ' active' : '') + '" onclick="setCampaignStatusDirect(\'' + item.id + '\', \'Approved\')"><span>🟢</span> ✓ Approved</button>' +
+                '<button class="status-menu-btn' + (isPending ? ' active' : '') + '" onclick="setCampaignStatusDirect(\'' + item.id + '\', \'Pending\')"><span>🟡</span> ⏳ Pending Review</button>' +
+                '<button class="status-menu-btn' + (isDraft ? ' active' : '') + '" onclick="setCampaignStatusDirect(\'' + item.id + '\', \'Draft\')"><span>⚪</span> 📝 Draft</button>' +
+              '</div>' +
+            '</div>' +
           '</div>' +
 
           '<p style="font-size:12.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:14px;background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;border-left:2px solid var(--accent)">' + 
@@ -757,8 +829,9 @@ function renderCampaigns() {
           '</div>' +
 
           '<div class="card-actions">' +
+            approveBtnHtml +
             '<button class="btn btn-secondary btn-sm" style="flex:1" onclick="previewCampaignById(\'' + item.id + '\')">👁️ Preview</button>' +
-            '<button class="btn btn-ghost btn-sm" style="flex:1.2" onclick="openCampaignInStudio(\'' + item.id + '\')">⚡ Studio →</button>' +
+            '<button class="btn btn-ghost btn-sm" style="flex:1.1" onclick="openCampaignInStudio(\'' + item.id + '\')">⚡ Studio →</button>' +
             '<button class="btn btn-ghost btn-sm btn-icon" style="color:var(--text-muted);padding:6px 8px" onclick="deleteCampaignById(\'' + item.id + '\')" title="Delete campaign">🗑️</button>' +
           '</div>' +
         '</div>' +
@@ -819,21 +892,62 @@ function clearSearchAndFilter() {
   renderCampaigns();
 }
 
-function toggleCampaignStatus(id) {
+function openStatusMenu(id, e) {
+  if (e) e.stopPropagation();
+  var menu = document.getElementById('smenu-' + id);
+  if (!menu) return;
+  var isOpen = menu.style.display === 'flex';
+  closeAllStatusMenus();
+  if (!isOpen) {
+    menu.style.display = 'flex';
+  }
+}
+
+function closeAllStatusMenus() {
+  document.querySelectorAll('.status-menu').forEach(function(m) { m.style.display = 'none'; });
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.status-menu') && !e.target.closest('.badge-status')) {
+    closeAllStatusMenus();
+  }
+});
+
+function setCampaignStatusDirect(id, status) {
+  closeAllStatusMenus();
   var list = getStoredCampaigns();
   var item = list.find(function(x) { return x.id === id; });
   if (!item) return;
 
-  if (item.status === 'Approved') {
-    item.status = 'Pending';
-  } else if (item.status === 'Pending') {
-    item.status = 'Approved';
-  } else {
-    item.status = 'Approved';
-  }
+  item.status = status;
   saveCampaignsList(list);
   renderCampaigns();
-  showToast('Updated "' + item.title + '" status to ' + item.status + ' ✦', 'success');
+
+  if (activePreviewCampaign && activePreviewCampaign.id === id) {
+    activePreviewCampaign.status = status;
+    var badge = document.getElementById('modal-status-badge');
+    if (badge) {
+      badge.textContent = status;
+      badge.className = 'badge ' + (status === 'Approved' ? 'badge-success' : (status === 'Pending' ? 'badge-warning' : 'badge-muted'));
+    }
+    updateModalApproveButton();
+  }
+
+  if (status === 'Approved') {
+    showToast('🎉 Approved "' + item.title + '"! Ready for export & publishing ✓', 'success');
+  } else if (status === 'Pending') {
+    showToast('Moved "' + item.title + '" to Pending Review ⏳', 'default');
+  } else {
+    showToast('Updated "' + item.title + '" status to Draft 📝', 'default');
+  }
+}
+
+function toggleCampaignStatus(id) {
+  var list = getStoredCampaigns();
+  var item = list.find(function(x) { return x.id === id; });
+  if (!item) return;
+  var next = (item.status === 'Approved') ? 'Pending' : 'Approved';
+  setCampaignStatusDirect(id, next);
 }
 
 function deleteCampaignById(id) {
@@ -879,8 +993,36 @@ function previewCampaignById(id) {
   document.getElementById('mtab-btn-carousel').style.display = platforms.includes('instagram') ? 'inline-block' : 'none';
   document.getElementById('mtab-btn-reel').style.display = platforms.includes('reel') ? 'inline-block' : 'none';
 
+  updateModalApproveButton();
   switchModalTab('overview', document.querySelector('.modal-tab-btn'));
   show('preview-modal');
+}
+
+function updateModalApproveButton() {
+  var btn = document.getElementById('modal-approve-action-btn');
+  if (!btn || !activePreviewCampaign) return;
+  var isApproved = (activePreviewCampaign.status || '').toLowerCase() === 'approved';
+  if (isApproved) {
+    btn.innerHTML = '✓ Approved · Reopen';
+    btn.className = 'btn btn-ghost btn-sm';
+    btn.style.color = 'var(--success)';
+    btn.style.borderColor = 'rgba(16,185,129,0.3)';
+    btn.style.background = 'rgba(16,185,129,0.08)';
+  } else {
+    btn.innerHTML = '✓ Approve Campaign';
+    btn.className = 'btn btn-sm';
+    btn.style.background = '#10b981';
+    btn.style.color = '#fff';
+    btn.style.borderColor = '#10b981';
+    btn.style.fontWeight = '700';
+  }
+}
+
+function toggleModalApprove() {
+  if (!activePreviewCampaign) return;
+  var isApproved = (activePreviewCampaign.status || '').toLowerCase() === 'approved';
+  var nextStatus = isApproved ? 'Pending' : 'Approved';
+  setCampaignStatusDirect(activePreviewCampaign.id, nextStatus);
 }
 
 function closePreviewModal() {

@@ -313,7 +313,7 @@
           </div>
           <div style="display:flex;gap:8px">
             <button class="btn btn-ghost btn-sm" onclick="openExportModal()">⬇ Export</button>
-            <button class="btn btn-secondary btn-sm" onclick="showApproval()">✓ Approve</button>
+            <button class="btn btn-secondary btn-sm" id="studio-top-approve-btn" onclick="showApproval()">✓ Approve</button>
           </div>
         </div>
       </div>
@@ -1697,7 +1697,7 @@ function saveCampaignToWorkspaceStorage(camp, genTime) {
       brief: camp.brief || (document.getElementById('campaign-brief') ? document.getElementById('campaign-brief').value : ''),
       brand: camp.brand || 'Team AgentX',
       date: 'Just now · ' + (genTime || '3.4s'),
-      status: 'Approved',
+      status: 'Pending',
       platforms: camp.selectedPlatforms || ['linkedin', 'twitter', 'instagram', 'reel'],
       qualityScore: camp.qualityScore || 94,
       data: camp
@@ -2635,9 +2635,34 @@ function approveCampaign() {
     if (item)  item.classList.add('approved');
     if (check) { check.classList.add('checked'); check.textContent = '✓'; }
   }
+
+  // Persist status: 'Approved' in localStorage and currentCampaign
+  if (currentCampaign) {
+    currentCampaign.status = 'Approved';
+    try {
+      var raw = localStorage.getItem('tf_campaigns');
+      if (raw) {
+        var list = JSON.parse(raw);
+        var found = list.find(function(x) { return x.title === currentCampaign.title; });
+        if (found) {
+          found.status = 'Approved';
+          localStorage.setItem('tf_campaigns', JSON.stringify(list));
+        }
+      }
+    } catch(e) {}
+  }
+
+  var topApproveBtn = document.getElementById('studio-top-approve-btn');
+  if (topApproveBtn) {
+    topApproveBtn.innerHTML = '✓ Approved';
+    topApproveBtn.style.background = 'rgba(16,185,129,0.15)';
+    topApproveBtn.style.color = '#10b981';
+    topApproveBtn.style.borderColor = 'rgba(16,185,129,0.4)';
+  }
+
   setTimeout(function() {
     closeModal('approval-modal');
-    showToast('Campaign approved for ' + platforms.length + ' platform' + (platforms.length > 1 ? 's' : '') + '! Ready for export. ✦', 'success');
+    showToast('Campaign approved for ' + platforms.length + ' platform' + (platforms.length > 1 ? 's' : '') + '! ✦ Status updated in Campaigns Workspace.', 'success');
   }, 400);
 }
 
