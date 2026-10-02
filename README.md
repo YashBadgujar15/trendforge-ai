@@ -15,7 +15,7 @@
 * 🌐 **Live Deployed Studio:** [https://yashbadgujar15.github.io/trendforge-ai/](https://yashbadgujar15.github.io/trendforge-ai/)
 * 🏆 **Unstop Hackathon Page:** [Build Fast with AI: AI Build Challenge 2026 on Unstop](https://unstop.com/hackathons/build-fast-with-ai-ai-build-challenge-2026-build-fast-with-ai-1758453?lb=usesFhWX)
 * 📄 **10-Slide Final Project Deck (PDF):** [`TrendForge_AI_Final_Project_Deck.pdf`](./TrendForge_AI_Final_Project_Deck.pdf)
-* 🎬 **3-Minute Demo Video:** *Submitted officially via Unstop Portal*
+* 🎬 **3-Minute Demo Video (Submitted officially via Unstop Portal):**[TrendForge_AI_Demo_Video_Team_AgentX.mp4](TrendForge_AI_Demo_Video_Team_AgentX.mp4)
 
 ---
 
@@ -137,6 +137,8 @@ Simply double-click `index.html` inside the `trendforge-ai` folder. The entire s
 
 ## 📁 Repository Structure
 
+## 📁 Repository Structure
+
 ```text
 trendforge-ai/
 ├── index.html                           # Landing page & feature showcase
@@ -150,8 +152,14 @@ trendforge-ai/
 ├── js/
 │   ├── studio.js                        # Multi-agent orchestrator, canvas & reel engine
 │   └── campaigns.js                     # Storage synchronization & credit metering
-├── TrendForge_AI_Final_Project_Deck.pdf # Official 10-slide final presentation deck
+├── submission/                          # Official Hackathon Submission Artifacts
+│   ├── TrendForge_AI_Final_Project_Deck.pdf # 10-slide final presentation deck (PDF)
+│   ├── TrendForge_AI_Demo_Video_Team_AgentX.mp4
+ # 3-minute demo video
+│   └── PS02_AgentX_TrendForge_AI_Idea_Deck.pdf  
+ # Initial Round 1 idea submission deck
 └── README.md                            # Complete documentation & run guide
+
 ```
 
 ---
