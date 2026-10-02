@@ -14,8 +14,6 @@
 * 🌐 **Live Deployed Studio:** [https://yashbadgujar15.github.io/trendforge-ai/](https://yashbadgujar15.github.io/trendforge-ai/)
 * 📄 **10-Slide Final Project Deck (PDF):** [`TrendForge_AI_Final_Project_Deck.pdf`](./TrendForge_AI_Final_Project_Deck.pdf)
 * 🎬 **3-Minute Demo Video:** *Submitted officially via Unstop Portal*
-* 📋 **Step-by-Step Demo Script:** [`TrendForge_AI_Demo_Video_Script_Anjali.pdf`](./TrendForge_AI_Demo_Video_Script_Anjali.pdf)
-
 ---
 
 ## 💡 Project Overview
@@ -119,10 +117,9 @@ Simply double-click `index.html` inside the `trendforge-ai` folder. The entire s
 
 | Member | College | Year | Role |
 | :--- | :--- | :--- | :--- |
-| **Badgujar Yash Rameshbhai** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | Frontend & UI Studio Lead (React/Vite, Canvas Carousel renderer, Audio UI) |
-| **Sonar Anjali Shivdas** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | AI Pipeline & Backend Lead (FastAPI, Multi-LLM Critic Chains, Anti-Slop Sanitizer) |
-| **Jogi Pranav Bharat** | Shree Swami Atmanand Saraswati Institute of Technology, Surat | 3rd Year | Testing, Cloud Deployment & Pitch Lead (25-brief eval suite, Vercel, 3-min video) |
-
+| **Badgujar Yash Rameshbhai** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | Frontend & UI Studio Lead |
+| **Sonar Anjali Shivdas** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | AI Pipeline & Backend Lead  |
+| **Jogi Pranav Bharat** | Shree Swami Atmanand Saraswati Institute of Technology, Surat | 3rd Year | Testing, Cloud Deployment & Pitch Lead 
 ---
 
 *Submitted for **Build Fast with AI: AI Build Challenge 2026** · Track PS-02.*
