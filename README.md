@@ -4,6 +4,7 @@
 > Built with ❤️ by **Team AgentX** (Sarvajanik College of Engineering & Technology - SCET & SSASIT, Surat)  
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success?style=for-the-badge&logo=github)](https://yashbadgujar15.github.io/trendforge-ai/)
+[![Unstop Portal](https://img.shields.io/badge/Unstop-Official%20Submission-0070f3?style=for-the-badge)](https://unstop.com/hackathons/build-fast-with-ai-ai-build-challenge-2026-build-fast-with-ai-1758453?lb=usesFhWX)
 [![Hackathon](https://img.shields.io/badge/Hackathon-AI%20Build%20Challenge%202026-6366f1?style=for-the-badge)](https://buildfastwithai.com/hackathon)
 [![Track PS-02](https://img.shields.io/badge/Track-PS--02%20Content%20Studio-10b981?style=for-the-badge)](https://yashbadgujar15.github.io/trendforge-ai/)
 [![Zero Dependency](https://img.shields.io/badge/Architecture-100%25%20Zero--Lag%20Client--Side-f59e0b?style=for-the-badge)](https://yashbadgujar15.github.io/trendforge-ai/)
@@ -12,8 +13,10 @@
 
 ### 🔗 Quick Access Links for Judges
 * 🌐 **Live Deployed Studio:** [https://yashbadgujar15.github.io/trendforge-ai/](https://yashbadgujar15.github.io/trendforge-ai/)
+* 🏆 **Unstop Hackathon Page:** [Build Fast with AI: AI Build Challenge 2026 on Unstop](https://unstop.com/hackathons/build-fast-with-ai-ai-build-challenge-2026-build-fast-with-ai-1758453?lb=usesFhWX)
 * 📄 **10-Slide Final Project Deck (PDF):** [`TrendForge_AI_Final_Project_Deck.pdf`](./TrendForge_AI_Final_Project_Deck.pdf)
 * 🎬 **3-Minute Demo Video:** *Submitted officially via Unstop Portal*
+
 ---
 
 ## 💡 Project Overview
@@ -34,13 +37,44 @@ With a single product prompt, feature brief, or e-commerce URL, TrendForge AI or
 
 ---
 
+## 🏗️ System Architecture & Multi-Agent Flow
+
+TrendForge AI operates as a coordinated 5-Agent pipeline with automated self-critique and human-in-the-loop gating:
+
+```mermaid
+graph TD
+    A[User Brief / E-Commerce URL] --> B[1. Planner Agent]
+    B -->|Content Angles & Hooks| C[2. Content Writer Agent]
+    B -->|Visual Directives & Brand Kit| D[3. Visual Generator Agent]
+    
+    C -->|Draft Post| E1[📝 LinkedIn Thought Leadership]
+    C -->|5-Tweet Teardown| E2[🧵 X Viral Thread]
+    D -->|Canvas 2D Rendering| E3[📸 1080x1080 Instagram Carousel]
+    D -->|Keyframes & Audio Timings| E4[🎬 60 FPS HyperFrames Reel + TTS]
+    
+    E1 & E2 & E3 & E4 --> F[4. Anti-Slop Critic Agent]
+    F -->|Quality Score < 90% or Buzzwords Detected| G[Autonomous Self-Correction Rollback]
+    G --> C
+    
+    F -->|Quality Score >= 90% Clean| H{5. Human Approval Gate}
+    H -->|Review & Refine| I[Approved Campaign Package]
+    I --> J[📦 1-Click .TXT & High-Res PNG Export Bundle]
+```
+
+### ⚡ Dual-Engine Execution Architecture
+To guarantee zero downtime and zero external API latency:
+* **Live Mode:** Integrates **Google Gemini 2.0 Flash** for multi-agent reasoning, deep contextual extraction, and JSON schema guarantees.
+* **Autonomous Fallback Engine:** 100% client-side heuristic engine incorporating proven viral frameworks (Alex Hormozi value equations & Justin Welsh whitespace structure) that executes in under 50ms with zero network dependency.
+
+---
+
 ## 🛠️ Technologies Used
 
-TrendForge AI is architected with a **Dual-Engine Architecture** for maximum speed, zero external dependency failure, and 60 FPS fluidity:
+TrendForge AI is built on the **Modern Native Web Platform** to maximize performance, eliminate compilation lag, and guarantee 60 FPS fluidity:
 
 * **Frontend & UI Studio:** 
   * Vanilla HTML5 & Modern CSS3 with custom Glassmorphism tokens (`#09090b` dark aesthetic).
-  * Vanilla ES6+ JavaScript (Zero framework overhead, 0.2s load time, zero build latency).
+  * Vanilla ES6+ JavaScript (Zero heavy framework overhead, 0.2s load time, zero build latency).
   * Fully responsive across Mobile (320px–414px), Tablet (768px), and Desktop (1024px–1440px).
 * **Programmatic Image Generation:** 
   * Native HTML5 Canvas 2D API for instantaneous client-side 1080x1080px carousel graphic rendering and PNG blob export.
@@ -101,6 +135,27 @@ Simply double-click `index.html` inside the `trendforge-ai` folder. The entire s
 
 ---
 
+## 📁 Repository Structure
+
+```text
+trendforge-ai/
+├── index.html                           # Landing page & feature showcase
+├── studio.html                          # Core Multi-Modal AI Studio workspace
+├── campaigns.html                       # Saved campaigns vault & bundle exporter
+├── brand-kit.html                       # Brand customization & persona manager
+├── analytics.html                       # Performance & reach projections
+├── css/
+│   ├── landing.css                      # Landing page design system
+│   └── studio.css                       # Studio glassmorphism UI & responsive styles
+├── js/
+│   ├── studio.js                        # Multi-agent orchestrator, canvas & reel engine
+│   └── campaigns.js                     # Storage synchronization & credit metering
+├── TrendForge_AI_Final_Project_Deck.pdf # Official 10-slide final presentation deck
+└── README.md                            # Complete documentation & run guide
+```
+
+---
+
 ## 📊 Evaluation & Mandatory Hackathon Proofs Summary
 
 | # | Mandatory Proof | Result in TrendForge AI |
@@ -118,8 +173,9 @@ Simply double-click `index.html` inside the `trendforge-ai` folder. The entire s
 | Member | College | Year | Role |
 | :--- | :--- | :--- | :--- |
 | **Badgujar Yash Rameshbhai** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | Frontend & UI Studio Lead |
-| **Sonar Anjali Shivdas** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | AI Pipeline & Backend Lead  |
-| **Jogi Pranav Bharat** | Shree Swami Atmanand Saraswati Institute of Technology, Surat | 3rd Year | Testing, Cloud Deployment & Pitch Lead 
+| **Sonar Anjali Shivdas** | Sarvajanik College of Engineering & Technology, Surat | 3rd Year | AI Pipeline & Backend Lead |
+| **Jogi Pranav Bharat** | Shree Swami Atmanand Saraswati Institute of Technology, Surat | 3rd Year | Testing, Cloud Deployment & Pitch Lead |
+
 ---
 
 *Submitted for **Build Fast with AI: AI Build Challenge 2026** · Track PS-02.*
