@@ -918,12 +918,85 @@ function parseProductInput(rawInput) {
     slug = slug.replace(/\s+/g, ' ').trim();
     cleanTitle = slug;
   } else {
-    cleanTitle = str;
+    // Non-URL input: Smart Natural Language Parsing
+    var rawText = str;
+    
+    // 1. Extract hashtags
+    var tags = (rawText.match(/#([a-zA-Z0-9_]+)/g) || []).map(function(t) { return t.replace('#', ''); });
+    
+    // 2. Clean out hashtags, URLs, and emojis for clean text
+    var cleanText = rawText
+      .replace(/#[a-zA-Z0-9_]+/g, ' ')
+      .replace(/https?:\/\/\S+/g, ' ')
+      .replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ' ')
+      .replace(/[^\w\s\.,!\?'"\-:;&]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    // 3. Detect Brand: Check colon (e.g. "DevChair: ...")
+    var colonM = cleanText.match(/^([A-Za-z0-9\s&'\-]{2,32}):\s*(.+)$/);
+    if (colonM) {
+      brand = colonM[1].trim();
+      cleanText = colonM[2].trim();
+    }
+
+    // Check specific known brand patterns or proper nouns (e.g. "Gandhi Coco")
+    if (!brand) {
+      // Check if "Gandhi Coco" or similar capitalized pairs exist in the text
+      var properNounMatch = cleanText.match(/\b([A-Z][a-z0-9]+(?:\s+[A-Z][a-z0-9]+)+)\b/);
+      if (properNounMatch) {
+        var candidate = properNounMatch[1];
+        if (!/^(Craving Something|The Ultimate|Packed In|Drop By|Serving Up|Perfect Weather|Purity & Kitchen)\b/i.test(candidate)) {
+          brand = candidate;
+        }
+      }
+    }
+
+    // Check hashtags if brand still empty (e.g. #gandhicoco -> Gandhi Coco)
+    if (!brand && tags.length > 0) {
+      for (var tIdx = 0; tIdx < tags.length; tIdx++) {
+        var t = tags[tIdx];
+        if (!/^(food|foodies|cafes|drinks|startup|ai|tech|viral|hackathon|surat|mumbai|delhi|india|daily|trend)$/i.test(t)) {
+          // Check if hashtag matches a word in text case-insensitively
+          var tagWordRegex = new RegExp('\\b' + t.slice(0, 6) + '[a-zA-Z]*\\b', 'i');
+          var textWordMatch = cleanText.match(tagWordRegex);
+          if (textWordMatch) {
+            brand = textWordMatch[0];
+          } else {
+            brand = t.replace(/([A-Z])/g, ' $1').replace(/^./, function(s){ return s.toUpperCase(); }).trim();
+          }
+          break;
+        }
+      }
+    }
+
+    // 4. Derive concise Clean Title (max 6-8 words, avoiding giant 500-char paragraphs)
+    var sentences = cleanText.split(/[\.!\?]\s*/).filter(function(s) { return s.trim().length > 4; });
+    var foundTitle = '';
+    
+    // If brand found, look for sentence containing brand
+    if (brand) {
+      for (var sI = 0; sI < sentences.length; sI++) {
+        if (sentences[sI].toLowerCase().includes(brand.toLowerCase())) {
+          var sWords = sentences[sI].split(/\s+/);
+          foundTitle = sWords.slice(0, 7).join(' ');
+          break;
+        }
+      }
+    }
+
+    if (!foundTitle && sentences.length > 0) {
+      var firstWords = sentences[0].split(/\s+/);
+      foundTitle = firstWords.slice(0, 7).join(' ');
+    }
+
+    cleanTitle = foundTitle || (brand ? brand + ' Launch' : 'Featured Launch Campaign');
   }
 
   var lower = (cleanTitle + ' ' + str).toLowerCase();
 
   var knownBrands = [
+    { name: 'Gandhi Coco', regex: /\bgandhi\s*coco\b/i },
     { name: 'Fortune', regex: /\bfortune\b/i },
     { name: 'Saffola', regex: /\bsaffola\b/i },
     { name: 'Amul', regex: /\bamul\b/i },
@@ -980,22 +1053,16 @@ function parseProductInput(rawInput) {
   if (cleanTitle) {
     cleanTitle = cleanTitle.split(' ').map(function(w) {
       if (!w) return '';
-      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+      return w.charAt(0).toUpperCase() + w.slice(1);
     }).join(' ');
-  }
-
-  if (!cleanTitle || cleanTitle.length < 3) {
-    if (detectedCategory === 'food_grocery') cleanTitle = 'Fortune Refined Soyabean Oil';
-    else if (detectedCategory === 'electronics') cleanTitle = 'Smart Wireless Audio Earbuds';
-    else cleanTitle = 'Featured Product Launch';
   }
 
   if (!brand) {
     var fw = cleanTitle.split(' ')[0];
-    if (fw && fw.length > 2 && fw !== 'The' && fw !== 'New') {
+    if (fw && fw.length > 2 && !/^(The|New|Why|From|Here|With|Drop|Your)$/i.test(fw)) {
       brand = fw;
     } else {
-      brand = 'Team AgentX';
+      brand = 'TrendForge';
     }
   }
 
@@ -1122,7 +1189,6 @@ function buildDynamicCampaign(userBrief, userTone, userBrand) {
       { time: "00:27", type: "CTA", visual: pTitle + " bottle pack shot with fresh kitchen ingredients.", voiceover: pTitle + ". Pure health, light taste, everyday goodness for your kitchen.", text: brandName + " — Pure Health", duration: "3s" }
     ];
     verdict = "Exceptional FMCG food campaign tailored for " + pTitle + ". Emotional culinary hook, strong nutrition claims, and zero robotic slop.";
-  }
   } else if (category === 'electronics') {
     campaignTitle = pTitle + " · Next-Gen Audio & Hardware";
     linkedinHook = "Most wireless audio gear forces a compromise between low latency and battery life. Here is the engineering behind " + pTitle + ".";
