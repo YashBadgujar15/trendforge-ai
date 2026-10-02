@@ -135,28 +135,29 @@ Simply double-click `index.html` inside the `trendforge-ai` folder. The entire s
 
 ---
 
-## 📁 Repository Structure
+---
 
 ## 📁 Repository Structure
 
 ```text
 trendforge-ai/
-├── index.html                           # Landing page & feature showcase
-├── studio.html                          # Core Multi-Modal AI Studio workspace
-├── campaigns.html                       # Saved campaigns vault & bundle exporter
-├── brand-kit.html                       # Brand customization & persona manager
-├── analytics.html                       # Performance & reach projections
+├── index.html                                   # Landing page & feature showcase
+├── studio.html                                  # Core Multi-Modal AI Studio workspace
+├── campaigns.html                               # Saved campaigns vault & bundle exporter
+├── brand-kit.html                               # Brand customization & persona manager
+├── analytics.html                               # Performance & reach projections
 ├── css/
-│   ├── landing.css                      # Landing page design system
-│   └── studio.css                       # Studio glassmorphism UI & responsive styles
+│   ├── landing.css                              # Landing page design system
+│   └── studio.css                               # Studio glassmorphism UI & responsive styles
 ├── js/
-│   ├── studio.js                        # Multi-agent orchestrator, canvas & reel engine
-│   └── campaigns.js                     # Storage synchronization & credit metering
-├── submission/                          # Official Hackathon Submission Artifacts
-│   ├── TrendForge_AI_Final_Project_Deck.pdf # 10-slide final presentation deck (PDF)
-│   ├── TrendForge_AI_Demo_Video_Team_AgentX.mp4  # 3-minute demo video
+│   ├── studio.js                                # Multi-agent orchestrator, canvas & reel engine
+│   └── campaigns.js                             # Storage synchronization & credit metering
+├── submission/                                  # Official Hackathon Submission Artifacts
+│   ├── TrendForge_AI_Final_Project_Deck.pdf     # 10-slide final presentation deck (PDF)
+│   ├── TrendForge_AI_Demo_Video_Team_AgentX.mp4 # 3-minute demo video
 │   └── PS02_AgentX_TrendForge_AI_Idea_Deck.pdf  # Initial Round 1 idea submission deck
 └── README.md                                    # Complete documentation & run guide
+
 
 ```
 
