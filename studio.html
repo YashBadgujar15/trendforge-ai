@@ -16,7 +16,7 @@
 <!-- Status Banner -->
 <div class="demo-banner">
   <span>⚡</span>
-  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Autonomous Multi-Modal Content Studio (PS-02)
+  <strong>AI Build Challenge 2026</strong> — Team AgentX · Autonomous Multi-Modal Content Studio (PS-02)
 </div>
 
 <!-- Navbar -->
@@ -93,7 +93,7 @@
             <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
             <div class="notif-content">
               <div class="notif-title">Build Challenge 2026 Finals</div>
-              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-desc">Team AgentX project workspace active for Track PS-02.</div>
               <div class="notif-time">Workspace initialized</div>
             </div>
           </div>
@@ -177,7 +177,7 @@
 
     <div class="form-group" style="margin-bottom:10px">
       <textarea class="textarea input-main" id="campaign-brief" rows="3" style="min-height:72px"
-        placeholder="Describe your product, campaign or content idea...&#10;Example: AI build hackathon for scet college"
+        placeholder="Describe your product, campaign or content idea...&#10;Example: AI build hackathon for autonomous agents"
       ></textarea>
     </div>
 
@@ -191,7 +191,7 @@
         <label class="form-label" style="margin-bottom:4px;font-size:11px">Brand</label>
         <select class="select" id="brand-input" style="padding:6px 8px;font-size:12px">
           <option value="">Custom / Auto</option>
-          <option value="SCET AI Build">SCET AI Build</option>
+          <option value="AgentX AI Build">AgentX AI Build</option>
           <option value="DevChair Pro">DevChair Pro</option>
         </select>
       </div>
@@ -572,6 +572,10 @@ function toggleNavDropdown(id, e) {
     menu.style.display = 'block';
   }
 }
+
+window.addEventListener('scroll', function() {
+  closeAllNavDropdowns();
+}, { passive: true });
 
 function closeAllNavDropdowns() {
   document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
@@ -1115,34 +1119,34 @@ function buildDynamicCampaign(userBrief, userTone, userBrand) {
     ];
     verdict = "Dynamic lifestyle and fashion campaign for " + pTitle + ". High visual appeal, ergonomic comfort emphasis, and strong viral reel arc.";
   } else if (category === 'hackathon') {
-    campaignTitle = "SCET AI Build 2026 · Autonomous Multi-Agent Content Studio";
-    linkedinHook = "Most colleges host conventional coding contests. Here is what happens when student builders create autonomous multi-agent AI systems at SCET Surat.";
-    linkedinBody = "Traditional hackathons are about boilerplate CRUD apps and tired presentation slides.\n\nThe AI Build Challenge at SCET College is completely different:\n\nWe challenged students to build autonomous multi-agent systems that solve real-world problems from scratch — in under 24 hours.\n\nHere is what our autonomous AI studio delivered:\n\n→ Autonomous Planning: Deconstructs any product brief or live e-commerce URL in seconds\n→ Platform-Native Copy: High-retention LinkedIn post & viral 5-tweet X thread\n→ Visual Engine: Auto-rendered 5-slide carousel without opening Canva\n→ HyperFrames Video: 30-second 60 FPS keyframe video storyboard with real AI speech voiceover\n→ Anti-Slop Enforcement: Screens out robotic buzzwords for authentic human voice\n\nBuilt by Team AgentX (Yash Badgujar, Anjali Sonar, Pranav Jogi) representing SCET Surat.\n\nExecution speed is the ultimate differentiator in 2026.\n\n👉 What is your take on the future of autonomous agent hackathons? Drop your thoughts below!";
+    campaignTitle = "AgentX AI Build 2026 · Autonomous Multi-Agent Content Studio";
+    linkedinHook = "Most colleges host conventional coding contests. Here is what happens when student builders create autonomous multi-agent AI systems at Team AgentX.";
+    linkedinBody = "Traditional hackathons are about boilerplate CRUD apps and tired presentation slides.\n\nThe AI Build Challenge at National Hackathon is completely different:\n\nWe challenged students to build autonomous multi-agent systems that solve real-world problems from scratch — in under 24 hours.\n\nHere is what our autonomous AI studio delivered:\n\n→ Autonomous Planning: Deconstructs any product brief or live e-commerce URL in seconds\n→ Platform-Native Copy: High-retention LinkedIn post & viral 5-tweet X thread\n→ Visual Engine: Auto-rendered 5-slide carousel without opening Canva\n→ HyperFrames Video: 30-second 60 FPS keyframe video storyboard with real AI speech voiceover\n→ Anti-Slop Enforcement: Screens out robotic buzzwords for authentic human voice\n\nBuilt by Team AgentX (Yash Badgujar, Anjali Sonar, Pranav Jogi) representing Team AgentX.\n\nExecution speed is the ultimate differentiator in 2026.\n\n👉 What is your take on the future of autonomous agent hackathons? Drop your thoughts below!";
 
     tweets = [
-      { num: 1, text: "Most colleges host ordinary hackathons.\n\nHere is how SCET Surat is redefining AI build challenges with autonomous agents in 2026 🧵👇", chars: 138 },
+      { num: 1, text: "Most colleges host ordinary hackathons.\n\nHere is how Team AgentX is redefining AI build challenges with autonomous agents in 2026 🧵👇", chars: 138 },
       { num: 2, text: "The problem with traditional events:\nStudents get stuck formatting slides and editing Canva posts instead of shipping working software.\n\nAutonomous pipelines eliminate the bottleneck.", chars: 184 },
       { num: 3, text: "Our autonomous system took the brief for '" + pTitle + "' and generated:\n\n• High-retention LinkedIn post\n• 5-tweet technical thread\n• 5-slide visual carousel\n• 30s 60 FPS video storyboard\n\nAll in <60 seconds.", chars: 226 },
       { num: 4, text: "5 specialized AI agents orchestrated this:\n🧭 Planner\n✍️ Content Writer\n🎨 Visual Generator\n🛡️ Critic (Anti-Slop Filter)\n✨ Refiner\n\nZero manual editing needed.", chars: 182 },
-      { num: 5, text: "Proud to represent SCET Surat in the National AI Build Challenge 2026!\n\nRT to support student builders & explore TrendForge AI 🔥", chars: 139 }
+      { num: 5, text: "Proud to represent Team AgentX in the National AI Build Challenge 2026!\n\nRT to support student builders & explore TrendForge AI 🔥", chars: 139 }
     ];
 
     carouselSlides = [
-      { slide: 1, type: "hook", headline: "AI Build Hackathon @ SCET", subtext: "How student builders at SCET Surat are building autonomous AI agents in 2026.", bg: "#0a0a1a", accent: "#6366f1" },
+      { slide: 1, type: "hook", headline: "AI Build Hackathon @ AgentX", subtext: "How student builders at Team AgentX are building autonomous AI agents in 2026.", bg: "#0a0a1a", accent: "#6366f1" },
       { slide: 2, type: "problem", headline: "Why traditional hackathons drag.", subtext: "20+ hours wasted on manual Canva design, generic scripts, and repetitive repurposing.", bg: "#0f0f20", accent: "#ef4444", points: ["Canva formatting fatigue", "Fragmented toolchains", "Robotic ChatGPT outputs"] },
       { slide: 3, type: "insight", headline: "The Autonomous Agent Solution.", subtext: "5 specialized agents working together: copy, carousels, and 60 FPS video.", bg: "#0d0d1e", accent: "#6366f1", stats: [{ val: "95%", label: "Platform Fit" }, { val: "<60s", label: "Turnaround" }, { val: "5", label: "Autonomous Agents" }] },
-      { slide: 4, type: "solution", headline: "Engineered for SCET Builders.", subtext: "Publish-ready content for LinkedIn, X, Instagram Carousels & Reels with HyperFrames.", bg: "#0a0a1a", accent: "#10b981", features: ["60 FPS HyperFrames Video", "Multi-Modal Storyboards", "Anti-AI Slop Filter", "Autonomous Trace"] },
-      { slide: 5, type: "cta", headline: "Ship 10x faster with TrendForge AI.", subtext: "Built by Team AgentX (SCET Surat) for AI Build Challenge 2026.", cta: "Follow + Connect", bg: "#080814", accent: "#6366f1" }
+      { slide: 4, type: "solution", headline: "Engineered for AI Builders.", subtext: "Publish-ready content for LinkedIn, X, Instagram Carousels & Reels with HyperFrames.", bg: "#0a0a1a", accent: "#10b981", features: ["60 FPS HyperFrames Video", "Multi-Modal Storyboards", "Anti-AI Slop Filter", "Autonomous Trace"] },
+      { slide: 5, type: "cta", headline: "Ship 10x faster with TrendForge AI.", subtext: "Built by Team AgentX for AI Build Challenge 2026.", cta: "Follow + Connect", bg: "#080814", accent: "#6366f1" }
     ];
 
     reelScenes = [
-      { time: "00:00", type: "HOOK", visual: "High-energy kinetic reveal: SCET AI Build Hackathon", voiceover: "What happens when engineering students at SCET build autonomous AI agents in 24 hours?", text: "SCET AI Build 2026", duration: "5s" },
+      { time: "00:00", type: "HOOK", visual: "High-energy kinetic reveal: AgentX AI Build Hackathon", voiceover: "What happens when engineering student builders build autonomous AI agents in 24 hours?", text: "AgentX AI Build 2026", duration: "5s" },
       { time: "00:05", type: "PROBLEM", visual: "Split-screen: traditional slow marketing vs autonomous pipeline", voiceover: "Traditional content creation takes 20 hours of manual writing, designing, and editing.", text: "20 hours wasted every week.", duration: "7s" },
       { time: "00:12", type: "INSIGHT", visual: "5 Autonomous AI agents executing in real time", voiceover: "TrendForge AI takes a single brief and auto-generates multi-platform campaigns in 60 seconds.", text: "5 Autonomous Agents.", duration: "8s" },
       { time: "00:20", type: "PRODUCT", visual: "HyperFrames 60 FPS keyframe animations reveal", voiceover: "LinkedIn posts, viral threads, and HyperFrames video — ready to publish instantly.", text: "HyperFrames™ 60 FPS Video.", duration: "7s" },
-      { time: "00:27", type: "CTA", visual: "Team AgentX badge · SCET Surat", voiceover: "Built by Team AgentX for the National AI Build Challenge 2026. Follow for more!", text: "Team AgentX · SCET Surat", duration: "3s" }
+      { time: "00:27", type: "CTA", visual: "Team AgentX badge · Team AgentX", voiceover: "Built by Team AgentX for the National AI Build Challenge 2026. Follow for more!", text: "Team AgentX · Team AgentX", duration: "3s" }
     ];
-    verdict = "Inspiring student innovation campaign representing Team AgentX at SCET Surat. High builder authority, clear pipeline metrics, and 0% generic fluff.";
+    verdict = "Inspiring student innovation campaign representing Team AgentX at Team AgentX. High builder authority, clear pipeline metrics, and 0% generic fluff.";
   } else {
     // General Product / Startup
     campaignTitle = pTitle + " · Launch Campaign";
@@ -2169,7 +2173,7 @@ function toggleTrace(header) {
 function buildLinkedInTab() {
   var li = currentCampaign.linkedin;
   var bodyEscaped = li.body.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  var bName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('scet') ? 'SCET AI Build' : 'Team AgentX');
+  var bName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('agentx') ? 'AgentX AI Build' : 'Team AgentX');
   var isChair = bName.toLowerCase().includes('chair');
   var authorName = isChair ? 'Alex Chen · Founder, DevChair Pro' : (bName + ' · Official Post');
   var authorTitle = isChair ? 'Remote Work Entrepreneur · 14,200 followers' : 'Team AgentX · AI Content Studio';
@@ -2347,7 +2351,7 @@ function buildCarouselTab() {
     if (s.cta) {
       extras += '<div class="slide-cta-pill">' + s.cta + '</div>';
     }
-    var brandName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('scet') ? 'SCET AI Build' : 'Team AgentX');
+    var brandName = currentCampaign.brand || (currentCampaign.brief && currentCampaign.brief.toLowerCase().includes('agentx') ? 'AgentX AI Build' : 'Team AgentX');
     slidesHTML += '<div class="carousel-slide ' + (i === 0 ? 'active' : '') + '" id="cslide-' + i + '" style="background:radial-gradient(circle at 85% 15%, ' + s.accent + '25 0%, ' + s.bg + ' 75%);color:#fff">' +
       '<div class="slide-inner">' +
         '<div class="slide-top-bar">' +
@@ -3011,6 +3015,13 @@ function fallbackCopy(text) {
   document.body.removeChild(ta);
 }
 
+function dismissRobotWidget(e) {
+  if (e) e.stopPropagation();
+  var w = document.getElementById('agentx-robot-widget');
+  if (w) w.style.display = 'none';
+  showToast('AgentX Bot minimized. Tap anywhere in Studio to keep working.', 'default');
+}
+
 function toggleRobotDrawer() {
   var d = document.getElementById('robot-drawer');
   if (d.style.display === 'none' || !d.style.display) {
@@ -3022,9 +3033,9 @@ function toggleRobotDrawer() {
 
 function robotQuickFill(topic) {
   var b = document.getElementById('campaign-brief');
-  if (topic === 'scet') {
-    b.value = "AI build hackathon for scet college — 24hr autonomous agent build challenge for student engineers.";
-    document.getElementById('brand-input').value = "SCET AI Build";
+  if (topic === 'hackathon' || topic === 'scet') {
+    b.value = "AI build hackathon for autonomous agents — 24hr autonomous agent build challenge for student engineers.";
+    document.getElementById('brand-input').value = "AgentX AI Build";
   } else if (topic === 'chair') {
     b.value = "Launching DevChair Pro — an ergonomic chair engineered specifically for software developers coding 8+ hours a day.";
     document.getElementById('brand-input').value = "DevChair Pro";
@@ -3079,6 +3090,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 <!-- Floating AgentX Robot Copilot -->
 <div id="agentx-robot-widget" class="robot-widget">
+  <button class="robot-dismiss-btn" onclick="dismissRobotWidget(event)" title="Hide Bot">✕</button>
   <div class="robot-speech" id="robot-speech-bubble" onclick="toggleRobotDrawer()">
     <span class="robot-speech-text">🤖 <strong>AgentX Bot:</strong> 5 Agents + HyperFrames ready!</span>
   </div>
@@ -3129,8 +3141,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:8px">QUICK TEST PROMPTS (1-CLICK GENERATION)</div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
-      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(99,102,241,0.3);background:rgba(99,102,241,0.08)" onclick="robotQuickFill('scet')">
-        🎓 <strong>SCET College Hackathon:</strong> AI Build Challenge 2026
+      <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(99,102,241,0.3);background:rgba(99,102,241,0.08)" onclick="robotQuickFill('hackathon')">
+        🎓 <strong>Autonomous Agent Hackathon:</strong> AI Build Challenge 2026
       </button>
       <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;padding:9px 12px;font-size:12px;border:1px solid rgba(255,255,255,0.08)" onclick="robotQuickFill('chair')">
         🪑 <strong>DevChair Pro:</strong> Ergonomic Chair for Developers
@@ -3173,6 +3185,31 @@ window.addEventListener('DOMContentLoaded', function() {
 @keyframes robotEyeBlink {
   0%, 92%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.1); }
+}
+.robot-dismiss-btn {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10001;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.robot-dismiss-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
 }
 .robot-widget {
   position: fixed;

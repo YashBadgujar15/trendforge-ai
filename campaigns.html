@@ -179,7 +179,7 @@
 
 <div class="demo-banner">
   <span>⚡</span>
-  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Multi-Modal Autonomous Content Studio (PS-02)
+  <strong>AI Build Challenge 2026</strong> — Team AgentX · Multi-Modal Autonomous Content Studio (PS-02)
 </div>
 
 <nav class="navbar">
@@ -255,7 +255,7 @@
             <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
             <div class="notif-content">
               <div class="notif-title">Build Challenge 2026 Finals</div>
-              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-desc">Team AgentX project workspace active for Track PS-02.</div>
               <div class="notif-time">Workspace initialized</div>
             </div>
           </div>
@@ -451,6 +451,10 @@ function toggleNavDropdown(id, e) {
   }
 }
 
+window.addEventListener('scroll', function() {
+  closeAllNavDropdowns();
+}, { passive: true });
+
 function closeAllNavDropdowns() {
   document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
     m.style.display = 'none';
@@ -618,7 +622,7 @@ var INITIAL_SAMPLE_CAMPAIGNS = [
       selectedPlatforms: ["linkedin", "twitter"],
       linkedin: {
         hook: "Engineers shouldn't spend 2 hours writing Jira tickets and changelogs. Here is what we built instead.",
-        body: "Documentation debt is the silent killer of sprint velocity.\\n\\nWe built an autonomous technical writing copilot that transforms git commits and architecture notes into publish-ready release updates in seconds.\\n\\nBuilt by Team AgentX representing SCET Surat.",
+        body: "Documentation debt is the silent killer of sprint velocity.\\n\\nWe built an autonomous technical writing copilot that transforms git commits and architecture notes into publish-ready release updates in seconds.\\n\\nBuilt by Team AgentX.",
         chars: 980
       },
       twitter: [
@@ -664,7 +668,7 @@ var INITIAL_SAMPLE_CAMPAIGNS = [
     id: "camp-devagent-04",
     title: "DevAgent AI Code Reviewer",
     brief: "Automated PR review agent detecting edge-cases, memory leaks and security flaws.",
-    brand: "SCET AI Build",
+    brand: "AgentX AI Build",
     date: "3 days ago · 3.2s generation",
     status: "Draft",
     platforms: ["linkedin", "twitter", "instagram"],
@@ -672,7 +676,7 @@ var INITIAL_SAMPLE_CAMPAIGNS = [
     data: {
       title: "DevAgent AI Code Reviewer",
       brief: "Automated PR review agent detecting edge-cases, memory leaks and security flaws.",
-      brand: "SCET AI Build",
+      brand: "AgentX AI Build",
       qualityScore: 85,
       selectedPlatforms: ["linkedin", "twitter", "instagram"],
       linkedin: {

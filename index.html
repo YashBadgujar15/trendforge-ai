@@ -88,7 +88,7 @@
             <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
             <div class="notif-content">
               <div class="notif-title">Build Challenge 2026 Finals</div>
-              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-desc">Team AgentX project workspace active for Track PS-02.</div>
               <div class="notif-time">Workspace initialized</div>
             </div>
           </div>
@@ -401,7 +401,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 TrendForge AI · Built with ⚡ by <strong>Team AgentX</strong> (Yash Badgujar, Anjali Sonar, Pranav Jogi) · Sarvajanik College of Engineering & Technology (SCET), Surat · AI Build Challenge 2026 (PS-02)
+    © 2026 TrendForge AI · Built with ⚡ by <strong>Team AgentX</strong> (Yash Badgujar, Anjali Sonar, Pranav Jogi) · AI Build Challenge 2026 (PS-02)
   </div>
 </footer>
 
@@ -618,6 +618,10 @@ function toggleNavDropdown(id, e) {
   }
 }
 
+window.addEventListener('scroll', function() {
+  closeAllNavDropdowns();
+}, { passive: true });
+
 function closeAllNavDropdowns() {
   document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {
     m.style.display = 'none';
@@ -735,7 +739,6 @@ if (document.readyState === 'loading') {
 } else {
   updateCreditUI();
 }
-</script>
 
 // Smooth cinematic reveal on scroll
 function initScrollAnimations() {

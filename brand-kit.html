@@ -12,7 +12,7 @@
 
 <div class="demo-banner">
   <span>⚡</span>
-  <strong>AI Build Challenge 2026</strong> — Team AgentX (SCET Surat) · Multi-Modal Autonomous Content Studio (PS-02)
+  <strong>AI Build Challenge 2026</strong> — Team AgentX · Multi-Modal Autonomous Content Studio (PS-02)
 </div>
 
 <nav class="navbar">
@@ -85,7 +85,7 @@
             <div class="notif-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🏆</div>
             <div class="notif-content">
               <div class="notif-title">Build Challenge 2026 Finals</div>
-              <div class="notif-desc">Team AgentX (SCET Surat) project workspace active for Track PS-02.</div>
+              <div class="notif-desc">Team AgentX project workspace active for Track PS-02.</div>
               <div class="notif-time">Workspace initialized</div>
             </div>
           </div>
@@ -500,6 +500,7 @@ function syncColor(pickerId, hexId) {
     updatePreview();
   }
 }
+</script>
 
 <!-- Global Navbar Dropdowns Controller (Shared across all pages) -->
 <script>
@@ -552,6 +553,10 @@ function toggleNavDropdown(id, e) {
     menu.style.display = 'block';
   }
 }
+
+window.addEventListener('scroll', function() {
+  closeAllNavDropdowns();
+}, { passive: true });
 
 function closeAllNavDropdowns() {
   document.querySelectorAll('.nav-dropdown-menu').forEach(function(m) {

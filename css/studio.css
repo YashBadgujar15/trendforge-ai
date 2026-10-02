@@ -744,6 +744,22 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* Compact Bot on Mobile so it never obstructs Quality Scores */
+  .robot-speech {
+    display: none !important;
+  }
+  .robot-widget {
+    bottom: 14px !important;
+    right: 14px !important;
+  }
+  .robot-avatar-button {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .robot-character svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
   .linkedin-tab-grid {
     grid-template-columns: 1fr !important;
     gap: 14px !important;
