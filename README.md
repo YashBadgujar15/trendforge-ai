@@ -15,8 +15,7 @@
 * 🌐 **Live Deployed Studio:** [https://yashbadgujar15.github.io/trendforge-ai/](https://yashbadgujar15.github.io/trendforge-ai/)
 * 🏆 **Unstop Hackathon Page:** [Build Fast with AI: AI Build Challenge 2026 on Unstop](https://unstop.com/hackathons/build-fast-with-ai-ai-build-challenge-2026-build-fast-with-ai-1758453?lb=usesFhWX)
 * 📄 **10-Slide Final Project Deck (PDF):** [`TrendForge_AI_Final_Project_Deck.pdf`](./TrendForge_AI_Final_Project_Deck.pdf)
-* 🎬 **3-Minute Demo Video (Submitted officially via Unstop Portal):**[TrendForge_AI_Demo_Video_Team_AgentX.mp4](https://drive.google.com/file/d/1NOffOM0B9K8FxIrE
-oAswTwjIkxmAIsU/view?usp=sharing)
+* 🎬 **3-Minute Demo Video (Submitted officially via Unstop Portal):**[TrendForge_AI_Demo_Video_Team_AgentX.mp4](https://drive.google.com/file/d/1NOffOM0B9K8FxIrEoAswTwjIkxmAIsU/view?usp=sharing)
 
 ---
 
