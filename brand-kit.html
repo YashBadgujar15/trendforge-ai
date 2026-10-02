@@ -16,7 +16,10 @@
 </div>
 
 <nav class="navbar">
-  <a href="index.html" class="navbar-logo"><div class="logo-mark">TF</div><span>TrendForge AI</span></a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="mobile-menu-btn" onclick="toggleMobileNav(event)" aria-label="Toggle Navigation">☰</button>
+    <a href="index.html" class="navbar-logo"><div class="logo-mark">TF</div><span>TrendForge AI</span></a>
+  </div>
   <div class="navbar-nav">
     <a href="studio.html"    class="nav-link">Studio</a>
     <a href="campaigns.html" class="nav-link">Campaigns</a>
@@ -24,12 +27,12 @@
     <a href="analytics.html" class="nav-link">Analytics</a>
   </div>
   <div class="navbar-right">
-    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX</span>
     
     <!-- Credits Dropdown Trigger -->
     <div class="nav-dropdown-wrap">
       <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits & Usage">
-        💎 <span id="credit-count">50</span> credits
+        💎 <span id="credit-count">50</span> <span class="credit-word">credits</span>
       </button>
       
       <!-- Credits Dropdown Menu -->
@@ -116,7 +119,7 @@
                 <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
               </div>
               <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
-              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+              <div style="font-size:10px;color:var(--text-muted)">yashbadgujar.co24d3@scet.ac.in</div>
             </div>
           </div>
         </div>
@@ -134,18 +137,9 @@
             </div>
           </div>
 
-          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
-            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
-            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
-            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
-          </div>
-
           <div style="display:flex;flex-direction:column;gap:4px">
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
               ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
-            </button>
-            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
-              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
             </button>
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
               🔒 Session: Active
@@ -162,7 +156,10 @@
   <div class="bk-left">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
       <h1 style="font-size:20px;font-weight:700">Brand Kit</h1>
-      <button class="btn btn-primary btn-sm" onclick="saveBrandKit()">Save Kit</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" onclick="resetBrandKitDefaults()" title="Reset to default brand values">↺ Reset Defaults</button>
+        <button class="btn btn-primary btn-sm" onclick="saveBrandKit()">Save Kit</button>
+      </div>
     </div>
 
     <div class="card" style="margin-bottom:16px">
@@ -255,13 +252,13 @@
       <div class="form-group" style="margin-top:12px">
         <label class="form-label">Brand Voice Traits</label>
         <div class="voice-traits" id="voice-traits">
-          <button class="pill active" onclick="this.classList.toggle('active')">Confident</button>
-          <button class="pill active" onclick="this.classList.toggle('active')">Human</button>
-          <button class="pill active" onclick="this.classList.toggle('active')">Technical</button>
-          <button class="pill active" onclick="this.classList.toggle('active')">Minimal</button>
-          <button class="pill"        onclick="this.classList.toggle('active')">Witty</button>
-          <button class="pill"        onclick="this.classList.toggle('active')">Authoritative</button>
-          <button class="pill"        onclick="this.classList.toggle('active')">Empathetic</button>
+          <button class="pill active" onclick="toggleVoiceTrait(this)">Confident</button>
+          <button class="pill active" onclick="toggleVoiceTrait(this)">Human</button>
+          <button class="pill active" onclick="toggleVoiceTrait(this)">Technical</button>
+          <button class="pill active" onclick="toggleVoiceTrait(this)">Minimal</button>
+          <button class="pill"        onclick="toggleVoiceTrait(this)">Witty</button>
+          <button class="pill"        onclick="toggleVoiceTrait(this)">Authoritative</button>
+          <button class="pill"        onclick="toggleVoiceTrait(this)">Empathetic</button>
         </div>
       </div>
     </div>
@@ -355,11 +352,112 @@
 <div id="toast-container"></div>
 
 <script>
+const DEFAULT_BRAND_KIT = {
+  name: "DevChair Pro",
+  tagline: "Built for developers who build.",
+  desc: "Premium ergonomic furniture engineered specifically for remote developers and engineers. Function-first design. No compromises.",
+  color1: "#6366f1",
+  color2: "#10b981",
+  color3: "#0a0a1a",
+  fontHead: "Inter",
+  fontBody: "Inter",
+  tone: "Founder",
+  audience: "Remote developers, 25–40",
+  wordsUse: "developer, engineer, build, deep work, focused, precision, craft",
+  wordsAvoid: "delve, elevate, unlock, journey, game-changing, revolutionary, seamless, robust",
+  traits: ["Confident", "Human", "Technical", "Minimal"]
+};
+
 function saveBrandKit() {
-  const name = document.getElementById('bk-name').value;
-  localStorage.setItem('tf_brandkit', JSON.stringify({ name }));
-  showToast('Brand kit saved! ✦', 'success');
+  const kit = {
+    name: (document.getElementById('bk-name').value || '').trim(),
+    tagline: (document.getElementById('bk-tagline').value || '').trim(),
+    desc: (document.getElementById('bk-desc').value || '').trim(),
+    color1: document.getElementById('bk-color1').value,
+    color2: document.getElementById('bk-color2').value,
+    color3: document.getElementById('bk-color3').value,
+    fontHead: document.getElementById('bk-font-head').value,
+    fontBody: document.getElementById('bk-font-body').value,
+    tone: document.getElementById('bk-tone').value,
+    audience: (document.getElementById('bk-audience').value || '').trim(),
+    wordsUse: (document.getElementById('bk-words-use').value || '').trim(),
+    wordsAvoid: (document.getElementById('bk-words-avoid').value || '').trim(),
+    traits: []
+  };
+
+  document.querySelectorAll('#voice-traits .pill.active').forEach(function(pill) {
+    kit.traits.push(pill.textContent.trim());
+  });
+
+  try {
+    localStorage.setItem('tf_brandkit', JSON.stringify(kit));
+    showToast('Brand kit saved to workspace! ✦', 'success');
+  } catch(e) {
+    showToast('Failed to save brand kit', 'error');
+  }
   updatePreview();
+}
+
+function loadBrandKit() {
+  var kit = null;
+  try {
+    var raw = localStorage.getItem('tf_brandkit');
+    if (raw) kit = JSON.parse(raw);
+  } catch(e) {}
+
+  if (!kit) kit = DEFAULT_BRAND_KIT;
+
+  if (document.getElementById('bk-name')) document.getElementById('bk-name').value = kit.name || DEFAULT_BRAND_KIT.name;
+  if (document.getElementById('bk-tagline')) document.getElementById('bk-tagline').value = kit.tagline !== undefined ? kit.tagline : DEFAULT_BRAND_KIT.tagline;
+  if (document.getElementById('bk-desc')) document.getElementById('bk-desc').value = kit.desc !== undefined ? kit.desc : DEFAULT_BRAND_KIT.desc;
+  
+  if (document.getElementById('bk-color1')) document.getElementById('bk-color1').value = kit.color1 || DEFAULT_BRAND_KIT.color1;
+  if (document.getElementById('bk-color1-hex')) document.getElementById('bk-color1-hex').value = kit.color1 || DEFAULT_BRAND_KIT.color1;
+  if (document.getElementById('bk-color2')) document.getElementById('bk-color2').value = kit.color2 || DEFAULT_BRAND_KIT.color2;
+  if (document.getElementById('bk-color2-hex')) document.getElementById('bk-color2-hex').value = kit.color2 || DEFAULT_BRAND_KIT.color2;
+  if (document.getElementById('bk-color3')) document.getElementById('bk-color3').value = kit.color3 || DEFAULT_BRAND_KIT.color3;
+  if (document.getElementById('bk-color3-hex')) document.getElementById('bk-color3-hex').value = kit.color3 || DEFAULT_BRAND_KIT.color3;
+
+  if (document.getElementById('bk-font-head') && kit.fontHead) document.getElementById('bk-font-head').value = kit.fontHead;
+  if (document.getElementById('bk-font-body') && kit.fontBody) document.getElementById('bk-font-body').value = kit.fontBody;
+  if (document.getElementById('bk-tone') && kit.tone) document.getElementById('bk-tone').value = kit.tone;
+  if (document.getElementById('bk-audience')) document.getElementById('bk-audience').value = kit.audience || DEFAULT_BRAND_KIT.audience;
+  if (document.getElementById('bk-words-use')) document.getElementById('bk-words-use').value = kit.wordsUse !== undefined ? kit.wordsUse : DEFAULT_BRAND_KIT.wordsUse;
+  if (document.getElementById('bk-words-avoid')) document.getElementById('bk-words-avoid').value = kit.wordsAvoid !== undefined ? kit.wordsAvoid : DEFAULT_BRAND_KIT.wordsAvoid;
+
+  var traits = Array.isArray(kit.traits) ? kit.traits : DEFAULT_BRAND_KIT.traits;
+  document.querySelectorAll('#voice-traits .pill').forEach(function(pill) {
+    if (traits.indexOf(pill.textContent.trim()) !== -1) {
+      pill.classList.add('active');
+    } else {
+      pill.classList.remove('active');
+    }
+  });
+
+  updatePreview();
+}
+
+function resetBrandKitDefaults() {
+  if (confirm('Reset Brand Kit to default settings?')) {
+    localStorage.removeItem('tf_brandkit');
+    loadBrandKit();
+    showToast('Brand Kit reset to defaults ✓', 'default');
+  }
+}
+
+function toggleVoiceTrait(el) {
+  el.classList.toggle('active');
+  updateVoiceDisplay();
+}
+
+function updateVoiceDisplay() {
+  var vDisp = document.getElementById('voice-display');
+  if (!vDisp) return;
+  var tags = [];
+  document.querySelectorAll('#voice-traits .pill.active').forEach(function(p) {
+    tags.push('<div class="voice-trait-tag">' + p.textContent.trim() + '</div>');
+  });
+  vDisp.innerHTML = tags.length ? tags.join('') : '<div style="font-size:11px;color:var(--text-muted)">No traits selected</div>';
 }
 
 function updatePreview() {
@@ -391,6 +489,8 @@ function updatePreview() {
   document.getElementById('avoid-word-tags').innerHTML = words.map(w =>
     `<span class="slop-word-tag">${w}</span>`
   ).join('');
+
+  updateVoiceDisplay();
 }
 
 function syncColor(pickerId, hexId) {
@@ -400,16 +500,6 @@ function syncColor(pickerId, hexId) {
     updatePreview();
   }
 }
-
-function showToast(msg, type) {
-  const c = document.getElementById('toast-container');
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.innerHTML = `<span class="toast-icon">${type==='success'?'✓':'✦'}</span><span>${msg}</span>`;
-  c.appendChild(t);
-  setTimeout(() => { t.style.animation='slideOut 0.3s ease forwards'; setTimeout(()=>t.remove(),300); }, 3000);
-}
-</script>
 
 <!-- Global Navbar Dropdowns Controller (Shared across all pages) -->
 <script>
@@ -438,6 +528,20 @@ function showToast(msg, type) {
 }
 
 // ---- Navbar Dropdown Handlers ----
+function toggleMobileNav(e) {
+  closeAllNavDropdowns();
+  var nav = document.querySelector('.navbar-nav');
+  if (nav) nav.classList.toggle('mobile-open');
+  if (e) e.stopPropagation();
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.navbar-nav') && !e.target.closest('.mobile-menu-btn')) {
+    var nav = document.querySelector('.navbar-nav');
+    if (nav) nav.classList.remove('mobile-open');
+  }
+});
+
 function toggleNavDropdown(id, e) {
   if (e) e.stopPropagation();
   var menu = document.getElementById(id);
@@ -465,7 +569,12 @@ document.addEventListener('click', function(e) {
 var currentCredits = (function() {
   try {
     var saved = localStorage.getItem('tf_credits');
-    return saved !== null ? parseInt(saved, 10) : 50;
+    var val = saved !== null ? parseInt(saved, 10) : 50;
+    if (isNaN(val) || val <= 0) {
+      val = 50;
+      localStorage.setItem('tf_credits', '50');
+    }
+    return val;
   } catch(e) { return 50; }
 })();
 
@@ -557,8 +666,12 @@ function addDynamicNotification(title, desc, icon, iconBg, iconColor) {
 
 // Initialize on page load
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', updateCreditUI);
+  document.addEventListener('DOMContentLoaded', function() {
+    loadBrandKit();
+    updateCreditUI();
+  });
 } else {
+  loadBrandKit();
   updateCreditUI();
 }
 </script>

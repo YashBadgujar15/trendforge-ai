@@ -53,7 +53,12 @@ document.addEventListener('click', function(e) {
 var currentCredits = (function() {
   try {
     var saved = localStorage.getItem('tf_credits');
-    return saved !== null ? parseInt(saved, 10) : 50;
+    var val = saved !== null ? parseInt(saved, 10) : 50;
+    if (isNaN(val) || val <= 0) {
+      val = 50;
+      localStorage.setItem('tf_credits', '50');
+    }
+    return val;
   } catch(e) { return 50; }
 })();
 

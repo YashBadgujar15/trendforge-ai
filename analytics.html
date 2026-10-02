@@ -24,12 +24,12 @@
     <a href="analytics.html" class="nav-link active">Analytics</a>
   </div>
   <div class="navbar-right">
-    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX</span>
     
     <!-- Credits Dropdown Trigger -->
     <div class="nav-dropdown-wrap">
       <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits & Usage">
-        💎 <span id="credit-count">50</span> credits
+        💎 <span id="credit-count">50</span> <span class="credit-word">credits</span>
       </button>
       
       <!-- Credits Dropdown Menu -->
@@ -116,7 +116,7 @@
                 <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
               </div>
               <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
-              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+              <div style="font-size:10px;color:var(--text-muted)">yashbadgujar.co24d3@scet.ac.in</div>
             </div>
           </div>
         </div>
@@ -134,18 +134,9 @@
             </div>
           </div>
 
-          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
-            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
-            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
-            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
-          </div>
-
           <div style="display:flex;flex-direction:column;gap:4px">
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
               ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
-            </button>
-            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
-              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
             </button>
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
               🔒 Session: Active
@@ -484,6 +475,20 @@ function showToast(msg, type) {
 }
 
 // ---- Navbar Dropdown Handlers ----
+function toggleMobileNav(e) {
+  closeAllNavDropdowns();
+  var nav = document.querySelector('.navbar-nav');
+  if (nav) nav.classList.toggle('mobile-open');
+  if (e) e.stopPropagation();
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.navbar-nav') && !e.target.closest('.mobile-menu-btn')) {
+    var nav = document.querySelector('.navbar-nav');
+    if (nav) nav.classList.remove('mobile-open');
+  }
+});
+
 function toggleNavDropdown(id, e) {
   if (e) e.stopPropagation();
   var menu = document.getElementById(id);
@@ -511,7 +516,12 @@ document.addEventListener('click', function(e) {
 var currentCredits = (function() {
   try {
     var saved = localStorage.getItem('tf_credits');
-    return saved !== null ? parseInt(saved, 10) : 50;
+    var val = saved !== null ? parseInt(saved, 10) : 50;
+    if (isNaN(val) || val <= 0) {
+      val = 50;
+      localStorage.setItem('tf_credits', '50');
+    }
+    return val;
   } catch(e) { return 50; }
 })();
 

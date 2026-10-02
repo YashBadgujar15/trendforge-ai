@@ -64,3 +64,9 @@
 @media (max-width: 600px) {
   .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 480px) {
+  .bk-layout { padding: 16px 12px; }
+  .bk-preview-card { padding: 16px; }
+  .color-input-wrap .input { min-width: 0; }
+}

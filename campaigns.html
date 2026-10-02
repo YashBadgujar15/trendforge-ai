@@ -162,6 +162,16 @@
   background: rgba(99, 102, 241, 0.15);
   color: #fff;
 }
+@media (max-width: 600px) {
+  .campaigns-search-wrap {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 8px;
+  }
+  #campaign-search {
+    width: 100% !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -173,10 +183,13 @@
 </div>
 
 <nav class="navbar">
-  <a href="index.html" class="navbar-logo">
-    <div class="logo-mark">TF</div>
-    <span>TrendForge AI</span>
-  </a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="mobile-menu-btn" onclick="toggleMobileNav(event)" aria-label="Toggle Navigation">☰</button>
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-mark">TF</div>
+      <span>TrendForge AI</span>
+    </a>
+  </div>
   <div class="navbar-nav">
     <a href="studio.html"    class="nav-link">Studio</a>
     <a href="campaigns.html" class="nav-link active">Campaigns</a>
@@ -184,12 +197,12 @@
     <a href="analytics.html" class="nav-link">Analytics</a>
   </div>
   <div class="navbar-right">
-    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX · SCET</span>
+    <span class="badge badge-accent" style="display:inline-flex;align-items:center;gap:4px">⚡ Team AgentX</span>
     
     <!-- Credits Dropdown Trigger -->
     <div class="nav-dropdown-wrap">
       <button class="nav-pill-btn" id="credits-badge" onclick="toggleNavDropdown('credits-dropdown', event)" title="View Credits &amp; Usage">
-        💎 <span id="credit-count">50</span> credits
+        💎 <span id="credit-count">50</span> <span class="credit-word">credits</span>
       </button>
       
       <!-- Credits Dropdown Menu -->
@@ -276,7 +289,7 @@
                 <span style="width:7px;height:7px;border-radius:50%;background:#10b981" title="Online"></span>
               </div>
               <div style="font-size:11px;color:var(--accent);font-weight:600">Lead Builder · Team AgentX</div>
-              <div style="font-size:10px;color:var(--text-muted)">yash.badgujar@scet.ac.in</div>
+              <div style="font-size:10px;color:var(--text-muted)">yashbadgujar.co24d3@scet.ac.in</div>
             </div>
           </div>
         </div>
@@ -294,18 +307,9 @@
             </div>
           </div>
 
-          <div style="padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;margin-bottom:12px">
-            <div style="font-size:9.5px;color:var(--text-muted);font-weight:700">COLLEGE &amp; TRACK</div>
-            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px">SCET Surat · National Finals</div>
-            <div style="font-size:10.5px;color:var(--accent)">Track PS-02: AI Content Studio</div>
-          </div>
-
           <div style="display:flex;flex-direction:column;gap:4px">
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Autonomous In-Browser Engine Active · 100% Offline Ready','success')">
               ⚡ AI Engine Status: <strong style="color:var(--success);margin-left:4px">Active</strong>
-            </button>
-            <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px" onclick="showToast('Team AgentX verified for Build Challenge 2026','default')">
-              🎓 College Verified: <strong style="color:var(--accent);margin-left:4px">SCET Surat</strong>
             </button>
             <button class="btn btn-ghost btn-sm" style="text-align:left;justify-content:flex-start;font-size:11px;padding:6px 8px;color:var(--text-muted)" onclick="showToast('Active Builder Session: Yash Badgujar','default')">
               🔒 Session: Active
@@ -337,7 +341,7 @@
       <button class="pill" id="pill-pending" onclick="setFilter('pending', this)">Pending <span class="badge badge-warning" id="count-pending" style="font-size:10px;padding:1px 6px;margin-left:4px">0</span></button>
       <button class="pill" id="pill-draft" onclick="setFilter('draft', this)">Draft <span class="badge" id="count-draft" style="font-size:10px;padding:1px 6px;margin-left:4px;background:rgba(255,255,255,0.1)">0</span></button>
     </div>
-    <div style="margin-left:auto;position:relative">
+    <div class="campaigns-search-wrap" style="margin-left:auto;position:relative">
       <input class="input" id="campaign-search" oninput="handleSearch(this.value)" style="width:260px;font-size:12px;padding-left:32px;padding-right:28px" placeholder="Search campaigns, briefs, platforms...">
       <button id="search-clear-btn" onclick="clearSearchInput()" style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;padding:2px 4px" title="Clear search">✕</button>
       <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--text-muted);pointer-events:none">🔍</span>
@@ -345,7 +349,7 @@
   </div>
 
   <!-- Campaign Cards Grid -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px" id="campaigns-grid">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:18px" id="campaigns-grid">
     <!-- Rendered dynamically -->
   </div>
 
@@ -422,6 +426,20 @@ function showToast(msg, type) {
 }
 
 // ---- Navbar Dropdown Handlers ----
+function toggleMobileNav(e) {
+  closeAllNavDropdowns();
+  var nav = document.querySelector('.navbar-nav');
+  if (nav) nav.classList.toggle('mobile-open');
+  if (e) e.stopPropagation();
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.navbar-nav') && !e.target.closest('.mobile-menu-btn')) {
+    var nav = document.querySelector('.navbar-nav');
+    if (nav) nav.classList.remove('mobile-open');
+  }
+});
+
 function toggleNavDropdown(id, e) {
   if (e) e.stopPropagation();
   var menu = document.getElementById(id);
@@ -449,7 +467,12 @@ document.addEventListener('click', function(e) {
 var currentCredits = (function() {
   try {
     var saved = localStorage.getItem('tf_credits');
-    return saved !== null ? parseInt(saved, 10) : 50;
+    var val = saved !== null ? parseInt(saved, 10) : 50;
+    if (isNaN(val) || val <= 0) {
+      val = 50;
+      localStorage.setItem('tf_credits', '50');
+    }
+    return val;
   } catch(e) { return 50; }
 })();
 
@@ -671,18 +694,19 @@ var INITIAL_SAMPLE_CAMPAIGNS = [
 function getStoredCampaigns() {
   try {
     var raw = localStorage.getItem('tf_campaigns');
-    if (!raw) {
-      localStorage.setItem('tf_campaigns', JSON.stringify(INITIAL_SAMPLE_CAMPAIGN_LIST()));
-      return INITIAL_SAMPLE_CAMPAIGN_LIST();
+    if (raw === null) {
+      var list = INITIAL_SAMPLE_CAMPAIGN_LIST();
+      localStorage.setItem('tf_campaigns', JSON.stringify(list));
+      return list;
     }
     var list = JSON.parse(raw);
-    if (!Array.isArray(list) || list.length === 0) {
+    if (!Array.isArray(list)) {
       list = INITIAL_SAMPLE_CAMPAIGN_LIST();
       localStorage.setItem('tf_campaigns', JSON.stringify(list));
     }
     return list;
   } catch(e) {
-    return INITIAL_SAMPLE_CAMPAIGN_LIST();
+    return [];
   }
 }
 
@@ -741,7 +765,9 @@ function renderCampaigns() {
   // Update count subtitle
   var countLabel = document.getElementById('campaigns-count-label');
   if (countLabel) {
-    if (currentSearchQuery.trim() || currentFilter !== 'all') {
+    if (list.length === 0) {
+      countLabel.textContent = 'Workspace is empty (0 campaigns)';
+    } else if (currentSearchQuery.trim() || currentFilter !== 'all') {
       countLabel.textContent = 'Showing ' + filtered.length + ' of ' + countAll + ' campaigns';
     } else {
       countLabel.textContent = countAll + ' campaigns in workspace';
@@ -750,6 +776,20 @@ function renderCampaigns() {
 
   var container = document.getElementById('campaigns-grid');
   if (!container) return;
+
+  if (list.length === 0) {
+    container.innerHTML = 
+      '<div class="empty-state-box">' +
+        '<div style="font-size:36px;margin-bottom:12px">📂</div>' +
+        '<h3 style="font-size:16px;font-weight:700;margin-bottom:6px;color:#fff">Workspace is empty</h3>' +
+        '<p style="font-size:12.5px;color:var(--text-muted);margin-bottom:18px;max-width:440px;margin-left:auto;margin-right:auto">All campaigns have been deleted. You can create a new campaign in Studio, or restore the demo campaigns anytime.</p>' +
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">' +
+          '<a href="studio.html" class="btn btn-primary btn-sm">⚡ + Create New Campaign</a>' +
+          '<button class="btn btn-secondary btn-sm" onclick="resetToSampleCampaigns()">↻ Restore Demo Campaigns</button>' +
+        '</div>' +
+      '</div>';
+    return;
+  }
 
   if (filtered.length === 0) {
     container.innerHTML = 
