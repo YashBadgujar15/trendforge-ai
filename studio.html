@@ -1060,17 +1060,50 @@ function buildDynamicCampaign(userBrief, userTone, userBrand) {
   var reelScenes = [];
   var verdict = "";
 
-  if (category === 'food_grocery') {
+    // Check if beverage, cafe, dessert, coco, shake or drink
+  var isBeverageOrCafe = /coco|shake|juice|drink|tea|coffee|cafe|dessert|smoothie|soda|mocktail|milkshake|icecream|bakery|cake|sweet/i.test(b + " " + pTitle);
+  var isActualCookingOil = /oil|ghee|mustard|sunflower|soyabean|soya|refined|canola/i.test(b + " " + pTitle);
+
+  if (category === 'food_grocery' && isBeverageOrCafe) {
+    campaignTitle = pTitle + " · Refreshing Flavor Experience";
+    linkedinHook = "Why modern food lovers and beverage enthusiasts are obsessing over authentic craft: The secret of flavor balance, thick textures, and unforgettable tastes at " + pTitle + ".";
+    linkedinBody = "In today's fast-paced dining economy, customers don't just order a drink — they buy the vibe, the refreshment, and the perfect moment to unwind with their squad.\n\nHere is why " + pTitle + " is becoming a cult favorite for flavor lovers:\n\n• Handcrafted Flavor Perfection: Thick, creamy signature blends made with rich, authentic ingredients.\n• The Ultimate Hangout Vibe: The perfect spot to beat the heat, catch up with friends, and recharge.\n• Uncompromising Freshness: Made fresh on demand with zero artificial shortcuts.\n• Local Foodie Excellence: Celebrated across the community for consistent taste and genuine happiness in every cup.\n\nGreat food brands aren't built on loud ads — they are built on unforgettable taste that brings people back every single day.\n\n What is your favorite go-to drink when chilling with friends? Drop your top picks in the comments below!";
+
+    tweets = [
+      { num: 1, text: "Craving something ice-cold and truly refreshing? Here is why " + pTitle + " is serving up the ultimate flavor vibe in town 🥤✨", chars: 142 },
+      { num: 2, text: "The secret to an iconic shake or coco isn't just sugar — it's the rich, creamy texture and handcrafted flavor that hits just right every time 🍧", chars: 154 },
+      { num: 3, text: "From thick signature milkshakes to refreshing fresh juices, " + pTitle + " has your daily dose of happiness packed into a cup 🌴", chars: 139 },
+      { num: 4, text: "Perfect weather + unforgettable flavors + chilling with your squad = the ultimate experience at " + pTitle + " 🧊", chars: 128 },
+      { num: 5, text: "Tag someone who needs a refreshing drink right now! Drop by " + pTitle + " today and discover your new favorite blend! 🥤", chars: 136 }
+    ];
+
+    carouselSlides = [
+      { slide: 1, type: "hook", headline: "The Ultimate Refreshment Experience", subtext: "Handcrafted flavor, iconic vibes, and pure happiness at " + pTitle + ".", bg: "#0a0a1a", accent: "#f59e0b" },
+      { slide: 2, type: "problem", headline: "Tired of Watery, Boring Drinks?", subtext: "Most commercial drinks cut corners with artificial flavors and thin textures.", bg: "#140f0a", accent: "#ef4444", points: ["Thin, watery syrups", "Overly artificial sweetness", "Lacks genuine craft and texture"] },
+      { slide: 3, type: "insight", headline: "Thick. Creamy. Handcrafted.", subtext: "Rich blends, premium ingredients, and made fresh to order every time.", bg: "#0f140f", accent: "#10b981", stats: [{ val: "100%", label: "Authentic" }, { val: "Top Vibe", label: "City Hotspot" }, { val: "Pure", label: "Happiness" }] },
+      { slide: 4, type: "solution", headline: "Your Daily Flavor Escape.", subtext: "From rich coco shakes to energizing fresh juices, we have got you covered.", bg: "#0a1218", accent: "#06b6d4", features: ["Signature handcrafted blends", "Rich, thick & creamy textures", "The ultimate squad hangout spot", "Made fresh daily in Surat"] },
+      { slide: 5, type: "cta", headline: "Grab Your Favorite Blend Today!", subtext: "Visit " + pTitle + " and experience the vibe firsthand.", cta: "Visit Us Today", bg: "#080814", accent: "#f59e0b" }
+    ];
+
+    reelScenes = [
+      { time: "00:00", type: "HOOK", visual: "Ice cubes dropping into a tall glass followed by a swirl of thick, rich coco cream.", voiceover: "Craving that perfect, ice-cold refreshing sip? " + pTitle + " has entered the chat.", text: "The Ultimate Refreshment 🥤", duration: "5s" },
+      { time: "00:05", type: "PROBLEM", visual: "Close-up of thick creamy milkshake pouring smoothly — rich and velvety.", voiceover: "Thick, creamy, and packed with flavor that hits the sweet spot every single time.", text: "Thick. Creamy. Iconic. ✨", duration: "7s" },
+      { time: "00:12", type: "INSIGHT", visual: "Friends laughing and clinking cold glasses together at a vibrant cafe table.", voiceover: "Because great taste is always best enjoyed with your favorite people.", text: "The Perfect Chill Spot 🌴", duration: "8s" },
+      { time: "00:20", type: "PRODUCT", visual: "Montage of refreshing fruit juices, coco drinks, and signature shakes.", voiceover: "From our signature coco blends to refreshing fresh juices, we have your daily happiness packed in a cup.", text: "Daily Dose of Happiness 🍧", duration: "7s" },
+      { time: "00:27", type: "CTA", visual: pTitle + " cup shot with glowing location pin animation.", voiceover: "Drop by our outlet today and grab your favorite blend!", text: pTitle + " · Grab Yours! 🚀", duration: "3s" }
+    ];
+    verdict = "Outstanding beverage & hospitality campaign tailored for " + pTitle + ". Vibrant sensory hook, viral squad lifestyle alignment, and zero robotic slop.";
+  } else if (category === 'food_grocery' && isActualCookingOil) {
     campaignTitle = pTitle + " · Purity & Kitchen Wellness";
     linkedinHook = "Why 90% of Indian households are rethinking their daily cooking oil: The science of light absorption, smoke points, and heart-healthy home cooking.";
-    linkedinBody = "In an Indian kitchen, cooking oil is not just an ingredient — it is the heartbeat of every family conversation, festival feast, and Sunday breakfast.\n\nYet, most households unknowingly compromise with heavy oils that soak into food, overpower delicate spice aromas, and leave you feeling sluggish.\n\nHere is why " + pTitle + " is setting a new benchmark for modern wellness kitchens:\n\n→ Up to 20% Less Oil Absorption: Retains natural crispiness in pooris and snacks without greasy residue.\n→ Fortified with Vitamin A & D: Essential micro-nutrients that actively support daily immunity and vision.\n→ High Smoke Point: Perfectly engineered for high-flame Indian tadkas, sautéing, and deep frying without thermal breakdown.\n→ Heart-Healthy PUFA Profile: Rich in Omega-3 & Omega-6 essential fatty acids to keep daily cholesterol in check.\n→ Neutral Flavor Clarity: Lets the authentic aroma of cumin, ginger, garlic, and fresh vegetables take center stage.\n\nHealthy living doesn’t mean giving up the meals your family loves. It begins with upgrading the foundation of your cooking.\n\n👉 What cooking oil does your household swear by? Drop your kitchen favorites in the comments below!";
+    linkedinBody = "In an Indian kitchen, cooking oil is not just an ingredient — it is the heartbeat of every family conversation, festival feast, and Sunday breakfast.\n\nYet, most households unknowingly compromise with heavy oils that soak into food, overpower delicate spice aromas, and leave you feeling sluggish.\n\nHere is why " + pTitle + " is setting a new benchmark for modern wellness kitchens:\n\n• Up to 20% Less Oil Absorption: Retains natural crispiness in pooris and snacks without greasy residue.\n• Fortified with Vitamin A & D: Essential micro-nutrients that actively support daily immunity and vision.\n• High Smoke Point: Perfectly engineered for high-flame Indian tadkas, sautÃ©ing, and deep frying without thermal breakdown.\n• Heart-Healthy PUFA Profile: Rich in Omega-3 & Omega-6 essential fatty acids to keep daily cholesterol in check.\n• Neutral Flavor Clarity: Lets the authentic aroma of cumin, ginger, garlic, and fresh vegetables take center stage.\n\nHealthy living doesn't mean giving up the meals your family loves. It begins with upgrading the foundation of your cooking.\n\n What cooking oil does your household swear by? Drop your kitchen favorites in the comments below!";
     
     tweets = [
-      { num: 1, text: "Most people assume all cooking oils behave the same in the pan. They don't.\n\nHere is the science of oil absorption, smoke points, and heart health every kitchen should know in 2026 🧵👇", chars: 184 },
+      { num: 1, text: "Most people assume all cooking oils behave the same in the pan. They don't.\n\nHere is the science of oil absorption, smoke points, and heart health every kitchen should know in 2026 ", chars: 184 },
       { num: 2, text: "The #1 issue with heavy oils:\nThey penetrate deep into ingredients during frying, leaving food greasy, limp, and hard on digestion.\n\nLight-density refined oil absorbs significantly less, keeping snacks crisp & light.", chars: 212 },
-      { num: 3, text: "Nutrition breakdown for " + pTitle + ":\n\n• Fortified with Vitamin A & Vitamin D\n• Rich in Omega-3 and Omega-6 essential fatty acids\n• Naturally zero cholesterol\n• High smoke point for Indian tadka & frying", chars: 215 },
+      { num: 3, text: "Nutrition breakdown for " + pTitle + ":\n\n Fortified with Vitamin A & Vitamin D\n Rich in Omega-3 and Omega-6 essential fatty acids\n Naturally zero cholesterol\n High smoke point for Indian tadka & frying", chars: 215 },
       { num: 4, text: "The flavor test:\nBecause of its ultra-refined purity, it leaves zero pungent aftertaste. The natural sweetness of veggies and warmth of spices stay 100% authentic.", chars: 168 },
-      { num: 5, text: "Great family health isn't built on extreme diets — it's built on better everyday kitchen essentials.\n\nWhat is your family's go-to cooking oil? Share below! 🍳", chars: 161 }
+      { num: 5, text: "Great family health isn't built on extreme diets — it's built on better everyday kitchen essentials.\n\nWhat is your family's go-to cooking oil? Share below! ", chars: 161 }
     ];
 
     carouselSlides = [
@@ -1082,13 +1115,14 @@ function buildDynamicCampaign(userBrief, userTone, userBrand) {
     ];
 
     reelScenes = [
-      { time: "00:00", type: "HOOK", visual: "Sizzling tadka in a pan. Cumin seeds crackling in clear, light golden oil.", voiceover: "Hear that sizzle? That is the sound of pure, light cooking that never weighs you down.", text: "Hear that sizzle? 🍳", duration: "5s" },
+      { time: "00:00", type: "HOOK", visual: "Sizzling tadka in a pan. Cumin seeds crackling in clear, light golden oil.", voiceover: "Hear that sizzle? That is the sound of pure, light cooking that never weighs you down.", text: "Hear that sizzle? ", duration: "5s" },
       { time: "00:05", type: "PROBLEM", visual: "Close-up of golden poori draining on a plate — crisp with zero soggy grease.", voiceover: "Notice anything missing? Heavy, soggy grease. Light soyabean oil means crispier bites every time.", text: "Light. Crisp. Zero Grease.", duration: "7s" },
       { time: "00:12", type: "INSIGHT", visual: "Micro-nutrient graphic highlighting Vitamin A & D fortification and Omega-3 balance.", voiceover: "Fortified with Vitamin A and D to support your family's daily health and natural immunity.", text: "Fortified with Vit A & D", duration: "8s" },
       { time: "00:20", type: "PRODUCT", visual: "A warm family dinner sharing fresh roti, sabzi, and laughter.", voiceover: "Because the secret in every memorable family meal is feeling light, energetic, and happy.", text: "Everyday Goodness for Family", duration: "7s" },
-      { time: "00:27", type: "CTA", visual: pTitle + " bottle pack shot with fresh kitchen ingredients.", voiceover: pTitle + ". Pure health, light taste, everyday goodness for your kitchen.", text: brandName + " · Pure Health", duration: "3s" }
+      { time: "00:27", type: "CTA", visual: pTitle + " bottle pack shot with fresh kitchen ingredients.", voiceover: pTitle + ". Pure health, light taste, everyday goodness for your kitchen.", text: brandName + " — Pure Health", duration: "3s" }
     ];
     verdict = "Exceptional FMCG food campaign tailored for " + pTitle + ". Emotional culinary hook, strong nutrition claims, and zero robotic slop.";
+  }
   } else if (category === 'electronics') {
     campaignTitle = pTitle + " · Next-Gen Audio & Hardware";
     linkedinHook = "Most wireless audio gear forces a compromise between low latency and battery life. Here is the engineering behind " + pTitle + ".";
